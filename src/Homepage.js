@@ -47,7 +47,7 @@ class Homepage extends React.Component {
                         </article>
                         </li>
                         <li className="one_quarter">
-                        <article><Link to="/"><h6 className="heading">Facilisis</h6></Link>
+                        <article><Link to="/"><h6 className="heading">COVID-19</h6></Link>
                             <p>Cras tempor ultricies urna aliquam massa sapien posuere in iaculis adipiscing vulputate</p>
                             <footer><Link className="btn" to="/">Περισσότερα</Link></footer>
                         </article>
@@ -62,7 +62,7 @@ class Homepage extends React.Component {
                     <section id="introblocks">
                     <ul className="nospace group">
                         <li className="one_quarter first">
-                        <Link to="/"><article><h6 className="heading">Οδηγίες για Εργαζομένους</h6>        
+                        <Link to="/Employees/COVID/Instructions"><article><h6 className="heading">Οδηγίες για Εργαζομένους</h6>        
                         </article></Link>
                         </li>
                         <li className="one_quarter">

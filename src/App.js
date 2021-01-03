@@ -6,6 +6,7 @@ import background from './images/demo/backgrounds/01.png'
 
 import Homepage from './Homepage'
 import Contact from './Contact'
+import EmployeeCOVIDInstr from './EmployeeCOVIDInstr'
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +31,19 @@ class App extends React.Component {
   setPath(npath){
     
     const n_arr = npath.split('/')
-    const f_arr = n_arr.map(n => <li><Link exact  to="/">{n}</Link></li>)
+    var f_arr = []
+    var rel_path='/';
+    var n;
+
+    for (n of n_arr) {
+      if (n !== 'Home' && n !== ''){
+        rel_path = rel_path + n + '/'
+      }
+
+      if(n !== ''){
+        f_arr.push(<li><Link exact  to={rel_path}>{n}</Link></li>)
+      }
+    }
     
     this.setState({
       path: npath,
@@ -115,6 +128,11 @@ class App extends React.Component {
                         />
           <Route exact path="/Contact" render={(props) => (
                                                     <Contact  {...props} navbarUpdate={this.setPath} />
+                                                    )}
+                                                    
+                        />
+          <Route exact path="/Employees/COVID/Instructions" render={(props) => (
+                                                    <EmployeeCOVIDInstr  {...props} navbarUpdate={this.setPath} />
                                                     )}
                                                     
                         />
