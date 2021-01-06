@@ -8,6 +8,9 @@ import background from './images/demo/backgrounds/01.png'
 import Homepage from './Homepage'
 import Contact from './Contact'
 import EmployeeCOVIDInstr from './EmployeeCOVIDInstr'
+import Employees from './Employees'
+import EmployeesCOVID from './EmployeesCOVID'
+import UnderConstruction from './UnderConstruction';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,13 +39,23 @@ class App extends React.Component {
     var rel_path='/';
     var n;
 
+    var names = {
+      Employees: 'Εργαζομενοι',
+      Employers: 'Εργοδοτες',
+      Jobless: 'Ανεργοι',
+      COVID: 'COVID',
+      EmployeesCOVID: 'COVID',
+      Instructions: 'Οδηγιες',
+      Home: 'Αρχικη'
+    }
+
     for (n of n_arr) {
       if (n !== 'Home' && n !== ''){
         rel_path = rel_path + n + '/'
       }
 
       if(n !== ''){
-        f_arr.push(<li><Link exact  to={rel_path}>{n}</Link></li>)
+        f_arr.push(<li><Link exact  to={rel_path}>{names[n]}</Link></li>)
       }
     }
     
@@ -132,8 +145,26 @@ class App extends React.Component {
                                                   )}
                                                   
                       />
-        <Route exact path="/Employees/COVID/Instructions" render={(props) => (
+
+         <Route exact path="/Employees" render={(props) => (
+                                                  <Employees  {...props} navbarUpdate={this.setPath} />
+                                                  )}
+                                                  
+                      />
+
+        <Route exact path="/Employees/EmployeesCOVID" render={(props) => (
+                                                  <EmployeesCOVID  {...props} navbarUpdate={this.setPath} />
+                                                  )}
+                                                  
+                      />
+
+        <Route exact path="/Employees/EmployeesCOVID/Instructions" render={(props) => (
                                                   <EmployeeCOVIDInstr  {...props} navbarUpdate={this.setPath} />
+                                                  )}
+                                                  
+                      />
+        <Route exact path="/Jobless" render={(props) => (
+                                                  <UnderConstruction  {...props} navbarUpdate={this.setPath} />
                                                   )}
                                                   
                       />

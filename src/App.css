@@ -324,7 +324,6 @@ input:focus, textarea:focus, *:required:focus{border-color:#829DA2;}
 .imgover:hover::before{background:rgba(130,157,162,.5);/* #829DA2 */}
 .imgover, .imgover:hover::after{color:#FFFFFF;}
 
-
 /* Rows */
 .row0, .row0 a{}
 .row1, .row1 a{}
@@ -491,4 +490,16 @@ table a, #comments a{background-color:inherit;}
 
 	.font-x2{font-size:1.4rem;}
 	.font-x3{font-size:1.6rem;}
+}
+
+/*Mine*/
+
+.in_div{
+	text-align: center;
+	line-height: 100px;
+	font-size: 24px;
+}
+
+.in_div:hover{
+	color: #990000;
 }

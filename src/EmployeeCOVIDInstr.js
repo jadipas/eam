@@ -9,7 +9,7 @@ class EmployeeCOVIDInstr extends React.Component {
     super(props)
 
     this.state = {
-        path: 'Home/Employees/COVID/Instructions'
+        path: 'Home/Employees/EmployeesCOVID/Instructions'
     }
 
     this.onChange = this.onChange.bind(this)
