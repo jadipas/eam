@@ -6,13 +6,9 @@ class Contact extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-        path: 'Home/Contact'
-    }
-
     this.onChange = this.onChange.bind(this)
 
-    this.props.navbarUpdate(this.state.path)
+    this.props.navbarUpdate(this.props.path)
   }
 
   onChange = (e) => {

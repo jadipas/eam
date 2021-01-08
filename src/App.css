@@ -503,3 +503,6 @@ table a, #comments a{background-color:inherit;}
 .in_div:hover{
 	color: #990000;
 }
+
+.butn, .butn.inverse:hover{color:#474747; background-color:#DBE5E7; border-color:#829DA2;}
+.butn:hover, .butn.inverse{color:inherit; background-color:transparent; border-color:inherit;}

@@ -11,6 +11,9 @@ import EmployeeCOVIDInstr from './EmployeeCOVIDInstr'
 import Employees from './Employees'
 import EmployeesCOVID from './EmployeesCOVID'
 import UnderConstruction from './UnderConstruction';
+import COVID from './COVID';
+import EmployeesAdeies from './EmployeesAdeies';
+import MyLoginForm from './MyLoginForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -123,10 +126,10 @@ class App extends React.Component {
             <li><Link exact to="fgddfh">Err</Link></li>
             <li><Link exact to="/">Butt</Link></li>
             <li><Link exact to="/">Butt</Link></li>
-            <li><Link exact to="/">Butt</Link></li>
           </ul>
         </nav>
       </header>
+      <MyLoginForm/>
       </div>
       <div id="breadcrumb" className="hoc clear"> 
         <h6 className="heading">Υπουργείο Εργασίας</h6>
@@ -136,38 +139,51 @@ class App extends React.Component {
       </div>
       <Switch>
         <Route exact path="/" render={(props) => (
-                                                  <Homepage  {...props} navbarUpdate={this.setPath} />
+                                                  <Homepage  {...props} navbarUpdate={this.setPath} path={'Home'}/>
                                                   )}
                                                   
                       />
         <Route exact path="/Contact" render={(props) => (
-                                                  <Contact  {...props} navbarUpdate={this.setPath} />
+                                                  <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
                                                   )}
                                                   
                       />
 
          <Route exact path="/Employees" render={(props) => (
-                                                  <Employees  {...props} navbarUpdate={this.setPath} />
+                                                  <Employees  {...props} navbarUpdate={this.setPath} path={'Home/Employees'}/>
                                                   )}
                                                   
                       />
 
         <Route exact path="/Employees/EmployeesCOVID" render={(props) => (
-                                                  <EmployeesCOVID  {...props} navbarUpdate={this.setPath} />
+                                                  <EmployeesCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID'}/>
                                                   )}
                                                   
                       />
 
         <Route exact path="/Employees/EmployeesCOVID/Instructions" render={(props) => (
-                                                  <EmployeeCOVIDInstr  {...props} navbarUpdate={this.setPath} />
+                                                  <EmployeeCOVIDInstr  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/Instructions'}/>
                                                   )}
                                                   
                       />
+
         <Route exact path="/Jobless" render={(props) => (
-                                                  <UnderConstruction  {...props} navbarUpdate={this.setPath} />
+                                                  <UnderConstruction  {...props} navbarUpdate={this.setPath} path={'Home/Jobless'}/>
                                                   )}
                                                   
                       />
+
+        <Route exact path="/COVID" render={(props) => (
+                                                  <COVID  {...props} navbarUpdate={this.setPath} path={'Home/COVID'}/>
+                                                  )}
+                                                  
+                      />
+
+        <Route exact path="/Employees/EmployeesCOVID/EmployeesAdeies" render={(props) => (
+                                                          <EmployeesAdeies  {...props} navbarUpdate={this.setPath} path={'Home/COVID'}/>
+                                                          )}
+                                                          
+                              />
         <Route path="">
           <div>
             <h1>404 PAGE NOT FOUND</h1>
@@ -176,21 +192,21 @@ class App extends React.Component {
       </Switch>
     </Router>
       <ScrollUpButton />
-      <div class="wrapper row4">
-        <footer id="footer" class="hoc clear"> 
-          <div id="ctdetails" class="clear">
-            <ul class="nospace clear">
-              <li class="one_quarter first">
-                <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Give us a call:</strong> +00 (123) 456 7890</span></div>
+      <div className="wrapper row4">
+        <footer id="footer" className="hoc clear"> 
+          <div id="ctdetails" className="clear">
+            <ul className="nospace clear">
+              <li className="one_quarter first">
+                <div className="block clear"><a href="#"><i className="fas fa-phone"></i></a> <span><strong>Give us a call:</strong> +00 (123) 456 7890</span></div>
               </li>
-              <li class="one_quarter">
-                <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Send us a mail:</strong> support@domain.com</span></div>
+              <li className="one_quarter">
+                <div className="block clear"><a href="#"><i className="fas fa-envelope"></i></a> <span><strong>Send us a mail:</strong> support@domain.com</span></div>
               </li>
-              <li class="one_quarter">
-                <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Monday - Saturday:</strong> 08.00am - 18.00pm</span></div>
+              <li className="one_quarter">
+                <div className="block clear"><a href="#"><i className="fas fa-clock"></i></a> <span><strong> Monday - Saturday:</strong> 08.00am - 18.00pm</span></div>
               </li>
-              <li class="one_quarter">
-                <div class="block clear"><a href="#"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Come visit us:</strong> Directions to <a href="#">our location</a></span></div>
+              <li className="one_quarter">
+                <div className="block clear"><a href="#"><i className="fas fa-map-marker-alt"></i></a> <span><strong>Come visit us:</strong> Directions to <a href="#">our location</a></span></div>
               </li>
             </ul>
           </div>

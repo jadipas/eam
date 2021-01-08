@@ -1,20 +1,15 @@
 import React from 'react';
 
-import {Link} from "react-router-dom";
-import { Link as Scroll_link, animateScroll as scroll } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import ReactPlayer from "react-player"
 
 class EmployeeCOVIDInstr extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-        path: 'Home/Employees/EmployeesCOVID/Instructions'
-    }
-
     this.onChange = this.onChange.bind(this)
 
-    this.props.navbarUpdate(this.state.path)
+    this.props.navbarUpdate(this.props.path)
   }
 
   onChange = (e) => {
@@ -26,9 +21,9 @@ class EmployeeCOVIDInstr extends React.Component {
   render(){     
     return (
         <div>
-          <div class="wrapper row3">
-            <main class="hoc container clear"> 
-              <div class="content three_quarter first" id="general_info"> 
+          <div className="wrapper row3">
+            <main className="hoc container clear"> 
+              <div className="content three_quarter first" id="general_info"> 
                 <h1>Ιατρικές Οδηγίες για την Πρόληψη της Διασποράς του Ιού</h1>
                 <p>Επαναλαμβάνονται με εμφατικό τρόπο οι γενικές οδηγίες ατομικής υγιεινής και προστασίας. Η τήρηση τους μειώνει δραστικά τον κίνδυνο μετάδοσης του ιού:</p>
                 <ul>
@@ -82,50 +77,50 @@ class EmployeeCOVIDInstr extends React.Component {
                   </li>
                 </ul>
               </div>
-              <div class="sidebar one_quarter"> 
+              <div className="sidebar one_quarter"> 
                 <h6>Ιατρικές Οδηγίες</h6>
-                <nav class="sdb_holder">
+                <nav className="sdb_holder">
                   <ul>
-                    <li><Scroll_link activeClass="active" to="general_info" spy={true} smooth={true} duration={500}>Γενικές Οδηγίες</Scroll_link></li>
-                    <li><Scroll_link activeClass="active" to="variety" spy={true} smooth={true} duration={500}>1. Είδη κριτηρίων</Scroll_link>
+                    <li><ScrollLink activeClass="active" to="general_info" spy={true} smooth={true} duration={500}>Γενικές Οδηγίες</ScrollLink></li>
+                    <li><ScrollLink activeClass="active" to="variety" spy={true} smooth={true} duration={500}>1. Είδη κριτηρίων</ScrollLink>
                       <ul>
-                        <li><Scroll_link activeClass="active" to="one-one" spy={true} smooth={true} duration={500}>1.1 Κλινικά κριτήρια</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="one-two" spy={true} smooth={true} duration={500}>1.2 Απεικονιστικά διαγνωστικά κριτήρια</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="one-three" spy={true} smooth={true} duration={500}>1.3 Εργαστηριακά κριτήρια</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="one-four" spy={true} smooth={true} duration={500}>1.4 Επιδημιολογικά κριτήρια</Scroll_link></li>
+                        <li><ScrollLink activeClass="active" to="one-one" spy={true} smooth={true} duration={500}>1.1 Κλινικά κριτήρια</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="one-two" spy={true} smooth={true} duration={500}>1.2 Απεικονιστικά διαγνωστικά κριτήρια</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="one-three" spy={true} smooth={true} duration={500}>1.3 Εργαστηριακά κριτήρια</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="one-four" spy={true} smooth={true} duration={500}>1.4 Επιδημιολογικά κριτήρια</ScrollLink></li>
                       </ul>
                     </li>
-                    <li><Scroll_link activeClass="active" to="sick-class" spy={true} smooth={true} duration={500}>2. Ταξινόμηση Πιθανών Κρουσμάτων Στον Χώρο Εργασίας</Scroll_link>
+                    <li><ScrollLink activeClass="active" to="sick-className" spy={true} smooth={true} duration={500}>2. Ταξινόμηση Πιθανών Κρουσμάτων Στον Χώρο Εργασίας</ScrollLink>
                       <ul>
-                        <li><Scroll_link activeClass="active" to="two-one" spy={true} smooth={true} duration={500}>2.1 Ενδεχόμενο κρούσμα</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="two-two" spy={true} smooth={true} duration={500}>2.2 Πιθανό κρούσμα</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="two-three" spy={true} smooth={true} duration={500}>2.3 Επιβεβαιωμένο κρούσμα</Scroll_link></li>
+                        <li><ScrollLink activeClass="active" to="two-one" spy={true} smooth={true} duration={500}>2.1 Ενδεχόμενο κρούσμα</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="two-two" spy={true} smooth={true} duration={500}>2.2 Πιθανό κρούσμα</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="two-three" spy={true} smooth={true} duration={500}>2.3 Επιβεβαιωμένο κρούσμα</ScrollLink></li>
                       </ul>
                     </li>
-                    <li><Scroll_link activeClass="active" to="contact-class" spy={true} smooth={true} duration={500}>3. Ταξινόμηση Ανάλογα με το Επίπεδο Έκθεσης</Scroll_link>
+                    <li><ScrollLink activeClass="active" to="contact-className" spy={true} smooth={true} duration={500}>3. Ταξινόμηση Ανάλογα με το Επίπεδο Έκθεσης</ScrollLink>
                       <ul>
-                        <li><Scroll_link activeClass="active" to="three-one" spy={true} smooth={true} duration={500}>3.1 Στενές επαφές (έκθεση υψηλού κινδύνου)</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="three-two" spy={true} smooth={true} duration={500}>3.2  Επαφές (έκθεση χαμηλού κινδύνου)</Scroll_link></li>
+                        <li><ScrollLink activeClass="active" to="three-one" spy={true} smooth={true} duration={500}>3.1 Στενές επαφές (έκθεση υψηλού κινδύνου)</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="three-two" spy={true} smooth={true} duration={500}>3.2  Επαφές (έκθεση χαμηλού κινδύνου)</ScrollLink></li>
                       </ul>
                     </li>
-                    <li><Scroll_link activeClass="active" to="scenarios-class" spy={true} smooth={true} duration={500}>4. Πιθανά Σενάρια και Αντίστοιχες Δράσεις απο τους Εργαζομένους</Scroll_link>
+                    <li><ScrollLink activeClass="active" to="scenarios-className" spy={true} smooth={true} duration={500}>4. Πιθανά Σενάρια και Αντίστοιχες Δράσεις απο τους Εργαζομένους</ScrollLink>
                       <ul>
-                        <li><Scroll_link activeClass="active" to="four-one" spy={true} smooth={true} duration={500}>4.1 O εργαζόμενος παρουσιάσει συμπτωματολογία ίωσης</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="four-two" spy={true} smooth={true} duration={500}>4.2 Ο εργαζόμενος παρουσιάσει συμπτωματολογία ίωσης και έχει ιστορικό Στενής Επαφής</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="four-three" spy={true} smooth={true} duration={500}>4.3	Ο εργαζόμενος δεν έχει κανένα  σύμπτωμα αλλά έχει ιστορικό ΣΤΕΝΗΣ ΕΠΑΦΗΣ</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="four-four" spy={true} smooth={true} duration={500}>4.4 Ο εργαζόμενος δεν έχει κανένα  σύμπτωμα αλλά έχει ιστορικό ΕΠΑΦΗΣ</Scroll_link></li>
-                        <li><Scroll_link activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}>Συμπτωματολογία ίωσης</Scroll_link></li>
+                        <li><ScrollLink activeClass="active" to="four-one" spy={true} smooth={true} duration={500}>4.1 O εργαζόμενος παρουσιάσει συμπτωματολογία ίωσης</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="four-two" spy={true} smooth={true} duration={500}>4.2 Ο εργαζόμενος παρουσιάσει συμπτωματολογία ίωσης και έχει ιστορικό Στενής Επαφής</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="four-three" spy={true} smooth={true} duration={500}>4.3	Ο εργαζόμενος δεν έχει κανένα  σύμπτωμα αλλά έχει ιστορικό ΣΤΕΝΗΣ ΕΠΑΦΗΣ</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="four-four" spy={true} smooth={true} duration={500}>4.4 Ο εργαζόμενος δεν έχει κανένα  σύμπτωμα αλλά έχει ιστορικό ΕΠΑΦΗΣ</ScrollLink></li>
+                        <li><ScrollLink activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}>Συμπτωματολογία ίωσης</ScrollLink></li>
                       </ul>
                     </li>
                   </ul>
                 </nav>
               </div>
-              <div class="clear"></div>
-              <div class="content three_quarter first" id="variety"> 
+              <div className="clear"></div>
+              <div className="content three_quarter first" id="variety"> 
                 <br/>
                 <h1><u>1. Είδη κριτηρίων</u></h1>
                 <br/>
-                <div class="content three_quarter first" id="one-one"> 
+                <div className="content three_quarter first" id="one-one"> 
                   <h1>1.1 Κλινικά κριτήρια</h1>
                   <p>Ασθενής με ένα τουλάχιστον από τα κατωτέρω συμπτώματα :</p>
                   <ul>
@@ -186,7 +181,7 @@ class EmployeeCOVIDInstr extends React.Component {
                   </ul>
                   <br/>
                 </div>
-                <div class="content three_quarter first" id="one-two"> 
+                <div className="content three_quarter first" id="one-two"> 
                   <h1>1.2 Απεικονιστικά διαγνωστικά κριτήρια</h1>
                   <ul>
                     <li>
@@ -197,7 +192,7 @@ class EmployeeCOVIDInstr extends React.Component {
                   </ul>
                   <br/>
                 </div>
-                <div class="content three_quarter first" id="one-three"> 
+                <div className="content three_quarter first" id="one-three"> 
                   <h1>1.3 Εργαστηριακά κριτήρια</h1>
                   <ul>
                     <li>
@@ -208,7 +203,7 @@ class EmployeeCOVIDInstr extends React.Component {
                   </ul>
                   <br/>
                 </div>
-                <div class="content three_quarter first" id="one-four"> 
+                <div className="content three_quarter first" id="one-four"> 
                   <h1>1.4 Επιδημιολογικά κριτήρια</h1>
                   <p>Ασθενής με ένα τουλάχιστον από τα κατωτέρω επιδημιολογικά κριτήρια :</p>
                   <ul>
@@ -230,27 +225,27 @@ class EmployeeCOVIDInstr extends React.Component {
                   <br/>
                 </div>
               </div>
-              <div class="content three_quarter first" id="sick-class"> 
+              <div className="content three_quarter first" id="sick-className"> 
                 <h1><u>2. Ταξινόμηση Πιθανών Κρουσμάτων Στον Χώρο Εργασίας</u></h1>
                 <p> Yπάρχουν 3 είδη κρούσματος (ενδεχόμενο - πιθανό - επιβεβαιωμένο ) και 2 είδη επαφών (στενή υψηλού κινδύνου - απλή χαμηλού κινδύνου)</p>
                 <br/>
                 <div id="two-one">
                   <h1>2.1 Ενδεχόμενο κρούσμα</h1>
-                  <p>Ασθενής που πληροί τα <Scroll_link activeClass="active" to="one-one" spy={true} smooth={true} duration={500}><u>κλινικά κριτήρια</u></Scroll_link></p>
+                  <p>Ασθενής που πληροί τα <ScrollLink activeClass="active" to="one-one" spy={true} smooth={true} duration={500}><u>κλινικά κριτήρια</u></ScrollLink></p>
                 </div>
                 <br/>
                 <div id="two-two">
                   <h1>2.2 Πιθανό κρούσμα</h1>
-                  <p>Ασθενής που πληροί τα <Scroll_link activeClass="active" to="one-one" spy={true} smooth={true} duration={500}><u>κλινικά κριτήρια</u></Scroll_link> και ένα <Scroll_link activeClass="active" to="one-four" spy={true} smooth={true} duration={500}><u>επιδημιολογικό κριτήριο</u></Scroll_link><br/>ή<br/>Άτομο που πληροί τα <Scroll_link activeClass="active" to="one-two" spy={true} smooth={true} duration={500}><u>απεικονιστικά διαγνωστικά κριτήρια</u></Scroll_link></p>
+                  <p>Ασθενής που πληροί τα <ScrollLink activeClass="active" to="one-one" spy={true} smooth={true} duration={500}><u>κλινικά κριτήρια</u></ScrollLink> και ένα <ScrollLink activeClass="active" to="one-four" spy={true} smooth={true} duration={500}><u>επιδημιολογικό κριτήριο</u></ScrollLink><br/>ή<br/>Άτομο που πληροί τα <ScrollLink activeClass="active" to="one-two" spy={true} smooth={true} duration={500}><u>απεικονιστικά διαγνωστικά κριτήρια</u></ScrollLink></p>
                 </div>
                 <br/>
                 <div id="two-three">
                   <h1>2.3 Επιβεβαιωμένο κρούσμα</h1>
-                  <p>Ασθενής που πληροί τα <Scroll_link activeClass="active" to="one-three" spy={true} smooth={true} duration={500}><u>εργαστηριακά κριτήρια</u></Scroll_link></p>
+                  <p>Ασθενής που πληροί τα <ScrollLink activeClass="active" to="one-three" spy={true} smooth={true} duration={500}><u>εργαστηριακά κριτήρια</u></ScrollLink></p>
                 </div>
                 <br/>
               </div>
-              <div class="content three_quarter first" id="contact-class"> 
+              <div className="content three_quarter first" id="contact-className"> 
                 <h1><u>3. Ταξινόμηση Ανάλογα με το Επίπεδο Έκθεσης</u></h1>
                 <p> Ανάλογα με το επίπεδο της έκθεσης, οι επαφές του κρούσματος κατηγοριοποιούνται σε:</p>
                 <br/>
@@ -320,17 +315,17 @@ class EmployeeCOVIDInstr extends React.Component {
                 </div>
                 <br/>
               </div>
-              <div class="content three_quarter first" id="scenarios-class"> 
+              <div className="content three_quarter first" id="scenarios-className"> 
                 <h1><u>4. Πιθανά Σενάρια και Αντίστοιχες Δράσεις απο τους Εργαζομένους</u></h1>
                 <div id="four-one">
                   <h1>4.1 O εργαζόμενος παρουσιάσει συμπτωματολογία ίωσης </h1>
-                  <p>Αν ο εργαζόμενος παρουσιάσει <Scroll_link activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>συμπτωματολογία ίωσης</u></Scroll_link>, τότε <b>ΔΕΝ ΕΡΧΕΤΑΙ ΣΤΗΝ ΕΡΓΑΣΙΑ ΤΟΥ, ΜΕΝΕΙ ΣΤΟ ΣΠΙΤΙ ΤΟΥ</b>, επικοινωνεί με τον θεράποντα ιατρό του και παραμένει εκτός εργασίας για όσο χρονικό διάστημα απαιτηθεί, προσκομίζοντας ιατρική βεβαίωση ή άδεια απουσίας λόγω ασθενείας από τον ασφαλιστικό του φορέα
+                  <p>Αν ο εργαζόμενος παρουσιάσει <ScrollLink activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>συμπτωματολογία ίωσης</u></ScrollLink>, τότε <b>ΔΕΝ ΕΡΧΕΤΑΙ ΣΤΗΝ ΕΡΓΑΣΙΑ ΤΟΥ, ΜΕΝΕΙ ΣΤΟ ΣΠΙΤΙ ΤΟΥ</b>, επικοινωνεί με τον θεράποντα ιατρό του και παραμένει εκτός εργασίας για όσο χρονικό διάστημα απαιτηθεί, προσκομίζοντας ιατρική βεβαίωση ή άδεια απουσίας λόγω ασθενείας από τον ασφαλιστικό του φορέα
                   </p>
                 </div>
                 <br/>
                 <div id="four-two">
                   <h1>4.2 Ο εργαζόμενος παρουσιάσει συμπτωματολογία ίωσης και έχει ιστορικό Στενής Επαφής</h1>
-                  <p>Αν  ο εργαζόμενος  παρουσιάσει <Scroll_link activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>συμπτωματολογία ίωσης</u></Scroll_link>, και  <Scroll_link activeClass="active" to="three-one" spy={true} smooth={true} duration={500}><u>έχει ιστορικό στενής επαφής</u></Scroll_link>, τότε <b>ΔΕΝ ΕΡΧΕΤΑΙ ΣΤΗΝ ΕΡΓΑΣΙΑ ΤΟΥ, ΜΕΝΕΙ ΣΤΟ ΣΠΙΤΙ ΤΟΥ</b>, και επικοινωνεί με</p>
+                  <p>Αν  ο εργαζόμενος  παρουσιάσει <ScrollLink activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>συμπτωματολογία ίωσης</u></ScrollLink>, και  <ScrollLink activeClass="active" to="three-one" spy={true} smooth={true} duration={500}><u>έχει ιστορικό στενής επαφής</u></ScrollLink>, τότε <b>ΔΕΝ ΕΡΧΕΤΑΙ ΣΤΗΝ ΕΡΓΑΣΙΑ ΤΟΥ, ΜΕΝΕΙ ΣΤΟ ΣΠΙΤΙ ΤΟΥ</b>, και επικοινωνεί με</p>
                   <ul>
                     <li>
                       <p>
@@ -353,7 +348,7 @@ class EmployeeCOVIDInstr extends React.Component {
                 <br/>
                 <div id="four-three">
                   <h1>4.3	Ο εργαζόμενος δεν έχει κανένα  σύμπτωμα αλλά έχει ιστορικό Στενής Επαφής</h1>
-                  <p>Αν  ο εργαζόμενος  δεν παρουσιάσει <Scroll_link activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>συμπτωματολογία ίωσης</u></Scroll_link>, αλλά  <Scroll_link activeClass="active" to="three-one" spy={true} smooth={true} duration={500}><u>έχει ιστορικό στενής επαφής</u></Scroll_link>, τότε <b>ΔΕΝ ΕΡΧΕΤΑΙ ΣΤΗΝ ΕΡΓΑΣΙΑ ΤΟΥ, ΜΕΝΕΙ ΣΤΟ ΣΠΙΤΙ ΤΟΥ</b>, και επικοινωνεί με</p>
+                  <p>Αν  ο εργαζόμενος  δεν παρουσιάσει <ScrollLink activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>συμπτωματολογία ίωσης</u></ScrollLink>, αλλά  <ScrollLink activeClass="active" to="three-one" spy={true} smooth={true} duration={500}><u>έχει ιστορικό στενής επαφής</u></ScrollLink>, τότε <b>ΔΕΝ ΕΡΧΕΤΑΙ ΣΤΗΝ ΕΡΓΑΣΙΑ ΤΟΥ, ΜΕΝΕΙ ΣΤΟ ΣΠΙΤΙ ΤΟΥ</b>, και επικοινωνεί με</p>
                   <ul>
                     <li>
                       <p>
@@ -376,7 +371,7 @@ class EmployeeCOVIDInstr extends React.Component {
                 <br/>
                 <div id="four-four">
                   <h1>4.4 Ο εργαζόμενος δεν έχει κανένα  σύμπτωμα αλλά έχει ιστορικό Επαφής</h1>
-                  <p>Αν εργαζόμενος δεν έχει κανένα <Scroll_link activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>σύμπτωμα ίωσης</u></Scroll_link> αλλά <Scroll_link activeClass="active" to="three-two" spy={true} smooth={true} duration={500}><u>έχει ιστορικό απλής επαφής</u></Scroll_link>, τότε <b>ΕΡΧΕΤΑΙ </b>μεν στην εργασία του, παρακολουθώντας  στενά τον εαυτό του για πιθανά συμπτώματα, ακολουθώντας  πιστά  τις  οδηγίες  ατομικής  υγιεινής.</p>
+                  <p>Αν εργαζόμενος δεν έχει κανένα <ScrollLink activeClass="active" to="flu-symptoms" spy={true} smooth={true} duration={500}><u>σύμπτωμα ίωσης</u></ScrollLink> αλλά <ScrollLink activeClass="active" to="three-two" spy={true} smooth={true} duration={500}><u>έχει ιστορικό απλής επαφής</u></ScrollLink>, τότε <b>ΕΡΧΕΤΑΙ </b>μεν στην εργασία του, παρακολουθώντας  στενά τον εαυτό του για πιθανά συμπτώματα, ακολουθώντας  πιστά  τις  οδηγίες  ατομικής  υγιεινής.</p>
                 </div>
                 <br/>
                 <p id="flu-symptoms"><i>Συμπτωματολογία ίωσης: πυρετός, βήχας, δυσκολία στην αναπνοή, αγευσία ή ανοσμία, πονοκέφαλος , ρίγος, μυαλγίες, καταβολή, έμετος ή διάρροια</i></p>

@@ -6,13 +6,9 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-        path: 'Home/'
-    }
-
     this.onChange = this.onChange.bind(this)
 
-    this.props.navbarUpdate(this.state.path)
+    this.props.navbarUpdate(this.props.path)
   }
 
   onChange = (e) => {
@@ -49,7 +45,7 @@ class Homepage extends React.Component {
                         <li className="one_quarter">
                         <article><h6 className="heading">COVID-19</h6>
                             <p>Cras tempor ultricies urna aliquam massa sapien posuere in iaculis adipiscing vulputate</p>
-                            <footer><Link className="btn" to="/">Περισσoτερα</Link></footer>
+                            <footer><Link className="btn" to="/COVID">Περισσoτερα</Link></footer>
                         </article>
                         </li>
                     </ul>

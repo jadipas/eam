@@ -1,8 +1,6 @@
 import React from 'react';
 
 import {Link} from "react-router-dom";
-import {Link as Scroll_link, animateScroll as scroll } from "react-scroll";
-import ReactPlayer from "react-player"
 
 import under_constr from './images/Page_Under_Construction.png'
 
@@ -10,13 +8,9 @@ class UnderConstruction extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-        path: 'Home'
-    }
-
     this.onChange = this.onChange.bind(this)
 
-    this.props.navbarUpdate(this.state.path)
+    this.props.navbarUpdate(this.props.path)
   }
 
   onChange = (e) => {
