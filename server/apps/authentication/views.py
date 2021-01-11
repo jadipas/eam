@@ -28,7 +28,7 @@ class RegisterView(APIView):
           
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
-            user = User(username=payload.get('username'), amka=payload.get('amka'), afm=payload.get('afm'), email=payload.get('afm'), name=payload.get('name'), phone=payload.get('phone'), role=payload.get('role'), date_of_birth=payload.get('day_of_birth'), picture=payload.get('picture'), has_child_under_12=payload.get('has_child_under_12', False))
+            user = User(username=payload.get('username'), amka=payload.get('amka'), afm=payload.get('afm'), email=payload.get('afm'), name=payload.get('name'), phone=payload.get('phone'), role=payload.get('role'), date_of_birth=payload.get('day_of_birth'), picture=payload.get('picture'), has_child_under_12=payload.get('has_child_under_12', False), company=payload.get('company'))
             validate_password(payload.get('password'), user)
             user.set_password(payload.get('password'))
             user.save()           
