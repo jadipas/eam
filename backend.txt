@@ -1,0 +1,21 @@
+http://localhost:8000:
+
+(register) POST: /authentication/register
+example: {
+    "password": "hardpassword",
+    "email": "n7k@gmail.com",
+    "name": "n7is",
+    "amka": "1781",
+    "afm": "1871",
+    "username": "ni87",
+    "phone": "1127118",
+    "role": "employer",(employer/employee)
+    "has_child_under_12": "True",(boolean)
+    "company": "UoA"
+}
+
+(login) POST: /authentication/api/token/: 
+{
+    "username": "nikos",
+    "password": "hardpassword"
+}
