@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import ScrollUpButton from "react-scroll-up-button";
 
-import background from './images/demo/backgrounds/01.png'
+import background from './images/background3.png'
 
 import Homepage from './Homepage'
 import Contact from './Contact'
@@ -14,6 +14,7 @@ import UnderConstruction from './UnderConstruction';
 import COVID from './COVID';
 import EmployeesAdeies from './EmployeesAdeies';
 import MyLoginForm from './MyLoginForm';
+import Register from './Register';
 
 class App extends React.Component {
   constructor(props) {
@@ -70,72 +71,74 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="bgded overlay" style={{backgroundImage : `url(${background})`}}>
+      <div className="bgded overlay" >
       <Router>
-      <div>
-        <header id="header" className="hoc clear"> 
-        <div id="logo" className="fl_left">
-          <h1><Link exact to="/">Butt</Link></h1>
-        </div>
-        <nav id="mainav" className="fl_right">
-          <ul className="clear">
-            <li className="active">
-              <Link exact  to="/">Butt</Link>
-            </li>
-            <li><Link exact className="drop" to="/">Batter</Link>
-              <ul>
-                <li>
-                  <Link exact  to="/">Button1</Link>
-                </li>
-                <li>
-                  <Link exact  to="/">Button2</Link>
-                </li>
-                <li>
-                  <Link exact  to="/">Button3</Link>
-                </li>
-                <li>
-                  <Link exact  to="/">Button4</Link>
-                </li>
-                <li>
-                  <Link exact  to="/">Button5</Link>
-                </li>
-                <li>
-                  <Link exact  to="/">Button6</Link>
-                </li>
-              </ul>
-            </li>
-            <li><Link exact className="drop" to="/">Butt</Link>
-              <ul>
-                <li><Link exact  to="/">Butt</Link></li>
-                <li><Link exact  to="/">Butt</Link>
-                  <ul>
-                    <li>
-                      <Link exact  to="/">Butt</Link>
+      <div style={{backgroundImage : `url(${background})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>  
+        <div>
+          <header id="header" className="hoc clear"> 
+          <div id="logo" className="fl_left">
+            <h1><Link exact to="/">Butt</Link></h1>
+          </div>
+          <nav id="mainav" className="fl_right">
+            <ul className="clear">
+              <li className="active">
+                <Link exact  to="/">Butt</Link>
+              </li>
+              <li><Link exact className="drop" to="/">Batter</Link>
+                <ul>
+                  <li>
+                    <Link exact  to="/">Button1</Link>
+                  </li>
+                  <li>
+                    <Link exact  to="/">Button2</Link>
+                  </li>
+                  <li>
+                    <Link exact  to="/">Button3</Link>
+                  </li>
+                  <li>
+                    <Link exact  to="/">Button4</Link>
+                  </li>
+                  <li>
+                    <Link exact  to="/">Button5</Link>
+                  </li>
+                  <li>
+                    <Link exact  to="/">Button6</Link>
+                  </li>
+                </ul>
+              </li>
+              <li><Link exact className="drop" to="/">Butt</Link>
+                <ul>
+                  <li><Link exact  to="/">Butt</Link></li>
+                  <li><Link exact  to="/">Butt</Link>
+                    <ul>
+                      <li>
+                        <Link exact  to="/">Butt</Link>
+                        </li>
+                      <li>
+                        <Link exact  to="/">Butt</Link>
                       </li>
-                    <li>
-                      <Link exact  to="/">Butt</Link>
-                    </li>
-                    <li>
-                      <Link exact  to="/">Butt</Link>
-                    </li>
-                  </ul>
-                </li>
-                <li><Link exact  to="/">Butt</Link></li>
-              </ul>
-            </li>
-            <li><Link exact to="fgddfh">Err</Link></li>
-            <li><Link exact to="/">Butt</Link></li>
-            <li><Link exact to="/">Butt</Link></li>
+                      <li>
+                        <Link exact  to="/">Butt</Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><Link exact  to="/">Butt</Link></li>
+                </ul>
+              </li>
+              <li><Link exact to="fgddfh">Err</Link></li>
+              <li><Link exact to="/">Butt</Link></li>
+              <li><Link exact to="/">Butt</Link></li>
+            </ul>
+          </nav>
+        </header>
+        <MyLoginForm/>
+        </div>
+        <div id="breadcrumb" className="hoc clear"> 
+          <h6 className="heading">Υπουργείο Εργασίας</h6>
+          <ul>
+            {this.state.navbar}
           </ul>
-        </nav>
-      </header>
-      <MyLoginForm/>
-      </div>
-      <div id="breadcrumb" className="hoc clear"> 
-        <h6 className="heading">Υπουργείο Εργασίας</h6>
-        <ul>
-          {this.state.navbar}
-        </ul>
+        </div>
       </div>
       <Switch>
         <Route exact path="/" render={(props) => (
@@ -143,8 +146,15 @@ class App extends React.Component {
                                                   )}
                                                   
                       />
+        
+        <Route exact path="/Register" render={(props) => (
+                                                  <Register  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
+                                                  )}
+                                                  
+                      />
+
         <Route exact path="/Contact" render={(props) => (
-                                                  <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
+                                                  <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
                                                   )}
                                                   
                       />
