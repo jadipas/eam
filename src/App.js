@@ -200,28 +200,28 @@ class App extends React.Component {
           </div>
         </Route>
       </Switch>
-    </Router>
       <ScrollUpButton />
       <div className="wrapper row4">
         <footer id="footer" className="hoc clear"> 
           <div id="ctdetails" className="clear">
             <ul className="nospace clear">
               <li className="one_quarter first">
-                <div className="block clear"><a href="#"><i className="fas fa-phone"></i></a> <span><strong>Give us a call:</strong> +00 (123) 456 7890</span></div>
+                <div className="block clear"><a href="#"><i className="fas fa-phone"></i></a> <span><strong>Καλέστε μας:</strong> +30 2131516649<br/><br/>+30 2131516651</span></div>
               </li>
               <li className="one_quarter">
-                <div className="block clear"><a href="#"><i className="fas fa-envelope"></i></a> <span><strong>Send us a mail:</strong> support@domain.com</span></div>
+                <div className="block clear"><a href="#"><i className="fas fa-envelope"></i></a> <span><strong>Στείλτε μας email:</strong> support@ypakp.gov</span></div>
               </li>
               <li className="one_quarter">
-                <div className="block clear"><a href="#"><i className="fas fa-clock"></i></a> <span><strong> Monday - Saturday:</strong> 08.00am - 18.00pm</span></div>
+                <div className="block clear"><a href="#"><i className="fas fa-clock"></i></a> <span><strong> Δευτέρα - Παρασκευή:</strong> 08.00πμ - 02.00μμ <br/>(<Link to="/Contact">Μόνο μετα απο ραντεβού</Link>)</span></div>
               </li>
               <li className="one_quarter">
-                <div className="block clear"><a href="#"><i className="fas fa-map-marker-alt"></i></a> <span><strong>Come visit us:</strong> Directions to <a href="#">our location</a></span></div>
+                <div className="block clear"><a href="#"><i className="fas fa-map-marker-alt"></i></a> <span><strong>Επισκεφθείτε μας:</strong> Directions to <a href="#">our location</a></span></div>
               </li>
             </ul>
           </div>
         </footer>
       </div>
+    </Router>
     </div>
     );
   }
