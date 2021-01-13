@@ -15,11 +15,12 @@ import COVID from './COVID';
 import EmployeesAdeies from './EmployeesAdeies';
 import MyLoginForm from './MyLoginForm';
 import Register from './Register';
+import Appointment from './Appointment';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-
+    
     this.state = {
         path: '',
         navbar: null,
@@ -49,8 +50,11 @@ class App extends React.Component {
       Jobless: 'Ανεργοι',
       COVID: 'COVID',
       EmployeesCOVID: 'COVID',
+      EmployeesAdeies: 'Αδειες',
       Instructions: 'Οδηγιες',
-      Home: 'Αρχικη'
+      Home: 'Αρχικη',
+      Appointment: 'Ραντεβου',
+      Contact: 'Επικοινωνια',
     }
 
     for (n of n_arr) {
@@ -148,18 +152,24 @@ class App extends React.Component {
                       />
         
         <Route exact path="/Register" render={(props) => (
-                                                  <Register  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
+                                                  <Register  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
                                                   )}
                                                   
                       />
 
         <Route exact path="/Contact" render={(props) => (
-                                                  <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
+                                                  <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
                                                   )}
                                                   
                       />
 
-         <Route exact path="/Employees" render={(props) => (
+        <Route exact path="/Contact/Appointment" render={(props) => (
+                                                    <Appointment  {...props} navbarUpdate={this.setPath} path={'Home/Contact/Appointment'}/>
+                                                    )}
+                                                    
+                        />
+
+        <Route exact path="/Employees" render={(props) => (
                                                   <Employees  {...props} navbarUpdate={this.setPath} path={'Home/Employees'}/>
                                                   )}
                                                   
@@ -189,8 +199,8 @@ class App extends React.Component {
                                                   
                       />
 
-        <Route exact path="/Employees/EmployeesCOVID/EmployeesAdeies" render={(props) => (
-                                                          <EmployeesAdeies  {...props} navbarUpdate={this.setPath} path={'Home/COVID'}/>
+        <Route exact path="/Employees/EmployeesCOVID/EmployeesAdeies/EidikouSkopou" render={(props) => (
+                                                          <EmployeesAdeies  {...props} navbarUpdate={this.setPath} path={'Home/EmployeesCOVID/EmployeesAdeies'}/>
                                                           )}
                                                           
                               />

@@ -493,6 +493,8 @@ table a, #comments a{background-color:inherit;}
 }
 
 /*Mine*/
+#mapid { height: 360px; width: 360px;}
+#mapid { float: right;}
 
 .in_div{
 	text-align: center;
