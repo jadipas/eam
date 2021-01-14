@@ -1325,7 +1325,6 @@ table a,
 #mapid { height: 360px; width: 360px;}
 #mapid { float: right;}
 
-<<<<<<< HEAD
 .in_div{
 	text-align: center;
 	background-color: white;
@@ -1335,16 +1334,6 @@ table a,
 
 .in_div:hover{
 	color: #447b9f;
-=======
-.in_div {
-  text-align: center;
-  line-height: 100px;
-  font-size: 24px;
-}
-
-.in_div:hover {
-  color: #990000;
->>>>>>> 7e5c7851661e066a3f952bb1aee5fed72b596169
 }
 
 .butn,
@@ -1360,7 +1349,6 @@ table a,
   border-color: inherit;
 }
 
-<<<<<<< HEAD
 .inpt {display:block; height:32px; border:none;}
 .inpt {width:75%; padding:5px 40px 5px 15px;margin-top: 20px;}
 .inpt {border:1px solid;}
@@ -1368,29 +1356,3 @@ table a,
 .inpt {color:#FFFFFF; background-color:#447b9f;}
 .inpt::placeholder {color:#D8A47F;}
 .inpt:focus{border-color:#DBE5E7;border-radius:16px;}
-=======
-.inpt {
-  display: block;
-  height: 32px;
-  border: none;
-}
-.inpt {
-  width: 75%;
-  padding: 5px 40px 5px 15px;
-  margin-top: 20px;
-}
-.inpt {
-  border: 1px solid;
-}
-.inpt {
-  border-color: transparent;
-}
-.inpt {
-  color: #ffffff;
-  background-color: #829da2;
-}
-.inpt:focus {
-  border-color: #dbe5e7;
-  border-radius: 16px;
-}
->>>>>>> 7e5c7851661e066a3f952bb1aee5fed72b596169
