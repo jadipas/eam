@@ -6,6 +6,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
+class Company(models.Model):
+    name = models.CharField(max_length=100, primary_key=True)
+    
+    class Meta:
+        db_table = 'company'
+    
+
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -62,17 +69,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     afm = models.CharField(max_length=10, unique=True)
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(unique=True)
-    name = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50, unique=True)
     date_of_birth = models.DateField(blank=True, null=True)
-    picture = models.ImageField(blank=True, null=True)
     role = models.CharField(max_length=50, choices = ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
     has_child_under_12 = models.BooleanField(default=False)
-    company = models.CharField(max_length=100, blank=True, null=True)
+    company = models.OneToOneField(Company, on_delete=models.RESTRICT, blank=True, null=True)
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['name', 'email', 'phone', 'amka', 'afm']
+    REQUIRED_FIELDS = ['first_name', 'last_name' 'email', 'phone', 'amka', 'afm']
     
     
     objects = UserManager()
