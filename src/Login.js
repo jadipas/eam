@@ -226,8 +226,8 @@ export default function SignIn() {
         <div className="hoc clear">
                 <nav id="mainav" className="fl_right">
                     <ul className="clear">
-                        <li><input className="inpt" type="text" name="username" placeholder="Username" onChange={handleChange}/></li>
-                        <li><input className="inpt" type="password" name="password" placeholder="Password" onChange={handleChange}/></li>
+                        <li><input className="inpt2" type="text" name="username" placeholder="Username" onChange={handleChange}/></li>
+                        <li><input className="inpt2" type="password" name="password" placeholder="Password" onChange={handleChange}/></li>
                         <li><button type="submit" className="butn" onClick={handleSubmit}>ΕΙΣΟΔΟΣ</button></li>
                     </ul>
                 </nav>

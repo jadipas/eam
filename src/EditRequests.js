@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
 
 class EditRequests extends React.Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class EditRequests extends React.Component {
                         </thead>
                         <tbody>
                             <tr>
-                            <td><a href="#">Value 1</a></td>
                             <td>Value 2</td>
                             <td>Value 3</td>
                             <td>Value 4</td>
@@ -44,7 +43,6 @@ class EditRequests extends React.Component {
                             <td>Value 5</td>
                             <td>Value 6</td>
                             <td>Value 7</td>
-                            <td><a href="#">Value 8</a></td>
                             </tr>
                             <tr>
                             <td>Value 9</td>
@@ -54,7 +52,6 @@ class EditRequests extends React.Component {
                             </tr>
                             <tr>
                             <td>Value 13</td>
-                            <td><a href="#">Value 14</a></td>
                             <td>Value 15</td>
                             <td>Value 16</td>
                             </tr>
