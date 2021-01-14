@@ -3,8 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import ScrollUpButton from "react-scroll-up-button";
 
-import background from './images/background3.png'
-
+import Header from './Header'
 import Homepage from './Homepage'
 import Contact from './Contact'
 import EmployeeCOVIDInstr from './EmployeeCOVIDInstr'
@@ -12,9 +11,15 @@ import Employees from './Employees'
 import EmployeesCOVID from './EmployeesCOVID'
 import UnderConstruction from './UnderConstruction';
 import COVID from './COVID';
+<<<<<<< HEAD
 import EmployeesEidikouSkopou from './EmployeesEidikouSkopou';
 import MyLoginForm from './MyLoginForm';
+=======
+import EmployeesAdeies from './EmployeesAdeies';
+import Login from './Login';
+>>>>>>> 7e5c7851661e066a3f952bb1aee5fed72b596169
 import Register from './Register';
+import Footer from './Footer'
 import Appointment from './Appointment';
 import EmployeesCOVIDAdeies from './EmployeesCOVIDAdeies';
 import EditRequests from './EditRequests';
@@ -82,82 +87,8 @@ class App extends React.Component {
 
   render(){
     return (
-      <div className="bgded overlay" >
-      <Router>
-      <div style={{backgroundImage : `url(${background})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>  
-        <div>
-          <header id="header" className="hoc clear"> 
-          <div id="logo" className="fl_left">
-            <h1><Link exact to="/">Butt</Link></h1>
-          </div>
-          <nav id="mainav" className="fl_right">
-            <ul className="clear">
-              <li className="active">
-                <Link exact  to="/">Butt</Link>
-              </li>
-              <li><Link exact className="drop" to="/">Batter</Link>
-                <ul>
-                  <li>
-                    <Link exact  to="/">Button1</Link>
-                  </li>
-                  <li>
-                    <Link exact  to="/">Button2</Link>
-                  </li>
-                  <li>
-                    <Link exact  to="/">Button3</Link>
-                  </li>
-                  <li>
-                    <Link exact  to="/">Button4</Link>
-                  </li>
-                  <li>
-                    <Link exact  to="/">Button5</Link>
-                  </li>
-                  <li>
-                    <Link exact  to="/">Button6</Link>
-                  </li>
-                </ul>
-              </li>
-              <li><Link exact className="drop" to="/">Butt</Link>
-                <ul>
-                  <li><Link exact  to="/">Butt</Link></li>
-                  <li><Link exact  to="/">Butt</Link>
-                    <ul>
-                      <li>
-                        <Link exact  to="/">Butt</Link>
-                        </li>
-                      <li>
-                        <Link exact  to="/">Butt</Link>
-                      </li>
-                      <li>
-                        <Link exact  to="/">Butt</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><Link exact  to="/">Butt</Link></li>
-                </ul>
-              </li>
-              <li><Link exact to="fgddfh">Err</Link></li>
-              <li><Link exact to="/">Butt</Link></li>
-              <li><Link exact to="/">Butt</Link></li>
-            </ul>
-          </nav>
-        </header>
-        <MyLoginForm/>
-        </div>
-        <div id="breadcrumb" className="hoc clear"> 
-          <h6 className="heading">Υπουργείο Εργασίας</h6>
-          <ul>
-            {this.state.navbar}
-          </ul>
-        </div>
-      </div>
-      <Switch>
-        <Route exact path="/" render={(props) => (
-                                                  <Homepage  {...props} navbarUpdate={this.setPath} path={'Home'}/>
-                                                  )}
-                                                  
-                      />
         
+<<<<<<< HEAD
         <Route exact path="/Register" render={(props) => (
                                                   <Register  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
                                                   )}
@@ -255,6 +186,81 @@ class App extends React.Component {
       </div>
     </Router>
     </div>
+=======
+        <div className="bgded overlay" >
+            <Router>
+                    <Header path={this.state.navbar}/>  
+                    <Switch>
+                        <Route exact path="/" render={(props) => (
+                                                                <Homepage  {...props} navbarUpdate={this.setPath} path={'Home'}/>
+                                                                )}
+                                                                
+                                    />
+                        
+                        <Route exact path="/Register" render={(props) => (
+                                                                <Register  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
+                                                                )}
+                                                                
+                                    />
+                        
+                        <Route exact path="/Login" render={(props) => (
+                                                                <Login  {...props} navbarUpdate={this.setPath} path={'Home/Login'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/Contact" render={(props) => (
+                                                                <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/Employees" render={(props) => (
+                                                                <Employees  {...props} navbarUpdate={this.setPath} path={'Home/Employees'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/Employees/EmployeesCOVID" render={(props) => (
+                                                                <EmployeesCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/Employees/EmployeesCOVID/Instructions" render={(props) => (
+                                                                <EmployeeCOVIDInstr  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/Instructions'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/Jobless" render={(props) => (
+                                                                <UnderConstruction  {...props} navbarUpdate={this.setPath} path={'Home/Jobless'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/COVID" render={(props) => (
+                                                                <COVID  {...props} navbarUpdate={this.setPath} path={'Home/COVID'}/>
+                                                                )}
+                                                                
+                                    />
+
+                        <Route exact path="/Employees/EmployeesCOVID/EmployeesAdeies" render={(props) => (
+                                                                        <EmployeesAdeies  {...props} navbarUpdate={this.setPath} path={'Home/COVID'}/>
+                                                                        )}
+                                                                        
+                                            />
+                        <Route path="">
+                        <div>
+                            <h1>404 PAGE NOT FOUND</h1>
+                        </div>
+                        </Route>
+                    </Switch>
+                    <ScrollUpButton />
+                <Footer />
+            </Router>
+        </div>
+>>>>>>> 7e5c7851661e066a3f952bb1aee5fed72b596169
     );
   }
 }

@@ -7,17 +7,16 @@ export default function SignUp() {
 	const initialFormData = Object.freeze({
 		email: '',
         username: '',
-        name: '',
-        surname:'',
+        first_name: '',
+        last_name: '',
         password: '',
         rpassword: '',
         afm: '',
         amka: '',
         phone: null,
         company: '',
-        company: '',
         role: '',
-        has_child_under_12: '',
+        has_child_under_12: false,
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -35,16 +34,18 @@ export default function SignUp() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`user/create/`, {
-				email: formData.email,
-				user_name: formData.username,
-				password: formData.password,
-			})
-			.then((res) => {
-				history.push('/login');
-				console.log(res);
-				console.log(res.data);
-			});
+        
+        .post(`authentication/register`, JSON.stringify(formData))
+        .then((res) => {
+            
+            // history.push('/');
+            console.log(res);
+            console.log(res.data);
+        })
+        .catch(error => {
+            console.log(error.response.data)
+            console.log(error)
+        });
 	};
 
 	return (
@@ -53,14 +54,23 @@ export default function SignUp() {
                 <div className="content one_third first">
                     <form>
                         <fieldset>
-                            <input className="inpt" type="text" placeholder="Όνομα" id="name" name="name" onChange={handleChange}/>
-                            <input className="inpt" type="text" placeholder="Επίθετο" id="surname" name="surname" onChange={handleChange}/>
-                            <input className="inpt" type="email" placeholder="Email" id="email" name="email" onChange={handleChange}/>
+                            <input className="inpt" type="text" placeholder="Όνομα χρήστη" id="username" name="username" onChange={handleChange}/>
+                            <input className="inpt" type="text" name="first_name" id="first_name" placeholder="Όνομα" onChange={handleChange}/>
+                            <input className="inpt" type="text" name="last_name" id="last_name" placeholder="Επίθετο" onChange={handleChange}/>
+                            <input className="inpt" type="email" placeholder="E-mail" id="email" name="email" onChange={handleChange}/>
                             <input className="inpt" type="password" placeholder="Κωδικός" id="password" name="password" onChange={handleChange}/>
                             <input className="inpt" type="password" placeholder="Επαλήθευση Κωδικού" id="rpassword" name="rpassword" onChange={handleChange}/>
+                            <input className="inpt" type="text" placeholder="Κινητό" id="phone" name="phone" onChange={handleChange}/>
                             <input className="inpt" type="text" placeholder="ΑΦΜ" id="afm" name="afm" onChange={handleChange}/>
                             <input className="inpt" type="text" placeholder="ΑΜΚΑ" id="amka" name="amka" onChange={handleChange}/>
+                            <input className="inpt" type="text" placeholder="Εταιρεία" id="company" name="company" onChange={handleChange}/>
+                            <select style={{marginTop: "0.75rem"}} name="role" onChange={handleChange}>
+                                <option value="">---Please select your role---</option>
+                                <option value="employer">Εργοδότης</option>
+                                <option value="employee">Εργαζόμενος</option>
+                            </select>
                         </fieldset>
+                        <button style={{marginTop: "0.75rem"}} className="btn" type="button" onClick={handleSubmit}>Submit</button>
                     </form>
                 </div>
                 <div className="one_quarter">
@@ -68,5 +78,5 @@ export default function SignUp() {
                 </div>
             </main>
         </div>
-	);
+    );
 }

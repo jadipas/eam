@@ -12,7 +12,7 @@ from apps.authentication.serializers import RegistrationSerializer
 from django.contrib.auth import authenticate, login
 from rest_framework_simplejwt.views import TokenObtainPairView
 from apps.authentication.serializers import MyTokenObtainPairSerializer
-
+from apps.account.models import Company
 
 User = get_user_model()
 
@@ -25,10 +25,14 @@ class RegisterView(APIView):
         
         try:
             payload = request.data 
-          
+            company = None
+            if (payload.get('company')):
+                company, _ = Company.objects.update_or_create(name=payload.get('company'))
+
+
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
-            user = User(username=payload.get('username'), amka=payload.get('amka'), afm=payload.get('afm'), email=payload.get('afm'), name=payload.get('name'), phone=payload.get('phone'), role=payload.get('role'), date_of_birth=payload.get('day_of_birth'), picture=payload.get('picture'), has_child_under_12=payload.get('has_child_under_12', False), company=payload.get('company'))
+            user = User(username=payload.get('username'), amka=payload.get('amka'), afm=payload.get('afm'), email=payload.get('afm'), first_name=payload.get('first_name'), last_name=payload.get('last_name'), phone=payload.get('phone'), role=payload.get('role'), date_of_birth=payload.get('day_of_birth'), has_child_under_12=payload.get('has_child_under_12', False), company=company)
             validate_password(payload.get('password'), user)
             user.set_password(payload.get('password'))
             user.save()           
