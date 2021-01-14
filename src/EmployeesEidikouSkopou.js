@@ -3,7 +3,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 
-class EmployeesAdeies extends React.Component {
+class EmployeesEidikouSkopou extends React.Component {
   constructor(props) {
     super(props)
 
@@ -124,6 +124,6 @@ class EmployeesAdeies extends React.Component {
   }
 }
 
-export default EmployeesAdeies;
+export default EmployeesEidikouSkopou;
 
 

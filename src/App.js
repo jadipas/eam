@@ -12,10 +12,13 @@ import Employees from './Employees'
 import EmployeesCOVID from './EmployeesCOVID'
 import UnderConstruction from './UnderConstruction';
 import COVID from './COVID';
-import EmployeesAdeies from './EmployeesAdeies';
+import EmployeesEidikouSkopou from './EmployeesEidikouSkopou';
 import MyLoginForm from './MyLoginForm';
 import Register from './Register';
 import Appointment from './Appointment';
+import EmployeesCOVIDAdeies from './EmployeesCOVIDAdeies';
+import EditRequests from './EditRequests';
+import Profile from './Profile';
 
 class App extends React.Component {
   constructor(props) {
@@ -50,11 +53,15 @@ class App extends React.Component {
       Jobless: 'Ανεργοι',
       COVID: 'COVID',
       EmployeesCOVID: 'COVID',
-      EmployeesAdeies: 'Αδειες',
+      EmployeesEidikouSkopou: 'Ειδικου Σκοπου',
+      EmployeesCOVIDAdeies: 'Αδειες',
       Instructions: 'Οδηγιες',
       Home: 'Αρχικη',
       Appointment: 'Ραντεβου',
       Contact: 'Επικοινωνια',
+      EditRequests: 'Επεξεργασια Δηλωσεων',
+      Profile: 'Προφίλ',
+      Register: 'Εγγραφη',
     }
 
     for (n of n_arr) {
@@ -198,9 +205,24 @@ class App extends React.Component {
                                                   )}
                                                   
                       />
+        <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies" render={(props) => (
+                                                          <EmployeesCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies'}/>
+                                                          )}
+                                                          
+                              />
 
-        <Route exact path="/Employees/EmployeesCOVID/EmployeesAdeies/EidikouSkopou" render={(props) => (
-                                                          <EmployeesAdeies  {...props} navbarUpdate={this.setPath} path={'Home/EmployeesCOVID/EmployeesAdeies'}/>
+        <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou" render={(props) => (
+                                                          <EmployeesEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
+                                                          )}
+                                                          
+                              />
+        <Route exact path="/Profile" render={(props) => (
+                                                          <Profile  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
+                                                          )}
+                                                          
+                              />
+        <Route exact path="/Profile/EditRequests" render={(props) => (
+                                                          <EditRequests  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
                                                           )}
                                                           
                               />

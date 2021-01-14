@@ -170,7 +170,7 @@ class MyLoginForm extends React.Component {
                                     <li><input type="text" className="" name="username" placeholder="Username" onChange={this.onChange}/></li>
                                     <li><input type="password" className="" name="password" placeholder="Password" onChange={this.onChange}/></li>
                                     <li><button type="submit" className="butn">Login</button></li>
-                                    <li><Link to="/register">Register</Link></li>
+                                    <li><Link to="/Register">Register</Link></li>
                                 </ul>
                             </nav>
                     </div>
