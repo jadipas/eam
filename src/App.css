@@ -1322,6 +1322,8 @@ table a,
 }
 
 /*Mine*/
+#mapid { height: 360px; width: 360px;}
+#mapid { float: right;}
 
 .in_div {
   text-align: center;

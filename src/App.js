@@ -15,10 +15,12 @@ import EmployeesAdeies from './EmployeesAdeies';
 import Login from './Login';
 import Register from './Register';
 import Footer from './Footer'
+import Appointment from './Appointment';
+
 class App extends React.Component {
   constructor(props) {
     super(props)
-
+    
     this.state = {
         path: '',
         navbar: null,
@@ -48,8 +50,11 @@ class App extends React.Component {
       Jobless: 'Ανεργοι',
       COVID: 'COVID',
       EmployeesCOVID: 'COVID',
+      EmployeesAdeies: 'Αδειες',
       Instructions: 'Οδηγιες',
-      Home: 'Αρχικη'
+      Home: 'Αρχικη',
+      Appointment: 'Ραντεβου',
+      Contact: 'Επικοινωνια',
     }
 
     for (n of n_arr) {
@@ -144,7 +149,6 @@ class App extends React.Component {
                 <Footer />
             </Router>
         </div>
-       
     );
   }
 }
