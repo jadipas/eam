@@ -12,7 +12,6 @@ import EmployeesCOVID from './EmployeesCOVID'
 import UnderConstruction from './UnderConstruction';
 import COVID from './COVID';
 import EmployeesEidikouSkopou from './EmployeesEidikouSkopou';
-import Login from './Login';
 import Register from './Register';
 import Footer from './Footer'
 import Appointment from './Appointment';

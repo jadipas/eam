@@ -1325,15 +1325,21 @@ table a,
 #mapid { height: 360px; width: 360px;}
 #mapid { float: right;}
 
-.in_div{
-	text-align: center;
-	background-color: white;
-	line-height: 100px;
-	font-size: 24px;
+.in_div,
+.in_div.inverse:hover {
+  color: #474747;
+  background-color: #dbe5e7;
+  border: 1px solid;
+  border-color: #dbe5e7;
+  text-align: center;
+  line-height: 100px;
+  font-size: 24px;
 }
-
-.in_div:hover{
-	color: #447b9f;
+.in_div:hover,
+.in_div.inverse {
+  color: #447b9f;
+  background-color: transparent;
+  border-color: #447b9f;
 }
 
 .butn,
@@ -1353,6 +1359,14 @@ table a,
 .inpt {width:75%; padding:5px 40px 5px 15px;margin-top: 20px;}
 .inpt {border:1px solid;}
 .inpt {border-color:transparent;}
-.inpt {color:#FFFFFF; background-color:#447b9f;}
-.inpt::placeholder {color:#D8A47F;}
-.inpt:focus{border-color:#DBE5E7;border-radius:16px;}
+.inpt {color:#FFFFFF; background-color:#dbe5e7;}
+.inpt::placeholder {color:#447b9f;}
+.inpt:focus{border-color:#447b9f;border-radius:16px;}
+
+.inpt2 {display:block; height:32px; border:none; border-radius:8px;}
+.inpt2 {width: 200px; padding:5px 40px 5px 15px; margin: 0px; margin-top: 10px;}
+.inpt2 {border:1px solid;}
+.inpt2 {border-color:transparent;}
+.inpt2 {color:#447b9f; background-color:#FFFFFF;}
+.inpt2::placeholder {color:#dbe5e7;}
+.inpt2:focus{border-color:#dbe5e7;border-radius:16px;border: 2px solid #dbe5e7;}
