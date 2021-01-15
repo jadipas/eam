@@ -12,7 +12,10 @@ class Company(models.Model):
     class Meta:
         db_table = 'company'
     
+    def __str__(self):
+        return self.name
 
+        
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -76,7 +79,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     role = models.CharField(max_length=50, choices = ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
     has_child_under_12 = models.BooleanField(default=False)
-    company = models.OneToOneField(Company, on_delete=models.RESTRICT, blank=True, null=True)
+    company = models.ForeignKey(Company, on_delete=models.RESTRICT, blank=True, null=True)
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name' 'email', 'phone', 'amka', 'afm']
@@ -88,4 +91,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         db_table = 'user'
 
     def __str__(self):
-        return self.name
+        return self.username

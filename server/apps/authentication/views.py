@@ -7,13 +7,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.exceptions import ValidationError
 from rest_framework.exceptions import ParseError
+from rest_framework.permissions import IsAuthenticated
 
 from apps.authentication.serializers import RegistrationSerializer
 from django.contrib.auth import authenticate, login
 from rest_framework_simplejwt.views import TokenObtainPairView
 from apps.authentication.serializers import MyTokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 from apps.account.models import Company
-
+from apps.account.serializers import UserSerializer
 User = get_user_model()
 
 class RegisterView(APIView):
@@ -47,6 +49,14 @@ class RegisterView(APIView):
             logging.error("Error registering user: {}".format(traceback.format_exc()))
             return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class ProfileView(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UserSerializer
+    def get(self, request):
+        return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
+
+
+
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -61,4 +71,5 @@ class BlacklistTokenUpdateView(APIView):
             token.blacklist()
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
+            logging.error("Error blacklisting token: {}".format(traceback.format_exc()))
             return Response(status=status.HTTP_400_BAD_REQUEST)
