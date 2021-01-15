@@ -1359,8 +1359,8 @@ table a,
 .inpt {width:75%; padding:5px 40px 5px 15px;margin-top: 20px;}
 .inpt {border:1px solid;}
 .inpt {border-color:transparent;}
-.inpt {color:#FFFFFF; background-color:#dbe5e7;}
-.inpt::placeholder {color:#447b9f;}
+.inpt {color:#447b9f; background-color:#dbe5e7;}
+.inpt::placeholder {color:#686868;}
 .inpt:focus{border-color:#447b9f;border-radius:16px;}
 
 .inpt2 {display:block; height:32px; border:none; border-radius:8px;}

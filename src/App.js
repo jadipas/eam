@@ -179,7 +179,7 @@ class App extends React.Component {
                                                                         )}                                                                        
                                             />
 
-                      <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou" render={(props) => (
+                      <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou/:type" render={(props) => (
                                                                                               <DiloshEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
                                                                                               )}                                                                        
                                                                   />
