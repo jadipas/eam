@@ -42,7 +42,7 @@ class Appointment extends React.Component {
                 <h1><u>Κλείστε Ραντεβού</u></h1>
                 <form>
                     <div className="content one_third first">
-                            <MyCalendar pChange={this.changeDate}/>
+                            <MyCalendar pChange={this.changeDate} range="false"/>
                     </div>
                 </form>
             </main>

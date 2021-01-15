@@ -19,6 +19,7 @@ import EmployeesCOVIDAdeies from './EmployeesCOVIDAdeies';
 import EditRequests from './EditRequests';
 import Profile from './Profile';
 import Logout from './Logout';
+import DiloshEidikouSkopou from './DiloshEidikouSkopou';
 
 class App extends React.Component {
   constructor(props) {
@@ -175,9 +176,14 @@ class App extends React.Component {
 
                       <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou" render={(props) => (
                                                                         <EmployeesEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
-                                                                        )}
-                                                                        
+                                                                        )}                                                                        
                                             />
+
+                      <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou" render={(props) => (
+                                                                                              <DiloshEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
+                                                                                              )}                                                                        
+                                                                  />
+
                       {this.state.currentRole && (<Route exact path="/Profile" render={(props) => (
                                                                         <Profile  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
                                                                         )}
