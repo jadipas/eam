@@ -20,3 +20,16 @@ example: {
     "username": "nikos",
     "password": "hardpassword"
 }
+
+GET: /authentication/profile  -> gets logged in user's profile
+
+POST: /forms/adeiaeidikoyskopoy:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19",
+    "employee_username": "admin2"
+}
+
+
+GET: /forms/myforms -> gets logged in user's forms
+
