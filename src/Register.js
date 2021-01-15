@@ -38,7 +38,7 @@ export default function SignUp() {
         .post(`authentication/register`, JSON.stringify(formData))
         .then((res) => {
             
-            // history.push('/');
+            history.push('/');
             console.log(res);
             console.log(res.data);
         })
@@ -52,6 +52,7 @@ export default function SignUp() {
         <div className="wrapper row3">
             <main className="hoc container clear"> 
                 <div className="content one_third first">
+                    <h1>ΕΓΓΡΑΦΗ ΧΡΗΣΤΗ</h1>
                     <form>
                         <fieldset>
                             <input className="inpt" type="text" placeholder="Όνομα χρήστη" id="username" name="username" onChange={handleChange}/>

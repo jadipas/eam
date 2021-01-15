@@ -19,6 +19,7 @@ import Appointment from './Appointment';
 import EmployeesCOVIDAdeies from './EmployeesCOVIDAdeies';
 import EditRequests from './EditRequests';
 import Profile from './Profile';
+import Logout from './Logout';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.state = {
         path: '',
         navbar: null,
+        currentRole: undefined,
     }
 
     this.onChange = this.onChange.bind(this)
@@ -76,27 +78,55 @@ class App extends React.Component {
     
     this.setState({
       path: npath,
-      navbar: f_arr
+      navbar: f_arr,
     })
+  }
+  componentDidMount() {
+    const accessToken = localStorage.getItem('access_token');
+        if (accessToken) {
+        const tokenParts = JSON.parse(atob(accessToken.split('.')[1]));
+        console.log(tokenParts)
+        if (tokenParts) {
+            this.setState({
+                currentRole: tokenParts.role,
+            });
+        }
+        else {
+            this.setState({
+                currentRole: undefined,
+            });
+        }
+    }
+    else {
+        this.setState({
+            currentRole: undefined,
+        });
+    }
+    
+    
   }
 
   render(){
     return (
         <div className="bgded overlay" >
             <Router>
-                    <Header path={this.state.navbar}/>  
+                    <Header path={this.state.navbar} role = {this.state.currentRole}/>  
                     <Switch>
                       <Route exact path="/" render={(props) => (
-                                                    <Homepage  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
+                                                    <Homepage  {...props} navbarUpdate={this.setPath} path={'Home'}/>
                                                     )}
                                                     
                         />
-                      <Route exact path="/Register" render={(props) => (
+                        <Route exact path="/Register" render={(props) => (
                                                     <Register  {...props} navbarUpdate={this.setPath} path={'Home/Register'}/>
                                                     )}
                                                     
                         />
-
+                        <Route exact path="/Logout" render={(props) => (
+                                                    <Logout  {...props} navbarUpdate={this.setPath} path={'Home/Logout'}/>
+                                                    )}
+                                                    
+                        />
                       <Route exact path="/Contact" render={(props) => (
                                                                 <Contact  {...props} navbarUpdate={this.setPath} path={'Home/Contact'}/>
                                                                 )}
@@ -149,11 +179,11 @@ class App extends React.Component {
                                                                         )}
                                                                         
                                             />
-                      <Route exact path="/Profile" render={(props) => (
+                      {this.state.currentRole && (<Route exact path="/Profile" render={(props) => (
                                                                         <Profile  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
                                                                         )}
                                                                         
-                                            />
+                                            />)}
                       <Route exact path="/Profile/EditRequests" render={(props) => (
                                                                         <EditRequests  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
                                                                         )}

@@ -2,8 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import background from './images/background3.png'
 import Login from './Login';
-
-
+import logout from './Logout';
 class Header extends React.Component {
   
   render(){     
@@ -59,12 +58,20 @@ class Header extends React.Component {
                                 </li>
                                 </ul>
                             </li>
-                            <li><Link to="/register">ΕΓΓΡΑΦΗ</Link></li>
-                            
+                            {this.props.role && (
+                            <li><Link to="/profile">ΠΡΟΦΙΛ</Link></li>)}
+                            {this.props.role && (
+                            <li><button style={{all: "unset", cursor: "pointer"}} type="button" onClick={logout}>ΕΞΟΔΟΣ</button></li>)}
+                            {!this.props.role && (
+                            <li><Link to="/register">ΕΓΓΡΑΦΗ</Link></li>)}
+
                         </ul>   
                     </nav>
                 </header>
-                <Login />
+                {!this.props.role && (
+                <Login />)}
+                
+
             </div>
             <div id="breadcrumb" className="hoc clear"> 
             <h6 className="heading">Υπουργείο Εργασίας</h6>
