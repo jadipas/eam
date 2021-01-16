@@ -27,9 +27,44 @@ POST: /forms/adeiaeidikoyskopoy:
 {
     "from_time": "2021-01-17",
     "to_time": "2021-01-19",
+    "children": [{"age": 10, "school": "12o"}, {"age": 12, "school": "13o"}]
+}
+POST: forms/adeiaeidikoyskopoy_update/<int:form_id>
+{
+    "status": -1 (-1: NOT_APPROVED, 0: PENDING, 1: APPROVED)
+}
+
+POST: /forms/adeiaergasias:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19",
+    "employee_username": "admin2"
+}
+
+POST: /forms/anastoliergasias:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19",
     "employee_username": "admin2"
 }
 
 
 GET: /forms/myforms -> gets logged in user's forms
 
+POST: /authentication/update_profile
+{
+    "email": "ok@gmail.com",
+    "first_name": "n7is889",
+    "last_name": "sdhj880",
+    "amka": "1781880",
+    "afm": "1871880",
+    "phone": "112711888",
+}
+
+
+POST: /authentication/update_password
+{
+    "old_password": "hardpassword",
+    "new_password": "easypassword",
+    "new_rpassword": "easypassword"
+}
