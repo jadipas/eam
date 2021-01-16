@@ -15,7 +15,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from apps.authentication.serializers import MyTokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from apps.account.models import Company
-from apps.account.serializers import UserSerializer
+from apps.account.serializers import UserSerializer, UserUpdateSerializer, UserUpdatePasswordSerializer
+from django.contrib.auth.hashers import check_password
 User = get_user_model()
 
 class RegisterView(APIView):
@@ -34,10 +35,14 @@ class RegisterView(APIView):
 
             serializer = self.serializer_class(data=request.data)
             serializer.is_valid(raise_exception=True)
-            user = User(username=payload.get('username'), amka=payload.get('amka'), afm=payload.get('afm'), email=payload.get('afm'), first_name=payload.get('first_name'), last_name=payload.get('last_name'), phone=payload.get('phone'), role=payload.get('role'), date_of_birth=payload.get('day_of_birth'), has_child_under_12=payload.get('has_child_under_12', False), company=company)
+            user = User(username=payload.get('username'), amka=payload.get('amka'), afm=payload.get('afm'), email=payload.get('email'), first_name=payload.get('first_name'), last_name=payload.get('last_name'), phone=payload.get('phone'), role=payload.get('role'), date_of_birth=payload.get('day_of_birth'), company=company)
             validate_password(payload.get('password'), user)
             user.set_password(payload.get('password'))
-            user.save()           
+            if (payload.get('password') == payload.get('rpassword')):
+                user.save()     
+            else:
+                return Response({"rpassword": ["Password confirmation must match password."]}, status=status.HTTP_400_BAD_REQUEST)
+              
             
             return Response(status=status.HTTP_201_CREATED)
         except ValidationError:
@@ -56,7 +61,57 @@ class ProfileView(APIView):
         return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
 
 
+class UpdateProfileView(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UserUpdateSerializer
+    def post(self, request):
+        try:
+            payload = request.data
+            if (payload.get('company')):
+                company, _ = Company.objects.update_or_create(name=payload.get('company'))
+            serializer = self.serializer_class(request.user, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+        except ValidationError:
+            logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ParseError: 
+            return Response("Error in request", status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logging.error("Error blacklisting token: {}".format(traceback.format_exc()))
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
+class UpdatePasswordView(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UserUpdatePasswordSerializer
+    def post(self, request):
+        try:
+            payload = request.data 
+            serializer = self.serializer_class(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            user = User.objects.get(username=request.user)
+            print(user.password)
+            if (check_password(payload.get('old_password'), user.password)):
+                validate_password(payload.get('new_password'), user)
+                
+                if (payload.get('new_password') == payload.get('new_rpassword')):
+                    user.set_password(payload.get('new_password'))
+                    user.save()     
+                else:
+                    return Response({"new_rpassword": ["Password confirmation must match new password."]}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response({"old_password": ["Wrong password"]},status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_200_OK)
+        except ValidationError:
+            logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ParseError: 
+            return Response("Error in request", status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logging.error("Error blacklisting token: {}".format(traceback.format_exc()))
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+            
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer

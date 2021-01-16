@@ -16,7 +16,6 @@ export default function SignUp() {
         phone: null,
         company: '',
         role: '',
-        has_child_under_12: false,
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
