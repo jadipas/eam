@@ -78,7 +78,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField(blank=True, null=True)
     role = models.CharField(max_length=50, choices = ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
-    has_child_under_12 = models.BooleanField(default=False)
     company = models.ForeignKey(Company, on_delete=models.RESTRICT, blank=True, null=True)
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
