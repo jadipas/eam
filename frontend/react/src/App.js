@@ -194,6 +194,12 @@ class App extends React.Component {
                                                                         )}
                                                                         
                                             />
+
+                      <Route exact path="/UnderConstruction" render={(props) => (
+                                                                <UnderConstruction  {...props} navbarUpdate={this.setPath} path={'Home'}/>
+                                                                )}
+                                                                
+                                    />
                       <Route path="">
                         <div>
                           <h1>404 PAGE NOT FOUND</h1>

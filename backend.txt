@@ -48,7 +48,6 @@ POST: /forms/anastoliergasias:
     "employee_username": "admin2"
 }
 
-
 GET: /forms/myforms -> gets logged in user's forms
 
 POST: /authentication/update_profile
