@@ -25,6 +25,5 @@ yarn-error.log*
 __pycache__
 
 *.vscode
-*.env
 *.eslintcache
 env/
