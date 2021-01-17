@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv, find_dotenv
 
+load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '(n)_4f-vc-_9^^at$w#aym=t!&&=5ka^9zp8qz-yt)-=p_i^yg'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -84,16 +86,24 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'qfsjgwmf',
-        'USER': 'qfsjgwmf',
-        'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
-        'HOST': 'suleiman.db.elephantsql.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     #     'NAME': 'qfsjgwmf',
+#     #     'USER': 'qfsjgwmf',
+#     #     'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
+#     #     'HOST': 'suleiman.db.elephantsql.com',
+#     #     'PORT': '5432',
+#     # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'eam',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 AUTH_USER_MODEL = "account.User"
 
 # Password validation
@@ -152,9 +162,6 @@ REST_FRAMEWORK = {
    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
-]
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
@@ -171,3 +178,12 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
+
+#########################################
+    ##  IMPORT LOCAL SETTINGS ##
+#########################################
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

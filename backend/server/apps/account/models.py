@@ -19,8 +19,8 @@ class Company(models.Model):
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username, amka, afm, email, name, phone, password, role, **extra_fields):
-        values = [email, name, phone]
+    def _create_user(self, username, amka, afm, email, first_name, last_name, phone, password, role, **extra_fields):
+        values = [email, phone]
         field_value_map = dict(zip(self.model.REQUIRED_FIELDS, values))
         for field_name, value in field_value_map.items():
             if not value:
@@ -28,7 +28,8 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(
             email=email,
-            name=name,
+            first_name=first_name,
+            last_name=last_name,
             phone=phone,
             amka=amka, 
             afm=afm,
@@ -40,13 +41,13 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, amka, afm, email, name, phone, password, role, **extra_fields):
+    def create_user(self, username, amka, afm, email, first_name, last_name, phone, password, role, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)           
 
-        return self._create_user(username, amka, afm, email, name, phone, password, role, **extra_fields)
+        return self._create_user(username, amka, afm, email, first_name, last_name, phone, password, role, **extra_fields)
 
-    def create_superuser(self, username, amka, afm, email, name, phone, password, **extra_fields):
+    def create_superuser(self, username, amka, afm, email, first_name, last_name, phone, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         
@@ -55,7 +56,7 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self._create_user(username, amka, afm, email, name, phone, password, role='admin', **extra_fields)
+        return self._create_user(username, amka, afm, email, first_name, last_name, phone, password, role='admin', **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -81,7 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     company = models.ForeignKey(Company, on_delete=models.RESTRICT, blank=True, null=True)
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name' 'email', 'phone', 'amka', 'afm']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'phone', 'amka', 'afm']
     
     
     objects = UserManager()
