@@ -24,7 +24,7 @@ class DiloshEidikouSkopou extends React.Component {
         ardis: '',
         count: 0,
         c: [],
-        err: '',
+        err: 'Everything is fine right now. No errors to report ',
     }
 
     this.onChange = this.onChange.bind(this)
@@ -113,20 +113,25 @@ class DiloshEidikouSkopou extends React.Component {
       this.setState({
         err: "Παρακαλώ προσθέστε τουλάχιστον ένα (1) τέκνο. "
       })
+      document.getElementById("errmsg").style.opacity = "1"; 
     }
     else if(this.state.selectedDate.from === '' || this.state.selectedDate.to === ''){
       this.setState({
         err: "Παρακαλώ επιλέξτε ημμερομηνίες.. "
       })
+      document.getElementById("errmsg").style.opacity = "1"; 
     } 
     else if( this.state.ardis === ""){
       this.setState({
         err: "Παρακαλώ προσθέστε τον Αριθμό Δικαστικής Απόφασης. "
       })
+      document.getElementById("errmsg").style.opacity = "1"; 
     }else{
       this.setState({
-        err: ""
+        err: "Everything is fine right now. No errors to report"
       })
+
+      document.getElementById("errmsg").style.opacity = "0"; 
 
       axiosInstance
         .post(`/forms/adeiaeidikoyskopoy`, {
@@ -153,12 +158,13 @@ class DiloshEidikouSkopou extends React.Component {
               err: "Άγνωστο σφάλμα. Παρακαλώ προσπαθήστε αργότερα."
             })
           }
-      });
+        document.getElementById("errmsg").style.opacity = "1"; 
+    });
     }
   }
 
   render(){   
-    if(this.props.match.params.type === 'Exclusive'){
+    if(this.props.match.params.type === 'ApoklistikhEpimeleia'){
       return (
         <div>
           <div className="wrapper row3">
@@ -166,10 +172,11 @@ class DiloshEidikouSkopou extends React.Component {
                 <h1><u>Δήλωση Ειδικού Σκοπού</u></h1>
                 <form>
                     <div className="content one_third first">
-                        <MyDatePicker pChange={this.changeDate}/>
-                        <br/>
-                        <br/>
-                        <br/>
+                      <h2>Διάστημας Αποκλειστικής Χρήσης</h2>
+                      <MyDatePicker pChange={this.changeDate}/>
+                      <br/>
+                      <br/>
+                      <br/>
                     </div>
                     <div className="content one_third">
                       <p>Παρακαλώ εισάγετε τον Αριθμό Δικαστικής Απόφασης, βάση της οποίας έχετε αποκλειστική κηδεμονία</p>
@@ -177,9 +184,65 @@ class DiloshEidikouSkopou extends React.Component {
                       <label for="ardis"><u>Αριθμός Δικαστικής Απόφασης</u></label>
                       <input className="inpt" placeholder="Αριθμός Δικαστικής Απόφασης" value={this.state.ardis} onChange={this.onChange} name="ardis" type="text"/>
                       <br/>
-                      <p style={{color:"#ED254E"}}>{this.state.err}</p>
                     </div>
                     <div className="content one_third">
+                      <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
+                      <button type="submit" className="btn" style={{float:'right', marginTop: '100%'}} onClick={this.sendReq}>Κάντε Αίτηση</button>
+                    </div>
+                    <div className="content">
+                            <table>
+                            <thead>
+                                <tr>
+                                <th>Όνομα Τέκνου</th>
+                                <th>Επώνυμο Τέκνου</th>
+                                <th>Ηλικία</th>
+                                <th>Εκπαιδευτική Βαθμίδα</th>
+                                <th>Εκπαιδευτικό Ίδρυμα</th>
+                                <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.t}   
+                                <tr>
+                                <td><input value={this.state.cName} onChange={this.onChange} name="cName" type="text"/></td>
+                                <td><input value={this.state.cSurname} onChange={this.onChange} name="cSurname" type="text"/></td>
+                                <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="number" min="0" max="30"/></td>
+                                <td><input value={this.state.edRank} onChange={this.onChange} name="edRank" type="text"/></td>
+                                <td><input value={this.state.edInst} onChange={this.onChange} name="edInst" type="text"/></td>
+                                <td><button type="submit" onClick={this.handleSubmit}>Submit</button></td>
+                                </tr>                 
+                            </tbody>
+                            </table>
+                    </div>
+                </form>
+              </main>
+            </div>
+          </div>
+      );
+    }
+    else if(this.props.match.params.type === 'Dhmosio'){
+      return (
+        <div>
+          <div className="wrapper row3">
+            <main className="hoc container clear"> 
+                <h1><u>Δήλωση Ειδικού Σκοπού</u></h1>
+                <form>
+                    <div className="content one_third first">
+                      <h2>Διάστημας Αποκλειστικής Χρήσης</h2>
+                      <MyDatePicker pChange={this.changeDate}/>
+                      <br/>
+                      <br/>
+                      <br/>
+                    </div>
+                    <div className="content one_third">
+                      <h2>Διάστημας Αποκλειστικής Χρήσης Συζύγου</h2>
+                      <MyDatePicker pChange={this.changeDate}/>
+                      <br/>
+                      <br/>
+                      <br/>
+                    </div>
+                    <div className="content one_third">
+                      <p id="errmsg" style={{color:"#ED254E"}}>{this.state.err}</p>
                       <button type="submit" className="btn" style={{float:'right', marginTop: '100%'}} onClick={this.sendReq}>Κάντε Αίτηση</button>
                     </div>
                     <div className="content">

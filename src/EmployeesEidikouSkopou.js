@@ -33,7 +33,7 @@ class EmployeesEidikouSkopou extends React.Component {
                             <br/><br/>
                             <h1><u>Αποκλειστική επιμέλεια</u></h1>
                             <p>Θα πρέπει να δηλώσετε τον αριθμό των τέκνων σας. καθώς και τις ηλικίες τους και το δημόσιο ή ιδιωτικό ίδρυμα που φοιτούν.<br/><br/>Τέλος θα πρέπει να καταθέσετε τον αριθμό της Δικαστικής Απόφασης, βάση της οποίας έχετε την αποκλειστική επιμέλεια, καθώς και το διάστημα κατα το οποίο θα κάνετε αποκλειστικά εσείς χρήση της Άδειας Ειδικόυ Σκοπού</p>
-                            <Link className="btn" to="/" >Κάντε Δήλωση</Link>
+                            <Link className="btn" to="DiloshEidikouSkopou/ApoklistikhEpimeleia" >Κάντε Δήλωση</Link>
                         </div>
                         <div className="content three_quarter first" id="dimboth"> 
                             <br/><br/>
