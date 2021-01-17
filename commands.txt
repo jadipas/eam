@@ -1,3 +1,41 @@
+sudo apt update
+sudo apt install python3.8
+sudo apt install python3-pip
+sudo apt install nodejs
+sudo apt install npm
+sudo apt-get install postgresql-12
+DOCKER: https://docs.docker.com/engine/install/ubuntu/
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+uname -i: if x86_64 else check docker site:
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+To check if it is working: sudo docker run hello-world
+sudo apt  install docker-compose
+
+docker-compose up --force-recreate --no-deps
+
+PGADMIN: https://www.pgadmin.org/download/pgadmin-4-apt/
+curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+sudo apt install pgadmin4
+sudo /usr/pgadmin4/bin/setup-web.sh
+
+
+if port 80 in use: sudo /etc/init.d/apache2 stop
+on windows change end-of-line format of the 'entrypoint.sh' file from CRLF to LF(vscode down right)
+
+
+
 With installed pip(pip 20.3.3) and python(Python 3.8.5) in your system:
 backend commands:
 in eam/server:
