@@ -3,6 +3,7 @@ import React from 'react';
 //import {Link} from "react-router-dom";
 import { utils } from "react-modern-calendar-datepicker";
 import MyDatePicker from './MyDatePicker';
+import axiosInstance from './axios';
 
 class DiloshEidikouSkopou extends React.Component {
   constructor(props) {
@@ -14,13 +15,16 @@ class DiloshEidikouSkopou extends React.Component {
     this.state = {
         selectedDate: deafultValue,
         t: [],
+        children:[],
         cName: '',
         cSurname: '',
         birthdate: '',
         edRank: '',
         edInst: '',
+        ardis: '',
         count: 0,
         c: [],
+        err: '',
     }
 
     this.onChange = this.onChange.bind(this)
@@ -63,6 +67,10 @@ class DiloshEidikouSkopou extends React.Component {
     </tr>])
 
     var new_c = this.state.c.concat([this.state.count]);
+    var new_ch = this.state.children.concat([{
+      age: this.state.birthdate,
+      school: this.state.edInst
+    }])
 
     this.setState({
       t: [...new_t],
@@ -73,6 +81,7 @@ class DiloshEidikouSkopou extends React.Component {
       edInst: '',
       count: ncount,
       c: [...new_c],
+      children: [...new_ch],
     })
   }
 
@@ -100,11 +109,17 @@ class DiloshEidikouSkopou extends React.Component {
   sendReq = (e) => {
     e.preventDefault()
 
-    if(this.state.t === []){
+    if(this.state.t.length === 0){
       this.setState({
         err: "Παρακαλώ προσθέστε τουλάχιστον ένα (1) τέκνο. "
       })
-    }else if( this.state.ardis === ""){
+    }
+    else if(this.state.selectedDate.from === '' || this.state.selectedDate.to === ''){
+      this.setState({
+        err: "Παρακαλώ επιλέξτε ημμερομηνίες.. "
+      })
+    } 
+    else if( this.state.ardis === ""){
       this.setState({
         err: "Παρακαλώ προσθέστε τον Αριθμό Δικαστικής Απόφασης. "
       })
@@ -112,6 +127,33 @@ class DiloshEidikouSkopou extends React.Component {
       this.setState({
         err: ""
       })
+
+      axiosInstance
+        .post(`/forms/adeiaeidikoyskopoy`, {
+          from: this.state.selectedDate.from,
+          to: this.state.selectedDate.to,
+          children: this.state.children,
+        })
+        .then((res) => {
+          localStorage.setItem('access_token', res.data.access);
+          localStorage.setItem('refresh_token', res.data.refresh);
+          axiosInstance.defaults.headers['Authorization'] =
+            'JWT ' + localStorage.getItem('access_token');
+                  window.location.reload();
+          console.log(res);
+          console.log(res.data);
+        })
+        .catch(err => {
+          if(err.message === 'Request failed with status code 401'){
+            this.setState({
+              err: "Παρακαλώ συνδεθείτε για να κάνετε τη δήλωση."
+            })
+          }else{
+            this.setState({
+              err: "Άγνωστο σφάλμα. Παρακαλώ προσπαθήστε αργότερα."
+            })
+          }
+      });
     }
   }
 
@@ -134,7 +176,8 @@ class DiloshEidikouSkopou extends React.Component {
                       <br/>
                       <label for="ardis"><u>Αριθμός Δικαστικής Απόφασης</u></label>
                       <input className="inpt" placeholder="Αριθμός Δικαστικής Απόφασης" value={this.state.ardis} onChange={this.onChange} name="ardis" type="text"/>
-                      <p>{this.state.err}</p>
+                      <br/>
+                      <p style={{color:"#ED254E"}}>{this.state.err}</p>
                     </div>
                     <div className="content one_third">
                       <button type="submit" className="btn" style={{float:'right', marginTop: '100%'}} onClick={this.sendReq}>Κάντε Αίτηση</button>
@@ -145,7 +188,7 @@ class DiloshEidikouSkopou extends React.Component {
                                 <tr>
                                 <th>Όνομα Τέκνου</th>
                                 <th>Επώνυμο Τέκνου</th>
-                                <th>Ημμερομηνία Γέννησης</th>
+                                <th>Ηλικία</th>
                                 <th>Εκπαιδευτική Βαθμίδα</th>
                                 <th>Εκπαιδευτικό Ίδρυμα</th>
                                 <th></th>
@@ -156,7 +199,7 @@ class DiloshEidikouSkopou extends React.Component {
                                 <tr>
                                 <td><input value={this.state.cName} onChange={this.onChange} name="cName" type="text"/></td>
                                 <td><input value={this.state.cSurname} onChange={this.onChange} name="cSurname" type="text"/></td>
-                                <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="date"/></td>
+                                <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="number" min="0" max="30"/></td>
                                 <td><input value={this.state.edRank} onChange={this.onChange} name="edRank" type="text"/></td>
                                 <td><input value={this.state.edInst} onChange={this.onChange} name="edInst" type="text"/></td>
                                 <td><button type="submit" onClick={this.handleSubmit}>Submit</button></td>

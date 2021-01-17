@@ -2,8 +2,6 @@ import React from 'react';
 
 import {Link} from "react-router-dom";
 
-import background from './images/demo/backgrounds/01.png'
-
 class EmployeesCOVID extends React.Component {
   constructor(props) {
     super(props)
