@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import {Link} from "react-router-dom";
-import { utils } from "react-modern-calendar-datepicker";
+import { utils } from "../frontend/react/node_modules/react-modern-calendar-datepicker";
 import MyDatePicker from './MyDatePicker';
 import axiosInstance from './axios';
 
@@ -14,7 +14,6 @@ class DiloshEidikouSkopou extends React.Component {
 
     this.state = {
         selectedDate: deafultValue,
-        selectedDate2: deafultValue,
         t: [],
         children:[],
         cName: '',
@@ -30,7 +29,6 @@ class DiloshEidikouSkopou extends React.Component {
 
     this.onChange = this.onChange.bind(this)
     this.changeDate = this.changeDate.bind(this)
-    this.changeDate2 = this.changeDate2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.sendReq = this.sendReq.bind(this)
@@ -47,12 +45,6 @@ class DiloshEidikouSkopou extends React.Component {
   changeDate = (newDate) => {
     this.setState({
         selectedDate: newDate,
-    });
-  }
-
-  changeDate2 = (newDate) => {
-    this.setState({
-        selectedDate2: newDate,
     });
   }
 
@@ -123,22 +115,16 @@ class DiloshEidikouSkopou extends React.Component {
       })
       document.getElementById("errmsg").style.opacity = "1"; 
     }
-    else if(this.state.selectedDate.from === '' || this.state.selectedDate.to === '' || this.state.selectedDate2.from === '' || this.state.selectedDate2.to === ''){
+    else if(this.state.selectedDate.from === '' || this.state.selectedDate.to === ''){
       this.setState({
-        err: "Παρακαλώ επιλέξτε ημμερομηνίες."
+        err: "Παρακαλώ επιλέξτε ημμερομηνίες.. "
       })
       document.getElementById("errmsg").style.opacity = "1"; 
     } 
-    else if( this.state.ardis === "" && ((this.props.match.params.type === 'ApoklistikhEpimeleia') || (this.props.match.params.type === 'DhmosioApokleistikh'))){
-      if(this.props.match.params.type === 'ApoklistikhEpimeleia'){
-        this.setState({
-          err: "Παρακαλώ προσθέστε τον Αριθμό Δικαστικής Απόφασης. "
-        })
-      }else if(this.props.match.params.type === 'DhmosioApokleistikh'){
-        this.setState({
-          err: "Παρακαλώ προσθέστε τον Αριθμό Υπεύθυνης Δήλωσης. "
-        })
-      }
+    else if( this.state.ardis === ""){
+      this.setState({
+        err: "Παρακαλώ προσθέστε τον Αριθμό Δικαστικής Απόφασης. "
+      })
       document.getElementById("errmsg").style.opacity = "1"; 
     }else{
       this.setState({
@@ -187,8 +173,8 @@ class DiloshEidikouSkopou extends React.Component {
                 <form>
                     <div className="content one_third first">
                       <h2>Διάστημας Αποκλειστικής Χρήσης</h2>
-                      <br/>
                       <MyDatePicker pChange={this.changeDate}/>
+                      <br/>
                       <br/>
                       <br/>
                     </div>
@@ -243,130 +229,20 @@ class DiloshEidikouSkopou extends React.Component {
                 <form>
                     <div className="content one_third first">
                       <h2>Διάστημας Αποκλειστικής Χρήσης</h2>
-                      <br/>
                       <MyDatePicker pChange={this.changeDate}/>
+                      <br/>
                       <br/>
                       <br/>
                     </div>
                     <div className="content one_third">
                       <h2>Διάστημας Αποκλειστικής Χρήσης Συζύγου</h2>
-                      <MyDatePicker pChange={this.changeDate2}/>
-                      <br/>
-                      <br/>
-                      <br/>
-                    </div>
-                    <div className="content one_third">
-                      <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
-                      <button type="submit" className="btn" style={{float:'right', marginTop: '100%'}} onClick={this.sendReq}>Κάντε Αίτηση</button>
-                    </div>
-                    <div className="content">
-                            <table>
-                            <thead>
-                                <tr>
-                                <th>Όνομα Τέκνου</th>
-                                <th>Επώνυμο Τέκνου</th>
-                                <th>Ηλικία</th>
-                                <th>Εκπαιδευτική Βαθμίδα</th>
-                                <th>Εκπαιδευτικό Ίδρυμα</th>
-                                <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.t}   
-                                <tr>
-                                <td><input value={this.state.cName} onChange={this.onChange} name="cName" type="text"/></td>
-                                <td><input value={this.state.cSurname} onChange={this.onChange} name="cSurname" type="text"/></td>
-                                <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="number" min="0" max="30"/></td>
-                                <td><input value={this.state.edRank} onChange={this.onChange} name="edRank" type="text"/></td>
-                                <td><input value={this.state.edInst} onChange={this.onChange} name="edInst" type="text"/></td>
-                                <td><button type="submit" onClick={this.handleSubmit}>Submit</button></td>
-                                </tr>                 
-                            </tbody>
-                            </table>
-                    </div>
-                </form>
-              </main>
-            </div>
-          </div>
-      );
-    } else if(this.props.match.params.type === 'DhmosioApokleistikh'){
-      return (
-        <div>
-          <div className="wrapper row3">
-            <main className="hoc container clear"> 
-                <h1><u>Δήλωση Ειδικού Σκοπού</u></h1>
-                <form>
-                    <div className="content one_third first">
-                      <h2>Διάστημας Αποκλειστικής Χρήσης</h2>
-                      <br/>
                       <MyDatePicker pChange={this.changeDate}/>
                       <br/>
                       <br/>
-                    </div>
-                    <div className="content one_third">
-                      <p>Παρακαλώ εισάγετε τον Αριθμό Υπεύθυνης Δήλωσης, βάση της οποίας ο/η σύζυγος σας αδυνατεί να προσέχει τα τέκνα σας</p>
-                      <br/>
-                      <label for="ardis"><u>Αριθμός Υπεύθυνης Δήλωσης</u></label>
-                      <input className="inpt" placeholder="Αριθμός Υπεύθυνης Δήλωσης" value={this.state.ardis} onChange={this.onChange} name="ardis" type="text"/>
                       <br/>
                     </div>
                     <div className="content one_third">
-                      <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
-                      <button type="submit" className="btn" style={{float:'right', marginTop: '100%'}} onClick={this.sendReq}>Κάντε Αίτηση</button>
-                    </div>
-                    <div className="content">
-                            <table>
-                            <thead>
-                                <tr>
-                                <th>Όνομα Τέκνου</th>
-                                <th>Επώνυμο Τέκνου</th>
-                                <th>Ηλικία</th>
-                                <th>Εκπαιδευτική Βαθμίδα</th>
-                                <th>Εκπαιδευτικό Ίδρυμα</th>
-                                <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.t}   
-                                <tr>
-                                <td><input value={this.state.cName} onChange={this.onChange} name="cName" type="text"/></td>
-                                <td><input value={this.state.cSurname} onChange={this.onChange} name="cSurname" type="text"/></td>
-                                <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="number" min="0" max="30"/></td>
-                                <td><input value={this.state.edRank} onChange={this.onChange} name="edRank" type="text"/></td>
-                                <td><input value={this.state.edInst} onChange={this.onChange} name="edInst" type="text"/></td>
-                                <td><button type="submit" onClick={this.handleSubmit}>Submit</button></td>
-                                </tr>                 
-                            </tbody>
-                            </table>
-                    </div>
-                </form>
-              </main>
-            </div>
-          </div>
-      );
-    } else if(this.props.match.params.type === 'DhmosioAplh'){
-      return (
-        <div>
-          <div className="wrapper row3">
-            <main className="hoc container clear"> 
-                <h1><u>Δήλωση Ειδικού Σκοπού</u></h1>
-                <form>
-                    <div className="content one_third first">
-                      <h2>Διάστημας Αποκλειστικής Χρήσης</h2>
-                      <br/>
-                      <MyDatePicker pChange={this.changeDate}/>
-                      <br/>
-                      <br/>
-                    </div>
-                    <div className="content one_third">
-                      <h2>Διάστημας Αποκλειστικής Χρήσης Συζύγου</h2>
-                      <MyDatePicker pChange={this.changeDate2}/>
-                      <br/>
-                      <br/>
-                      <br/>
-                    </div>
-                    <div className="content one_third">
-                      <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
+                      <p id="errmsg" style={{color:"#ED254E"}}>{this.state.err}</p>
                       <button type="submit" className="btn" style={{float:'right', marginTop: '100%'}} onClick={this.sendReq}>Κάντε Αίτηση</button>
                     </div>
                     <div className="content">
