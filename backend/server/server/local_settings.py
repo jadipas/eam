@@ -49,20 +49,20 @@ else:
             'NAME': 'eam',
             'USER': 'postgres',
             'PASSWORD': 'postgres',
-            'HOST': 'localhost',
+            'HOST': '127.0.0.1',
             'PORT': '5432',
         }
     }
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'qfsjgwmf',
-            'USER': 'qfsjgwmf',
-            'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
-            'HOST': 'suleiman.db.elephantsql.com',
-            'PORT': '5432',
-        }
-    }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #         'NAME': 'qfsjgwmf',
+    #         'USER': 'qfsjgwmf',
+    #         'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
+    #         'HOST': 'suleiman.db.elephantsql.com',
+    #         'PORT': '5432',
+    #     }
+    # }
 #################################################################
     ##  (CORS) Cross-Origin Resource Sharing Settings ##
 #################################################################
