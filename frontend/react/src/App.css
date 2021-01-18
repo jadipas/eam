@@ -1370,3 +1370,11 @@ table a,
 .inpt2 {color:#447b9f; background-color:#FFFFFF;}
 .inpt2::placeholder {color:#dbe5e7;}
 .inpt2:focus{border-color:#dbe5e7;border-radius:16px;border: 2px solid #dbe5e7;}
+
+
+.module{
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  color: 'black';
+  font-size: '14px';
+}

@@ -21,19 +21,17 @@ class Employees extends React.Component {
   render(){     
     return (
         <div>
-            <div className="wrapper row2">
-                <section id="references" className="hoc container clear"> 
+            <div className="wrapper row3">
+                <section className="hoc container clear"> 
                     <div className="sectiontitle">
                     <h6 className="heading">Εργαζόμενοι</h6>
                     <p>Όλες οι απαραίτητες πληροφορίες για τους εργαζομένους</p>
                     </div>
                     <ul className="nospace group ref-img">
-                    <li className="one_third"><Link className="" to="/"><p className='in_div'>Άδειες</p></Link></li>
-                        <li className="one_third"><Link className="" to="/"><p className='in_div' >Νομοθεσία</p></Link></li>
-                        <li className="one_third"><Link className="" to="/Employees/EmployeesCOVID"><p className='in_div'>COVID-19</p></Link></li>
-                        <li className="one_third"><Link className="" to="/"><p className='in_div' >Δηλώσεις</p></Link></li>
-                        <li className="one_third"><Link className="" to="/"><p className='in_div' >Butthole</p></Link></li>
-                        <li className="one_third"><Link className="" to="/"><p className='in_div' >Butthole</p></Link></li>
+                      <li className="one_quarter first"><Link className="" to="/"><p className='in_div'>Άδειες</p></Link></li>
+                      <li className="one_quarter"><Link className="" to="/"><p className='in_div' >Νομοθεσία</p></Link></li>
+                      <li className="one_quarter"><Link className="" to="/Employees/EmployeesCOVID"><p className='in_div'>COVID-19</p></Link></li>
+                      <li className="one_quarter"><Link className="" to="/"><p className='in_div' >Δηλώσεις</p></Link></li>
                     </ul>
                 </section>
             </div>

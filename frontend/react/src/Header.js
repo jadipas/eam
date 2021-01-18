@@ -3,56 +3,64 @@ import {Link} from "react-router-dom";
 import background from './images/background3.png'
 import Login from './Login';
 import logout from './Logout';
+
 class Header extends React.Component {
   
   render(){     
     return (
         <div style={{backgroundImage : `url(${background})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>  
-            <div>
-                <header id="header" className="hoc clear"> 
+            <div >
+                <header id="header" className="hoc clear" style={{textShadow: "1px 1px black", fontSize: "15px"}}> 
                     <div id="logo" className="fl_left">
-                        <h1><Link exact to="/">Butt</Link></h1>
+                        <h1><Link to="/" >ΥΠΑΚΠ</Link></h1>
                     </div>
                     <nav id="mainav" className="fl_right">
                         <ul className="clear">
-                            <li className="active">
-                                <Link exact  to="/">Butt</Link>
-                            </li>
-                            <li><Link exact className="drop" to="/">Batter</Link>
+                        <li><Link className="drop" to="/Employers">Εργοδoτες</Link>
                                 <ul>
                                 <li>
-                                    <Link exact  to="/">Button1</Link>
+                                    <Link to="/UnderConstruction">Δηλώσεις</Link>
                                 </li>
                                 <li>
-                                    <Link exact  to="/">Button2</Link>
+                                    <Link to="/UnderConstruction">Νομοθεσία</Link>
                                 </li>
                                 <li>
-                                    <Link exact  to="/">Button3</Link>
+                                    <Link to="/UnderConstruction">Φορολογία</Link>
                                 </li>
                                 <li>
-                                    <Link exact  to="/">Button4</Link>
-                                </li>
-                                <li>
-                                    <Link exact  to="/">Button5</Link>
-                                </li>
-                                <li>
-                                    <Link exact  to="/">Button6</Link>
+                                    <Link to="/UnderConstruction">Προγράμματα</Link>
                                 </li>
                                 </ul>
                             </li>
-                            <li><Link exact className="drop" to="/">Butt</Link>
+                            <li><Link className="drop" to="/Employees">Εργαζομενοι</Link>
                                 <ul>
-                                <li><Link exact  to="/">Butt</Link></li>
-                                <li><Link exact  to="/">Butt</Link>
+                                <li>
+                                    <Link to="/UnderConstruction">Άδειες</Link>
+                                </li>
+                                <li>
+                                    <Link to="/UnderConstruction">Νομοθεσία</Link>
+                                </li>
+                                <li>
+                                    <Link to="/">COVID-19</Link>
+                                </li>
+                                <li>
+                                    <Link to="/">Δηλώσεις</Link>
+                                </li>
+                                </ul>
+                            </li>
+                            <li><Link className="drop" to="/">Butt</Link>
+                                <ul>
+                                <li><Link to="/">Butt</Link></li>
+                                <li><Link to="/">Butt</Link>
                                     <ul>
                                     <li>
-                                        <Link exact  to="/">Butt</Link>
+                                        <Link to="/">Butt</Link>
                                         </li>
                                     <li>
-                                        <Link exact  to="/">Butt</Link>
+                                        <Link to="/">Butt</Link>
                                     </li>
                                     <li>
-                                        <Link exact  to="/">Butt</Link>
+                                        <Link to="/">Butt</Link>
                                     </li>
                                     </ul>
                                 </li>
