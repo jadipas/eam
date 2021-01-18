@@ -22,7 +22,11 @@ sudo add-apt-repository \
 To check if it is working: sudo docker run hello-world
 sudo apt  install docker-compose
 
+docker-compose build --no-cache
+docker rm -f $(docker ps -a -q)
+docker volume rm $(docker volume ls -q)
 docker-compose up --force-recreate --no-deps
+
 
 PGADMIN: https://www.pgadmin.org/download/pgadmin-4-apt/
 curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
