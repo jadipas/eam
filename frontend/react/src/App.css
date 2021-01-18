@@ -1356,7 +1356,7 @@ table a,
 }
 
 .inpt {display:block; height:32px; border:none;}
-.inpt {width:75%; padding:5px 40px 5px 15px;margin-top: 20px;}
+.inpt {width:100%; padding:5px 40px 5px 15px;margin-top: 20px;}
 .inpt {border:1px solid;}
 .inpt {border-color:transparent;}
 .inpt {color:#447b9f; background-color:#dbe5e7;}
@@ -1364,17 +1364,52 @@ table a,
 .inpt:focus{border-color:#447b9f;border-radius:16px;}
 
 .inpt2 {display:block; height:32px; border:none; border-radius:8px;}
-.inpt2 {width: 200px; padding:5px 40px 5px 15px; margin: 0px; margin-top: 10px;}
+.inpt2 {width: 200px; padding:5px 40px 5px 15px; margin: 0px 3px;}
 .inpt2 {border:1px solid;}
 .inpt2 {border-color:transparent;}
 .inpt2 {color:#447b9f; background-color:#FFFFFF;}
 .inpt2::placeholder {color:#dbe5e7;}
 .inpt2:focus{border-color:#dbe5e7;border-radius:16px;border: 2px solid #dbe5e7;}
 
+.lgn{
+  padding: 10px 5px;
+}
 
-.module{
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  color: 'black';
-  font-size: '14px';
+.lgn button{
+  float: right;
+  margin-top: 10px;
+}
+
+.lgn input{
+  float: left;
+  margin-top: 10px;
+}
+
+.sbt_rst button{
+  margin: 10px;
+}
+
+.sbt,
+.sbt.inverse:hover {
+  color: #474747;
+  background-color:  rgba(0, 128, 0, 0.226);
+  border-color: #829da2;
+}
+
+.sbt:hover,
+.sbt.inverse {
+  background-color: green;
+  color: white;
+}
+
+.rst,
+.rst.inverse:hover {
+  color: #474747;
+  background-color: rgba(175, 2, 2, 0.185);
+  border-color: #829da2;
+}
+.rst:hover,
+.rst.inverse {
+  background-color: rgba(175, 2, 2, 0.822);
+  color: white;
 }

@@ -48,38 +48,34 @@ class Header extends React.Component {
                                 </li>
                                 </ul>
                             </li>
-                            <li><Link className="drop" to="/">Butt</Link>
+                            <li><Link className="drop" to="/UnderConstruction">Ανεργοι</Link>
                                 <ul>
-                                <li><Link to="/">Butt</Link></li>
-                                <li><Link to="/">Butt</Link>
-                                    <ul>
-                                    <li>
-                                        <Link to="/">Butt</Link>
-                                        </li>
-                                    <li>
-                                        <Link to="/">Butt</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/">Butt</Link>
-                                    </li>
-                                    </ul>
+                                <li><Link to="/UnderConstruction">Προγράμματα</Link></li>
+                                <li><Link to="/UnderConstruction">Επιδόματα</Link>
                                 </li>
                                 </ul>
                             </li>
-                            {this.props.role && (
-                            <li><Link to="/profile">ΠΡΟΦΙΛ</Link></li>)}
-                            {this.props.role && (
-                            <li><button style={{all: "unset", cursor: "pointer"}} type="button" onClick={logout}>ΕΞΟΔΟΣ</button></li>)}
-                            {!this.props.role && (
-                            <li><Link to="/register">ΕΓΓΡΑΦΗ</Link></li>)}
-
                         </ul>   
                     </nav>
                 </header>
+                {this.props.role && (
+                <div className="hoc clear">
+                    <nav id="mainav" className="fl_right">
+                        <ul className="clear">
+                            <li><Link to="/profile">ΠΡΟΦΙΛ</Link></li>
+                            <li><button style={{all: "unset", cursor: "pointer"}} type="button" onClick={logout}>ΕΞΟΔΟΣ</button></li>
+                        </ul>   
+                    </nav>
+                </div>
+                )}
                 {!this.props.role && (
-                <Login />)}
+                    <div className="hoc clear">
+                    <nav id="mainav" className="fl_right">
+                        <Login />  
+                    </nav>
+                </div>
+                )}
                 
-
             </div>
             <div id="breadcrumb" className="hoc clear"> 
             <h6 className="heading">Υπουργείο Εργασίας</h6>
