@@ -58,22 +58,24 @@ class Header extends React.Component {
                         </ul>   
                     </nav>
                 </header>
+                {this.props.role && (
                 <div className="hoc clear">
                     <nav id="mainav" className="fl_right">
                         <ul className="clear">
-                            {this.props.role && (
-                            <li><Link to="/profile">ΠΡΟΦΙΛ</Link></li>)}
-                            {this.props.role && (
-                            <li><button style={{all: "unset", cursor: "pointer"}} type="button" onClick={logout}>ΕΞΟΔΟΣ</button></li>)}
-                            {!this.props.role && (
-                            <li><Link to="/register">ΕΓΓΡΑΦΗ</Link></li>)}
+                            <li><Link to="/profile">ΠΡΟΦΙΛ</Link></li>
+                            <li><button style={{all: "unset", cursor: "pointer"}} type="button" onClick={logout}>ΕΞΟΔΟΣ</button></li>
                         </ul>   
                     </nav>
                 </div>
+                )}
                 {!this.props.role && (
-                <Login />)}
+                    <div className="hoc clear">
+                    <nav id="mainav" className="fl_right">
+                        <Login />  
+                    </nav>
+                </div>
+                )}
                 
-
             </div>
             <div id="breadcrumb" className="hoc clear"> 
             <h6 className="heading">Υπουργείο Εργασίας</h6>

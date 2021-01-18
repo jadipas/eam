@@ -183,6 +183,7 @@
 
 import React, { useState } from 'react';
 import axiosInstance from './axios';
+import {Link} from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 export default function SignIn() {
@@ -223,15 +224,11 @@ export default function SignIn() {
 
 	
 	return (
-        <div className="hoc clear">
-                <nav id="mainav" className="fl_right">
-                    <ul className="clear">
-                        <li><input className="inpt2" type="text" name="username" placeholder="Username" onChange={handleChange}/></li>
-                        <li><input className="inpt2" type="password" name="password" placeholder="Password" onChange={handleChange}/></li>
-                        <li><button type="submit" className="butn" onClick={handleSubmit}>ΕΙΣΟΔΟΣ</button></li>
-                    </ul>
-                </nav>
-        </div>
-                
+		<ul className="clear">
+			<li><input className="inpt2" type="text" name="username" placeholder="Username" onChange={handleChange}/></li>
+			<li><input className="inpt2" type="password" name="password" placeholder="Password" onChange={handleChange}/></li>
+			<li><button type="submit" className="butn" onClick={handleSubmit}>ΕΙΣΟΔΟΣ</button></li>
+			<li><Link to="/register">ΕΓΓΡΑΦΗ</Link></li>
+		</ul>     
 	);
 }
