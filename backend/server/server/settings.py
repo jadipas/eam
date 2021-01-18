@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'apps.authentication.apps.AuthenticationConfig',
     'apps.account.apps.AccountConfig',
     'apps.forms.apps.FormsConfig',
+    'apps.appointments.apps.AppointmentsConfig',
+
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
