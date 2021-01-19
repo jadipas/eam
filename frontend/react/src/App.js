@@ -185,7 +185,7 @@ class App extends React.Component {
                                                                   />
 
                       {this.state.currentRole && (<Route exact path="/Profile" render={(props) => (
-                                                                        <Profile  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
+                                                                        <Profile  {...props} navbarUpdate={this.setPath} path={'Home/Profile'}/>
                                                                         )}
                                                                         
                                             />)}

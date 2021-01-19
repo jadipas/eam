@@ -182,14 +182,14 @@ class DiloshEidikouSkopou extends React.Component {
         .catch(err => {
           if(err.message === 'Request failed with status code 401'){
             this.setState({
-              err: "Παρακαλώ συνδεθείτε για να κάνετε τη δήλωση."
+              err: "Παρακαλώ συνδεθείτε ως Εργαζόμενος για να κάνετε τη δήλωση."
             })
           }else{
             this.setState({
               err: "Άγνωστο σφάλμα. Παρακαλώ προσπαθήστε αργότερα."
             })
           }
-        document.getElementById("errmsg").style.opacity = "1"; 
+          document.getElementById("errmsg").style.opacity = "1"; 
     });
     }
   }

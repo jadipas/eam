@@ -51,10 +51,17 @@ class Header extends React.Component {
                             <li><Link className="drop" to="/UnderConstruction">Ανεργοι</Link>
                                 <ul>
                                 <li><Link to="/UnderConstruction">Προγράμματα</Link></li>
-                                <li><Link to="/UnderConstruction">Επιδόματα</Link>
-                                </li>
+                                <li><Link to="/UnderConstruction">Επιδόματα</Link></li>
                                 </ul>
                             </li>
+                            <li><Link className="drop" to="/UnderConstruction">COVID-19</Link>
+                                <ul>
+                                <li><Link to="/UnderConstruction">placeholder</Link></li>
+                                <li><Link to="/UnderConstruction">placeholder</Link></li>
+                                <li><Link to="/UnderConstruction">placeholder</Link></li>
+                                </ul>
+                            </li>
+                            <li><Link className="" to="/Contact">Επικοινωνια</Link></li>
                         </ul>   
                     </nav>
                 </header>
