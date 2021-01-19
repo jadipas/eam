@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import {Link} from "react-router-dom";
-import { utils } from "react-modern-calendar-datepicker";
+import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 import MyDatePicker from './MyDatePicker';
 import axiosInstance from './axios';
 

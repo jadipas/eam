@@ -109,14 +109,23 @@ class Profile extends React.Component {
                 <main className="hoc container clear"> 
                     <div className="conten one_quarter first">
                         <form>
+                            <h1>Αλλαγή Προσωπικών στοιχείων</h1>
                             <fieldset>
+                                <p>Όνομα Χρήστη</p>
                                 <input className="inpt" type="text" placeholder="Όνομα Χρήστη" id="username" name="username" value={this.state.username} onChange={this.onChange}/>
+                                <p>Όνομα</p>
                                 <input className="inpt" type="text" placeholder="Όνομα" id="first_name" name="first_name" value={this.state.first_name} onChange={this.onChange}/>
+                                <p>Επίθετο</p>
                                 <input className="inpt" type="text" placeholder="Επίθετο" id="last_name" name="last_name" value={this.state.last_name} onChange={this.onChange}/>
+                                <p>Email</p>
                                 <input className="inpt" type="email" placeholder="Email" id="email" name="email" value={this.state.email} onChange={this.onChange}/>
+                                <p>ΑΦΜ</p>
                                 <input className="inpt" type="text" placeholder="ΑΦΜ" id="afm" name="afm" value={this.state.afm} onChange={this.onChange}/>
+                                <p>ΑΜΚΑ</p>
                                 <input className="inpt" type="text" placeholder="ΑΜΚΑ" id="amka" name="amka" value={this.state.amka} onChange={this.onChange}/>
+                                <p>Τηλέφωνο</p>
                                 <input className="inpt" type="phone" placeholder="Τηλέφωνο" id="thl" name="thl" value={this.state.phone} onChange={this.onChange}/>
+                                <p>Εταιρία</p>
                                 <input className="inpt" type="text" placeholder="Εταιρία" id="company" name="company" value={this.state.company} onChange={this.onChange}/>
                                 <div className="sbt_rst"><button className="rst" style={{float: 'left'}} type="cancel" onClick={this.handleReset}>Επαναφορά</button><button className="sbt" style={{float: 'right'}} type="submit">Αλλαγή</button></div>
                             </fieldset>

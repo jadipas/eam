@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar, utils } from "react-modern-calendar-datepicker";
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+import { Calendar, utils } from "@hassanmojab/react-modern-calendar-datepicker";
 
 const MyDatePicker = (props) => {
   
