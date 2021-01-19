@@ -55,6 +55,7 @@ class Profile extends React.Component {
           phone: res.data.phone,
           role: res.data.role,
           username: res.data.username,
+          t: []
         })
       });
   }
@@ -138,8 +139,28 @@ class Profile extends React.Component {
 			.then((res) => {
 				console.log(res);
         //console.log(res.data);
-        this.setState({
+        var new_t = []
+        var n;
 
+        for(n of res.data.AdeiaEidikoySkopoy){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
+          }
+          new_t = new_t.concat([<tr>
+            <td>Ειδικού Σκοπού</td>
+            <td>{n.from_time}</td>
+            <td>{n.to_time}</td>
+            <td>{}</td>
+          </tr>])
+        }
+
+        this.setState({
+          t: new_t,
         })
 			});
   }
@@ -179,15 +200,37 @@ class Profile extends React.Component {
                         </form>
                     </div>
                     <div className="one_quarter">
+                      <h2>Αλλαγή Κωδικού Πρόσβασης</h2>
                       <form>
                         <fieldset>
+                            <p>Παλιός Κωδικός</p>
                             <input className="inpt" type="password" placeholder="Παλιός Κωδικός" id="old_password" name="old_password" value={this.state.old_password} onChange={this.onChange}/>
+                            <p>Νέος Κωδικός</p>
                             <input className="inpt" type="password" placeholder="Νέος Κωδικός" id="new_password" name="new_password" value={this.state.new_password} onChange={this.onChange}/>
+                            <p>Επανάληψη Νέου Κωδικού</p>
                             <input className="inpt" type="password" placeholder="Επανάληψη Νέου Κωδικού" id="new_rpassword" name="new_rpassword" value={this.state.old_rpassword} onChange={this.onChange}/>
                             <div className="sbt_rst"><button className="sbt" style={{float: 'right'}} type="submit" onClick={this.handleSubmitPassword}>Αλλαγή Κωδικού</button></div>
                         </fieldset>
                       </form>
                       <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
+                    </div>
+                    <div className="content one_half">
+                      <h2>Ιστορικό Δηλώσεων</h2>
+                      <br/>
+                      <br/>
+                      <table>
+                      <thead>
+                          <tr>
+                          <th>Τύπος Άδειας</th>
+                          <th>Από</th>
+                          <th>Εώς</th>
+                          <th>Κατάσταση</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {this.state.t}   
+                      </tbody>
+                      </table>
                     </div>
                     <div className="clear"></div>
                 </main>
