@@ -6,7 +6,7 @@ class Appointment(models.Model):
 
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     email = models.EmailField()
-    phone = models.CharField(max_length=50, unique=True)
+    phone = models.CharField(max_length=50)
     date = models.DateField()
     time = models.TimeField()
 

@@ -29,10 +29,13 @@ POST: /forms/adeiaeidikoyskopoy:
     "to_time": "2021-01-19",
     "children": [{"age": 10, "school": "12o"}, {"age": 12, "school": "13o"}]
 }
-POST: forms/adeiaeidikoyskopoy_update/<int:form_id>
+GET: /forms/adeiaeidikoyskopoy/<int:form_id>
+
+POST: /forms/adeiaeidikoyskopoy/<int:form_id>
 {
     "status": -1 (-1: NOT_APPROVED, 0: PENDING, 1: APPROVED)
 }
+
 
 POST: /forms/adeiaergasias:
 {
@@ -40,6 +43,8 @@ POST: /forms/adeiaergasias:
     "to_time": "2021-01-19",
     "employee_username": "admin2"
 }
+GET: /forms/adeiaergasias/<int:form_id>
+
 
 POST: /forms/anastoliergasias:
 {
@@ -47,6 +52,7 @@ POST: /forms/anastoliergasias:
     "to_time": "2021-01-19",
     "employee_username": "admin2"
 }
+GET:  /forms/anastoliergasias/<int:form_id>
 
 GET: /forms/myforms -> gets logged in user's forms
 
@@ -67,3 +73,23 @@ POST: /authentication/update_password
     "new_password": "easypassword",
     "new_rpassword": "easypassword"
 }
+
+
+POST: /appointments/create_appointment: 
+IF NOT LOGGED IN
+{
+    "email": "nikos@gmail.com",
+    "phone": "1",
+    "date": "2021-01-31",
+    "time": "18:00"
+}
+
+IF LOGGED IN
+{
+    "date": "2021-01-31",
+    "time": "18:00"
+}
+
+GET: /appointments/myappointments
+
+GET: /appointments/appointment_by_date

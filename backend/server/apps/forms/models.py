@@ -6,8 +6,6 @@ from django.contrib.postgres.fields import ArrayField
 
 class Form(models.Model):
   
-
-    
     from_time = models.DateField()
     to_time = models.DateField()
     employee = models.ForeignKey(User, on_delete=models.RESTRICT)

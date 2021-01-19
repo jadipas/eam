@@ -6,33 +6,39 @@ class AdeiaEidikoySkopoyFormSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdeiaEidikoySkopoy
         fields = ['from_time', 'to_time', 'children']
+        ordering = ['-from_time', '-to_time']    
 
 class AdeiaEidikoySkopoySerializer(serializers.ModelSerializer):
     #status = serializers.ChoiceField(choices=AdeiaEidikoySkopoy.STATUS_CHOICES)
     class Meta:
         model = AdeiaEidikoySkopoy
         fields = '__all__'
+        ordering = ['-from_time', '-to_time']    
 
 class AdeiaErgasiasFormSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AdeiaErgasias
         fields = ['from_time', 'to_time']
+        ordering = ['-from_time', '-to_time']    
 
 class AdeiaErgasiasSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AdeiaErgasias
         fields = '__all__'
+        ordering = ['-from_time', '-to_time']    
 
 class AnastoliErgasiasFormSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AnastoliErgasias
         fields = ['from_time', 'to_time']
+        ordering = ['-from_time', '-to_time']    
 
 class AnastoliErgasiasSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AnastoliErgasias
         fields = '__all__'
+        ordering = ['-from_time', '-to_time']    
