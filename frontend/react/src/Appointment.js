@@ -2,7 +2,7 @@ import React from 'react';
 
 //import {Link} from "react-router-dom";
 import MyCalendar from './MyCalendar';
-import { utils } from "react-modern-calendar-datepicker";
+import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 
 class Appointment extends React.Component {
   constructor(props) {

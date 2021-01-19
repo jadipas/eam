@@ -45,18 +45,58 @@ class AdeiaEidikoySkopoyView(APIView):
             logging.error("Error creating a form of AdeiaEidikoySkopoy: {}".format(traceback.format_exc()))
             return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class AdeiaEidikoySkopoyUpdateView(APIView):
+
+
+class AdeiaEidikoySkopoyByIdView(APIView):
     
     permission_classes = (IsAuthenticated,)
     serializer_class = AdeiaEidikoySkopoySerializer 
+    def get(self, request, form_id):
+        try:
+            payload = request.data
+            params = request.query_params
+            try:
+                form = AdeiaEidikoySkopoy.objects.get(id=form_id)
+            except AdeiaEidikoySkopoy.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            user = User.objects.get(username=request.user)
+            print(self.serializer_class(form).data)
+            #print({'status': payload['status']})
+            if (user.role == "employer"):
+                if (user.company == form.company):
+                    form_data = self.serializer_class(form).data
+                    return Response(form_data, status=status.HTTP_200_OK)
+                else:
+                    return Response(status=status.HTTP_401_UNAUTHORIZED)
+            else:
+                if (form.employee == request.user):
+                    form_data = self.serializer_class(form).data
+                    return Response(form_data, status=status.HTTP_200_OK)
+                else:
+                    return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        except ValidationError:
+            logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ParseError: 
+            return Response("Error in request", status=status.HTTP_400_BAD_REQUEST)        
+        except Exception:
+            logging.error("Error creating a form of AdeiaEidikoySkopoy: {}".format(traceback.format_exc()))
+            return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     def post(self, request, form_id):
         try:
             payload = request.data
             params = request.query_params
-            form = AdeiaEidikoySkopoy.objects.get(id=form_id)
+            try:
+                form = AdeiaEidikoySkopoy.objects.get(id=form_id)
+            except AdeiaEidikoySkopoy.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
             user = User.objects.get(username=request.user)
             #print(user.role)
-            print({'status': payload['status']})
+            #print({'status': payload['status']})
+            if (not payload.get('status')):
+                return Response({'status': ["Fill status"]}, status=status.HTTP_400_BAD_REQUEST)
             if (user.role == "employer"):
                 if (user.company == form.company):
                     serializer = self.serializer_class(data={ 'status': payload['status'] }, partial=True)
@@ -114,6 +154,44 @@ class AdeiaErgasiasView(APIView):
             logging.error("Error creating a form of AdeiaEidikoySkopoy: {}".format(traceback.format_exc()))
             return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class AdeiaErgasiasByIdView(APIView):
+    
+    permission_classes = (IsAuthenticated,)
+    serializer_class = AdeiaErgasiasFormSerializer
+    def get(self, request, form_id):
+        try:
+            payload = request.data
+            params = request.query_params
+            try:
+                form = AdeiaErgasias.objects.get(id=form_id)
+            except AdeiaErgasias.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            user = User.objects.get(username=request.user)
+            #print(form)
+            #print({'status': payload['status']})
+            if (user.role == "employer"):
+                if (user.company == form.company):
+                    form_data = self.serializer_class(form).data
+                    return Response(form_data, status=status.HTTP_200_OK)
+                else:
+                    return Response(status=status.HTTP_401_UNAUTHORIZED)
+            else:
+                if (form.employee == request.user):
+                    form_data = self.serializer_class(form).data
+                    return Response(form_data, status=status.HTTP_200_OK)
+                else:
+                    return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        except ValidationError:
+            logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ParseError: 
+            return Response("Error in request", status=status.HTTP_400_BAD_REQUEST)        
+        except Exception:
+            logging.error("Error creating a form of AdeiaEidikoySkopoy: {}".format(traceback.format_exc()))
+            return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 class AnastoliErgasiasView(APIView):
     
     permission_classes = (IsAuthenticated,)
@@ -147,6 +225,42 @@ class AnastoliErgasiasView(APIView):
             logging.error("Error creating a form of AdeiaEidikoySkopoy: {}".format(traceback.format_exc()))
             return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class AnastoliErgasiasByIdView(APIView):
+    
+    permission_classes = (IsAuthenticated,)
+    serializer_class = AnastoliErgasiasSerializer
+    def get(self, request, form_id):
+        try:
+            payload = request.data
+            params = request.query_params
+            try:
+                form = AnastoliErgasias.objects.get(id=form_id)
+            except AnastoliErgasias.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            user = User.objects.get(username=request.user)
+            print(form)
+            #print({'status': payload['status']})
+            if (user.role == "employer"):
+                if (user.company == form.company):
+                    form_data = self.serializer_class(form).data
+                    return Response(form_data, status=status.HTTP_200_OK)
+                else:
+                    return Response(status=status.HTTP_401_UNAUTHORIZED)
+            else:
+                if (form.employee == request.user):
+                    form_data = self.serializer_class(form).data
+                    return Response(form_data, status=status.HTTP_200_OK)
+                else:
+                    return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        except ValidationError:
+            logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ParseError: 
+            return Response("Error in request", status=status.HTTP_400_BAD_REQUEST)        
+        except Exception:
+            logging.error("Error creating a form of AdeiaEidikoySkopoy: {}".format(traceback.format_exc()))
+            return Response("Server error", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class MyFormsView(APIView):

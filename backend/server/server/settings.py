@@ -30,7 +30,7 @@ SECRET_KEY = '(n)_4f-vc-_9^^at$w#aym=t!&&=5ka^9zp8qz-yt)-=p_i^yg'
 # DEBUG = True
 
 
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'apps.authentication.apps.AuthenticationConfig',
     'apps.account.apps.AccountConfig',
     'apps.forms.apps.FormsConfig',
+    'apps.appointments.apps.AppointmentsConfig',
+
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
