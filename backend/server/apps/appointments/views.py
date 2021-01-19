@@ -65,7 +65,7 @@ class CreateAppointmentView(APIView):
 class AppointmentByDateView(APIView):
 
     serializer_class = AppointmentListSerializer
-    def get(self, request):
+    def post(self, request):
         
         try:
             payload = request.data 

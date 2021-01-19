@@ -49,9 +49,7 @@ class Appointment extends React.Component {
     console.log(d);
     const path='/appointments/appointment_by_date';
     axiosInstance
-    .get(path,{
-      date:  d
-    })
+    .post(path,JSON.stringify({ date: d }))
     .then((res) => {
       console.log(res);
       //console.log(res.data);
