@@ -66,7 +66,7 @@ class Homepage extends React.Component {
                         </article></Link>
                         </li>
                         <li className="one_quarter">
-                        <Link to="/"><article><h6 className="heading">Δηλώσεις Εργαζομένων</h6>
+                        <Link to="/UnderConstruction"><article><h6 className="heading">Δηλώσεις Εργαζομένων</h6>
                         </article></Link>
                         </li>
                         <li className="one_quarter">
