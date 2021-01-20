@@ -11,7 +11,7 @@ class AdeiaEidikoySkopoySerializer(serializers.ModelSerializer):
     employee_username = serializers.ReadOnlyField(source='employee.username')
     class Meta:
         model = AdeiaEidikoySkopoy
-        fields = ['id', 'from_time', 'to_time', 'created_at', 'children', 'employee_username', 'company']
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'children', 'employee_username', 'company', 'status']
 
 class AdeiaErgasiasFormSerializer(serializers.ModelSerializer):
     
@@ -23,7 +23,7 @@ class AdeiaErgasiasSerializer(serializers.ModelSerializer):
     employee_username = serializers.ReadOnlyField(source='employee.username')
     class Meta:
         model = AdeiaErgasias
-        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company']
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company', 'status']
 
 class AnastoliErgasiasFormSerializer(serializers.ModelSerializer):
     
@@ -35,7 +35,7 @@ class AnastoliErgasiasSerializer(serializers.ModelSerializer):
     employee_username = serializers.ReadOnlyField(source='employee.username')
     class Meta:
         model = AnastoliErgasias
-        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company']
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company', 'status']
 
 class TilergasiaFormSerializer(serializers.ModelSerializer):
     
@@ -47,4 +47,4 @@ class TilergasiaSerializer(serializers.ModelSerializer):
     employee_username = serializers.ReadOnlyField(source='employee.username')
     class Meta:
         model = AnastoliErgasias
-        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company']
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company', 'status']
