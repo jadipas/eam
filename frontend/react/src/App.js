@@ -24,6 +24,7 @@ import Logout from './Logout';
 import DiloshEidikouSkopou from './DiloshEidikouSkopou';
 import NotFound from './NotFound';
 import EmployerRemote from './EmployerRemote';
+import EmployersCOVIDAdeies from './EmployersCOVIDAdeies';
 
 class App extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class App extends React.Component {
       Employers: 'Εργοδότες',
       EmployersCOVID: 'COVID',
       EmployerRemote: 'Δηλωση Τηλεργασιας Εργαζομενων',
+      EmployersCOVIDAdeies: 'Άδειες για Εργαζόμενους',
     }
 
     for (n of n_arr) {
@@ -201,6 +203,12 @@ class App extends React.Component {
                                                                         <EmployeesEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
                                                                         )}                                                                        
                                             />
+
+                      <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/" render={(props) => (
+                                                                                              <EmployersCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>
+                                                                                              )}
+                                                                                              
+                                                                  />
 
                       <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote" render={(props) => (
                                                                                               <EmployerRemote  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>

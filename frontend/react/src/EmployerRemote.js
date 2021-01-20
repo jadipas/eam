@@ -143,7 +143,7 @@ class EmployerRemote extends React.Component {
       var child;
       for(child of this.state.children){
           axiosInstance
-            .post(`/forms/adeiaergasias`, {
+            .post(`/forms/tilergasia`, {
               from_time: child.from_date,
               to_time: child.to_date,
               employee_username: child.cName,

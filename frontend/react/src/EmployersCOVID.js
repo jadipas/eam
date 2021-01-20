@@ -27,7 +27,7 @@ class EmployersCOVID extends React.Component {
                     <p>Όλες οι απαραίτητες πληροφορίες για τους εργαζομένους σχετικά με τον COVID-19</p>
                     </div>
                     <ul className="nospace group ref-img">
-                        <li className="one_third"><Link className="" to="/Employees/EmployersCOVID/EmployersCOVIDAdeies/"><p className='in_div' >Άδειες Εργαζομένων</p></Link></li>
+                        <li className="one_third"><Link className="" to="/Employers/EmployersCOVID/EmployersCOVIDAdeies/"><p className='in_div' >Άδειες Εργαζομένων</p></Link></li>
                         <li className="one_third"><Link className="" to="/UnderConstruction"><p className='in_div' >Οδηγίες</p></Link></li>
                         <li className="one_third"><Link className="" to="/UnderConstruction"><p className='in_div' >Επιδόματα</p></Link></li>
                     </ul>
