@@ -26,19 +26,19 @@ class EmployeesCOVIDAdeies extends React.Component {
                     <ul className="nospace group">
                         <li className="one_third first">
                         <article><h6 className="heading">Τηλεργασία</h6>     
-                            <p>Per conubia nostra per mauris aliquet massa nulla facilisi porta ligula non elementum</p>
-                            <footer><Link className="btn" to="EmployeeRemote/">Περισσoτερα</Link></footer>
+                            <p>Με τη δήλωση για Τηλεργασία μπορείτε πλέον να εργάζεστε εξ αποστάσεως για την περίοδο της πανδημίας</p>
+                            <footer><Link className="btn" to="EmployeeRemote/">Κάντε Δήλωση</Link></footer>
                         </article>
                         </li>
                         <li className="one_third">
                         <article><h6 className="heading">Αναστολή Εργασίας</h6>
-                            <p>Ultricies justo urna egestas metus ut ornare leo augue pharetra risus morbi tincidunt massa</p>
-                            <footer><Link className="btn" to="EmployeeBreak/">Περισσoτερα</Link></footer>
+                            <p>Σας δίνεται η δυνατότη να σταματήσετε να εργάζεστε εφόσον δεν είναι δυνατή η Τηλεργασία στο επάγγελμά σας</p>
+                            <footer><Link className="btn" to="EmployeeBreak/">Κάντε Δήλωση</Link></footer>
                         </article>
                         </li>
                         <li className="one_third">
                         <article><h6 className="heading">Άδεια Ειδικού Σκοπού</h6>
-                            <p>Ac vestibulum rutrum orci augue iaculis nibh quis porta nunc nisi suscipit leo nam ac lacus</p>
+                            <p>Διάφορες άδειες Ειδικού Χαρακτήρα για διευκόλυνση στην περίοδο της πανδημίας</p>
                             <footer><Link className="btn" to="EmployeesEidikouSkopou/">Περισσoτερα</Link></footer>
                         </article>
                         </li>

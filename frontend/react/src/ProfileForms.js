@@ -247,14 +247,14 @@ class ProfileForms extends React.Component {
         var count=0;
         for(n of res.data.AdeiaEidikoySkopoy){
           var stat = ''
-          if(parseInt(n.status) === -1){
+          if(n.status === -1){
             stat='Απορρίφθηκε'
-          }else if(parseInt(n.status) === 0){
+          }else if(n.status === 0){
             stat='Σε Αναμονή'
-          }else if(parseInt(n.status)===1){
+          }else if(n.status===1){
             stat='Εγκρίθηκε'
           }
-          if(parseInt(n.status) === 1 || parseInt(n.status) === -1){
+          if(n.status === 1 || n.status === -1){
             new_t1 = new_t1.concat([<tr key={n.id}>
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
@@ -276,14 +276,14 @@ class ProfileForms extends React.Component {
 
         for(n of res.data.AnastoliErgasias){
           var stat = ''
-          if(parseInt(n.status) === -1){
+          if(n.status === -1){
             stat='Απορρίφθηκε'
-          }else if(parseInt(n.status) === 0){
+          }else if(n.status === 0){
             stat='Σε Αναμονή'
-          }else if(parseInt(n.status)===1){
+          }else if(n.status===1){
             stat='Εγκρίθηκε'
           }
-          if(parseInt(n.status) === 1 || parseInt(n.status) === -1){
+          if(n.status === 1 || n.status === -1){
             new_t2 = new_t2.concat([<tr key={n.id+count}>
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
@@ -306,15 +306,15 @@ class ProfileForms extends React.Component {
 
         for(n of res.data.Tilergasia){
           var stat = ''
-          if(parseInt(n.status) === -1){
+          if(n.status === -1){
             stat='Απορρίφθηκε'
-          }else if(parseInt(n.status) === 0){
+          }else if(n.status === 0){
             stat='Σε Αναμονή'
-          }else if(parseInt(n.status)===1){
+          }else if(n.status===1){
             stat='Εγκρίθηκε'
           }
 
-          if(parseInt(n.status) === 1 || parseInt(n.status) === -1){
+          if(n.status === 1 || n.status === -1){
             new_t3 = new_t3.concat([<tr key={n.id+count}>
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
@@ -358,11 +358,11 @@ class ProfileForms extends React.Component {
         var count=0;
         for(n of res.data.AdeiaEidikoySkopoy){
           var stat = ''
-          if(parseInt(n.status) === -1){
+          if(n.status === -1){
             stat='Απορρίφθηκε'
-          }else if(parseInt(n.status) === 0){
+          }else if(n.status === 0){
             stat='Σε Αναμονή'
-          }else if(parseInt(n.status)===1){
+          }else if(n.status===1){
             stat='Εγκρίθηκε'
           }
           new_t = new_t.concat([<tr key={n.id}>
@@ -376,11 +376,11 @@ class ProfileForms extends React.Component {
 
         for(n of res.data.AnastoliErgasias){
           var stat = ''
-          if(parseInt(n.status) === -1){
+          if(n.status === -1){
             stat='Απορρίφθηκε'
-          }else if(parseInt(n.status) === 0){
+          }else if(n.status === 0){
             stat='Σε Αναμονή'
-          }else if(parseInt(n.status)===1){
+          }else if(n.status===1){
             stat='Εγκρίθηκε'
           }
           new_t = new_t.concat([<tr key={n.id+count}>
@@ -394,11 +394,11 @@ class ProfileForms extends React.Component {
 
         for(n of res.data.Tilergasia){
           var stat = ''
-          if(parseInt(n.status) === -1){
+          if(n.status === -1){
             stat='Απορρίφθηκε'
-          }else if(parseInt(n.status) === 0){
+          }else if(n.status === 0){
             stat='Σε Αναμονή'
-          }else if(parseInt(n.status)===1){
+          }else if(n.status===1){
             stat='Εγκρίθηκε'
           }
           new_t = new_t.concat([<tr key={n.id+count}>

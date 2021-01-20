@@ -26,13 +26,13 @@ class EmployersCOVIDAdeies extends React.Component {
                     <ul className="nospace group">
                         <li className="one_half first">
                         <article><h6 className="heading">Τηλεργασία</h6>     
-                            <p>Per conubia nostra per mauris aliquet massa nulla facilisi porta ligula non elementum</p>
+                            <p>Εδώ μπορείτε να δηλώσετε τους Εργαζόμενους που θέλετε να δουλέψουν εξ αποστάσεως. Είστε υποχρεωμένοι ως Εργοδότης να απασχολείτε το 80% του προσωπικού σας με Τηλεργασία</p>
                             <footer><Link className="btn" to="EmployerRemote">Κάντε Δήλωση</Link></footer>
                         </article>
                         </li>
                         <li className="one_half">
                         <article><h6 className="heading">Αναστολή Εργασίας</h6>
-                            <p>Ultricies justo urna egestas metus ut ornare leo augue pharetra risus morbi tincidunt massa</p>
+                            <p>Εδώ μπορείτε να κάνετε τη δήλωση Αναστολής Εργασίας φια κάποιον υπάλληλο σας. Αυτό σημαίνει πως ο/η υπάλληλος αυτός/αυτή δεν θα έχει επαγγελματικές υποχρεώσεις απέναντι στην εταιρία σας, αλλά ούτε η εταιρία απέναντί του/της.</p>
                             <footer><Link className="btn" to="EmployerBreak">Κάντε Δήλωση</Link></footer>
                         </article>
                         </li>
