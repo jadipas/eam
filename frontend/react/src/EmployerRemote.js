@@ -9,12 +9,7 @@ class EmployerRemote extends React.Component {
   constructor(props) {
     super(props)
 
-    const deafultValue = utils().getToday()
-    deafultValue.day = deafultValue.day + 1;
-
     this.state = {
-        selectedDate: deafultValue,
-        selectedDate2: deafultValue,
         t: [],
         children:[],
         cName: '',
@@ -27,8 +22,6 @@ class EmployerRemote extends React.Component {
     }
 
     this.onChange = this.onChange.bind(this)
-    this.changeDate = this.changeDate.bind(this)
-    this.changeDate2 = this.changeDate2.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.sendReq = this.sendReq.bind(this)
@@ -56,6 +49,23 @@ class EmployerRemote extends React.Component {
 
     if(this.state.cName === '' || this.state.from_date === '' || this.state.to_date === ''){
       return
+    }
+
+    var d1=this.state.from_date.split('-')
+    var d2=this.state.to_date.split('-')
+
+    if(parseInt(d1[0]) > parseInt(d2[0])){
+        this.setState({
+            err: 'Δεν γίνεται η ημερομηνία λήξης να είναι πιο μετά'
+        })
+        return;
+    }else if(parseInt(d1[0]) === parseInt(d2[0])){
+        if(parseInt(d1[1]) > parseInt(d2[1])){
+            this.setState({
+                err: 'Δεν γίνεται η ημερομηνία λήξης να είναι πιο μετά'
+            })
+            return;
+        }
     }
 
     var ncount = this.state.count + 1;
@@ -120,7 +130,7 @@ class EmployerRemote extends React.Component {
       })
 
       document.getElementById("errmsg").style.opacity = "0"; 
-
+      var child;
       for(child of this.state.children){
           axiosInstance
             .post(`/forms/adeiaergasias`, {

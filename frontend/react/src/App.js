@@ -23,6 +23,7 @@ import Profile from './Profile';
 import Logout from './Logout';
 import DiloshEidikouSkopou from './DiloshEidikouSkopou';
 import NotFound from './NotFound';
+import EmployerRemote from './EmployerRemote';
 
 class App extends React.Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class App extends React.Component {
       Register: 'Εγγραφη',
       Employers: 'Εργοδότες',
       EmployersCOVID: 'COVID',
+      EmployerRemote: 'Δηλωση Τηλεργασιας Εργαζομενων',
     }
 
     for (n of n_arr) {
@@ -195,6 +197,16 @@ class App extends React.Component {
                                                                         <EmployeesEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
                                                                         )}                                                                        
                                             />
+                      <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou" render={(props) => (
+                                                                        <EmployeesEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
+                                                                        )}                                                                        
+                                            />
+
+                      <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote" render={(props) => (
+                                                                                              <EmployerRemote  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>
+                                                                                              )}
+                                                                                              
+                                                                  />
 
                       <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou/:type" render={(props) => (
                                                                                               <DiloshEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>

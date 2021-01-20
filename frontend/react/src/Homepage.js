@@ -27,7 +27,7 @@ class Homepage extends React.Component {
                         <li className="one_quarter first">
                         <article><h6 className="heading">Εργοδότες</h6>     
                             <p>Per conubia nostra per mauris aliquet massa nulla facilisi porta ligula non elementum</p>
-                            <footer><Link className="btn" to="/">Περισσoτερα</Link></footer>
+                            <footer><Link className="btn" to="/Employers">Περισσoτερα</Link></footer>
                         </article>
                         </li>
                         <li className="one_quarter">
