@@ -652,7 +652,7 @@ class DiloshEidikouSkopou extends React.Component {
                                   <tr>
                                   <td><input value={this.state.cName} onChange={this.onChange} name="cName" type="text"/></td>
                                   <td><input value={this.state.cSurname} onChange={this.onChange} name="cSurname" type="text"/></td>
-                                  <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="date"/></td>
+                                  <td><input value={this.state.birthdate} onChange={this.onChange} name="birthdate" type="number" min="0" max="30"/></td>
                                   <td><input value={this.state.edRank} onChange={this.onChange} name="edRank" type="text"/></td>
                                   <td><input value={this.state.edInst} onChange={this.onChange} name="edInst" type="text"/></td>
                                   <td><button type="submit" onClick={this.handleSubmit}>Submit</button></td>
