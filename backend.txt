@@ -21,6 +21,8 @@ example: {
     "password": "hardpassword"
 }
 
+(logout) POST: /authentication/logout/blacklist/
+
 GET: /authentication/profile  -> gets logged in user's profile
 
 POST: /forms/adeiaeidikoyskopoy:
@@ -38,21 +40,62 @@ POST: /forms/adeiaeidikoyskopoy/<int:form_id>
 
 
 POST: /forms/adeiaergasias:
+IF USER IS EMPLOYER:
 {
     "from_time": "2021-01-17",
     "to_time": "2021-01-19",
     "employee_username": "admin2"
 }
+IF USER IS EMPLOYEE:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19"
+}
 GET: /forms/adeiaergasias/<int:form_id>
+POST: /forms/adeiaergasias/<int:form_id>
+{
+    "status": -1 (-1: NOT_APPROVED, 0: PENDING, 1: APPROVED)
+}
 
 
 POST: /forms/anastoliergasias:
+IF USER IS EMPLOYER:
 {
     "from_time": "2021-01-17",
     "to_time": "2021-01-19",
     "employee_username": "admin2"
 }
+IF USER IS EMPLOYEE:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19"
+}
+
 GET:  /forms/anastoliergasias/<int:form_id>
+POST: /forms/anastoliergasias/<int:form_id>
+{
+    "status": -1 (-1: NOT_APPROVED, 0: PENDING, 1: APPROVED)
+}
+
+POST: /forms/tilergasia:
+IF USER IS EMPLOYER:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19",
+    "employee_username": "admin2"
+}
+IF USER IS EMPLOYEE:
+{
+    "from_time": "2021-01-17",
+    "to_time": "2021-01-19"
+}
+
+GET:  /forms/tilergasia/<int:form_id>
+POST: /forms/tilergasia/<int:form_id>
+{
+    "status": -1 (-1: NOT_APPROVED, 0: PENDING, 1: APPROVED)
+}
+
 
 GET: /forms/myforms -> gets logged in user's forms
 
@@ -93,3 +136,6 @@ IF LOGGED IN
 GET: /appointments/myappointments
 
 GET: /appointments/appointment_by_date
+{
+    "date": "2020-01-11"
+}

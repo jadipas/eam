@@ -46,5 +46,27 @@ backend commands:
 in eam/server:
 linux: sudo python3 -m venv env / Windows: py -m venv env
 linux: source env/bin/activate / Windows: .\env\Scripts\activate
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python manage.py runserver
+
+SAVE CLOUD DATABASE AND RESTORE IT LOCALLY:
+pg_dump-> used dbeaver client(/usr/local/Cellar/postgresql/13.1/bin/pg_dump --verbose --host=suleiman.db.elephantsql.com --port=5432 --username=qfsjgwmf --format=c -n public qfsjgwmf)
+psql postgres
+CREATE DATABASE test_db;
+CREATE ROLE qfsjgwmf WITH LOGIN PASSWORD 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA';(not neccessary i think)
+pg_restore -d test_db sdi1700004.sql
+
+KILL CONNECTIONS:
+SELECT            
+        pg_terminate_backend (pg_stat_activity.pid)
+FROM
+        pg_stat_activity
+WHERE
+        pg_stat_activity.datname = 'test_db';
+
+In case we have to reset db i think this will work: pg_restore -h suleiman.db.elephantsql.com -p 5432 -d qfsjgwmf -U qfsjgwmf sdi1700004.sql
+
+
+docker exec -it 7907939b9800 psql -U postgres -c "CREATE ROLE qfsjgwmf WITH LOGIN PASSWORD 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA';"
+docker exec -it 7907939b9800 psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE test_db TO qfsjgwmf;"    
+docker exec -t 7907939b9800 pg_dump --no-owner -U qfsjgwmf test_db > sdi1700004.sql  
