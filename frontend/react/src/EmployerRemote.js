@@ -54,16 +54,18 @@ class EmployerRemote extends React.Component {
     var d1=this.state.from_date.split('-')
     var d2=this.state.to_date.split('-')
 
-    if(parseInt(d1[0]) > parseInt(d2[0])){
+    if(parseInt(d1[1]) > parseInt(d2[1])){
         this.setState({
-            err: 'Δεν γίνεται η ημερομηνία λήξης να είναι πιο μετά'
+            err: 'Δεν γίνεται η ημερομηνία λήξης να είναι πιο μετά απο την ημμερομηνία έναρξης'
         })
+        document.getElementById("errmsg").style.opacity = "1"; 
         return;
-    }else if(parseInt(d1[0]) === parseInt(d2[0])){
-        if(parseInt(d1[1]) > parseInt(d2[1])){
+    }else if(parseInt(d1[1]) === parseInt(d2[1])){
+        if(parseInt(d1[2]) > parseInt(d2[2])){
             this.setState({
-                err: 'Δεν γίνεται η ημερομηνία λήξης να είναι πιο μετά'
+                err: 'Δεν γίνεται η ημερομηνία λήξης να είναι πιο μετά απο την ημμερομηνία έναρξης'
             })
+            document.getElementById("errmsg").style.opacity = "1"; 
             return;
         }
     }
@@ -119,6 +121,14 @@ class EmployerRemote extends React.Component {
   sendReq = (e) => {
     e.preventDefault()
 
+    if(this.props.role!=='employer'){
+        this.setState({
+            err: "Παρακαλώ συνδεθείτε ως εργοδότης. "
+          })
+        document.getElementById("errmsg").style.opacity = "1"; 
+        return;
+    }
+    
     if(this.state.t.length === 0){
       this.setState({
         err: "Παρακαλώ προσθέστε τουλάχιστον έναν/μία (1) υπάλληλο. "

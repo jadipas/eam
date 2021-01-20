@@ -203,7 +203,7 @@ class App extends React.Component {
                                             />
 
                       <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote" render={(props) => (
-                                                                                              <EmployerRemote  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>
+                                                                                              <EmployerRemote  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>
                                                                                               )}
                                                                                               
                                                                   />
