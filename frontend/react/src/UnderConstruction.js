@@ -34,7 +34,7 @@ class UnderConstruction extends React.Component {
                         <nav class="sdb_holder">
                         <ul>
                             <li><Link to="/Employees/EmployeesCOVID/Instructions" >Οδηγίες Για Εργαζόμενους Περι COVID-19 </Link></li>
-                            <li><Link to="/" >Άδεια Ειδικού Σκοπού</Link>
+                            <li><Link to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/" >Άδεια Ειδικού Σκοπού</Link>
                             </li>
                         </ul>
                         </nav>

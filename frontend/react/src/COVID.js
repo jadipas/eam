@@ -32,7 +32,8 @@ class COVID extends React.Component {
                     <p>Όλες οι πληροφορίες που θα χρειαστούν οι Εργαζόμενοι την εποχή της πανδημίας</p>
                 </div>
                 <div className="one_third" id="gencov">
-                    <Link to="/Employees/EmployeesCOVID/Instructions"><h2><u>Γενικές Οδηγίες</u></h2></Link>
+                    <Link to="/Employees/EmployeesCOVID/Instructions"><h2><u>Διαχείριση Κρούσματος</u></h2></Link>
+                    <p>Οδηγίες για την αντιμετώπιση κρούσματος COVID στον εργασιακό χώρο</p>
                 </div>
               </div>
               <div className="sidebar one_quarter"> 
