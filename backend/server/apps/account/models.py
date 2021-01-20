@@ -19,7 +19,7 @@ class Company(models.Model):
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username, amka, afm, email, first_name, last_name, phone, password, role, **extra_fields):
+    def _create_user(self, username, amka, afm, email, first_name, last_name, phone, password, role, company, **extra_fields):
         values = [email, phone]
         field_value_map = dict(zip(self.model.REQUIRED_FIELDS, values))
         for field_name, value in field_value_map.items():
@@ -35,19 +35,20 @@ class UserManager(BaseUserManager):
             afm=afm,
             username=username,
             role=role,
+            company=company,
             **extra_fields
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, amka, afm, email, first_name, last_name, phone, password, role, **extra_fields):
+    def create_user(self, username, amka, afm, email, first_name, last_name, phone, password, role, company, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)           
 
-        return self._create_user(username, amka, afm, email, first_name, last_name, phone, password, role, **extra_fields)
+        return self._create_user(username, amka, afm, email, first_name, last_name, phone, password, role, company, **extra_fields)
 
-    def create_superuser(self, username, amka, afm, email, first_name, last_name, phone, password, **extra_fields):
+    def create_superuser(self, username, amka, afm, email, first_name, last_name, phone, password, company, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         
@@ -56,7 +57,7 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self._create_user(username, amka, afm, email, first_name, last_name, phone, password, role='admin', **extra_fields)
+        return self._create_user(username, amka, afm, email, first_name, last_name, phone, password, company, role='admin', **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -79,10 +80,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField(blank=True, null=True)
     role = models.CharField(max_length=50, choices = ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
-    company = models.ForeignKey(Company, on_delete=models.RESTRICT, blank=True, null=True)
+    company = models.ForeignKey(Company, on_delete=models.RESTRICT)
     USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'phone', 'amka', 'afm']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'phone', 'amka', 'afm', 'company']
     
     
     objects = UserManager()
