@@ -23,11 +23,17 @@ class Profile extends React.Component {
       ct3: {},
       err: "Everything is fine right now. No errors to report ",
     }
+    this.geData = this.geData.bind(this)
     this.onChange = this.onChange.bind(this)
-    this.getProfile = this.getProfile.bind(this)
     this.handleReset = this.handleReset.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSubmitPassword = this.handleSubmitPassword.bind(this)
+    this.declineEid = this.declineEid.bind(this)
+    this.acceptEid = this.acceptEid.bind(this)
+    this.declineTile = this.declineTile.bind(this)
+    this.acceptTile = this.acceptTile.bind(this)
+    this.declineAna = this.declineAna.bind(this)
+    this.acceptAna = this.acceptAna.bind(this)
 
     this.props.navbarUpdate(this.props.path)
   }
@@ -114,7 +120,109 @@ class Profile extends React.Component {
     }
   }
   
-  async getProfile(){
+  declineEid = (e) => {
+    e.preventDefault()
+    const path = '/forms/adeiaeidikoyskopoy/' + String(this.state.ct1[e.target.id])
+    console.log(path)
+    axiosInstance
+      .post(path,{
+        status: -1,
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById(e.target.id).style.opacity = "0"; 
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+  }
+
+  acceptEid = (e) => {
+    e.preventDefault()
+    const path = '/forms/adeiaeidikoyskopoy/' + String(this.state.ct1[e.target.id])
+    console.log(path)
+    axiosInstance
+      .post(path,{
+        status: 1,
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById(e.target.id).style.opacity = "0"; 
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+  }
+
+  declineAna = (e) => {
+    e.preventDefault()
+    const path = '/forms/anastoliergasias/' + String(this.state.ct2[e.target.id])
+    console.log(path)
+    axiosInstance
+      .post(path,{
+        status: -1,
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById(e.target.id).style.opacity = "0"; 
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+  }
+
+  acceptAna = (e) => {
+    e.preventDefault()
+    const path = '/forms/anastoliergasias/' + String(this.state.ct2[e.target.id])
+    console.log(path)
+    axiosInstance
+      .post(path,{
+        status: 1,
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById(e.target.id).style.opacity = "0"; 
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+  }
+
+  declineTile = (e) => {
+    e.preventDefault()
+    const path = '/forms/tilergasia/' + String(this.state.ct3[e.target.id])
+    console.log(path)
+    axiosInstance
+      .post(path,{
+        status: -1,
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById(e.target.id).style.opacity = "0"; 
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+  }
+
+  acceptTile = (e) => {
+    e.preventDefault()
+    const path = '/forms/tilergasia/' + String(this.state.ct3[e.target.id])
+    console.log(path)
+    axiosInstance
+      .post(path,{
+        status: 1,
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById(e.target.id).style.opacity = "0"; 
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+  }
+
+  async geData(){
     
     const path = '/authentication/profile' 
     
@@ -142,19 +250,19 @@ class Profile extends React.Component {
     })
     
     
-    if(this.props.role==='employer'){
+    if(this.props.role === 'employer'){
       const path2='/forms/myforms';
       axiosInstance
       .get(path2)
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        var new_t1 = []
-        var new_t2 = []
-        var new_t3 = []
-        ct1 = this.state.ct1
-        ct2 = this.state.ct2
-        ct3 = this.state.ct3
+        var new_t1 = [];
+        var new_t2 = [];
+        var new_t3 = [];
+        var nct1 = this.state.ct1;
+        var nct2 = this.state.ct2;
+        var nct3 = this.state.ct3;
         var n;
         var count=0;
         for(n of res.data.AdeiaEidikoySkopoy){
@@ -171,7 +279,6 @@ class Profile extends React.Component {
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td>{stat}</td>
             </tr>])
           }else{
             new_t1 = new_t1.concat([<tr key={n.id+count}>
@@ -180,7 +287,7 @@ class Profile extends React.Component {
               <td>{n.to_time}</td>
               <td><button className="rst" id={count} onClick={this.declineEid}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approveEid}>Έγκριση</button></td>
               </tr>])
-            ct1[count] = n.id
+            nct1[count] = n.id
           }
           count += 1;
         }
@@ -199,17 +306,16 @@ class Profile extends React.Component {
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td>{stat}</td>
             </tr>])
           }else{
             new_t2 = new_t2.concat([<tr key={n.id+count}>
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td><button id={count} className="rst" onClick={this.decline}>Απόρριψη</button><button id={count} className="sbt" onClick={this.approve}>Έγκριση</button></td>
+              <td><button id={count} className="rst" onClick={this.declineAna}>Απόρριψη</button><button id={count} className="sbt" onClick={this.approveAna}>Έγκριση</button></td>
               </tr>])
 
-            ct2[count] = n.id
+            nct2[count] = n.id
           }
           count += 1;
         }
@@ -229,16 +335,15 @@ class Profile extends React.Component {
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td>{stat}</td>
             </tr>])
           }else{
             new_t3 = new_t3.concat([<tr key={n.id+count}>
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td><button className="rst" id={count} onClick={this.decline}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approve}>Έγκριση</button></td>
+              <td><button className="rst" id={count} onClick={this.declineTile}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approveTile}>Έγκριση</button></td>
               </tr>])
-            ct3[count] = n.id
+            nct3[count] = n.id
           }
           count += 1;
         }
@@ -247,9 +352,9 @@ class Profile extends React.Component {
           t1: new_t1,
           t2: new_t2,
           t3: new_t3,
-          ct1: ct1,
-          ct2: ct2,
-          ct3: ct3
+          ct1: nct1,
+          ct2: nct2,
+          ct3: nct3
         })
       })
       .catch((err) =>{
@@ -333,7 +438,7 @@ class Profile extends React.Component {
 
   async componentDidMount() {
       //console.log(this.state.loading)
-      await this.getProfile();
+      await this.geData();
   }
 
   render(){    
@@ -382,7 +487,7 @@ class Profile extends React.Component {
                         <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
                       </div>
                       <div className="content one_half">
-                        <h2>Ιστορικό Δηλώσεων</h2>
+                        <h2>Δηλώσεις Ειδικού Σκοπού</h2>
                         <br/>
                         <br/>
                         <table>
@@ -396,7 +501,45 @@ class Profile extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.t}   
+                            {this.state.t1}   
+                        </tbody>
+                        </table>
+                      </div>
+                      <div className="content one_half first">
+                        <h2>Δηλώσεις Αναστολής Εργασίας</h2>
+                        <br/>
+                        <br/>
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>Όνομα Χρήστη Εργαζόμενου</th>
+                            <th>Τύπος Άδειας</th>
+                            <th>Από</th>
+                            <th>Εώς</th>
+                            <th>Κατάσταση</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.t2}   
+                        </tbody>
+                        </table>
+                      </div>
+                      <div className="content one_half">
+                        <h2>Δηλώσεις Τηλεργασίας</h2>
+                        <br/>
+                        <br/>
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>Όνομα Χρήστη Εργαζόμενου</th>
+                            <th>Τύπος Άδειας</th>
+                            <th>Από</th>
+                            <th>Εώς</th>
+                            <th>Κατάσταση</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.t3}   
                         </tbody>
                         </table>
                       </div>
