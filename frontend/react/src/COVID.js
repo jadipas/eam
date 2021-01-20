@@ -24,7 +24,7 @@ class COVID extends React.Component {
             <main className="hoc container clear"> 
               <div className="content three_quarter first"> 
                 <div className="one_half first" id="emplrscov">
-                    <Link to="/"><h2><u>Εργοδότες</u></h2></Link>
+                    <Link to="/Employers/EmployersCOVID"><h2><u>Εργοδότες</u></h2></Link>
                     <p>Όλες οι πληροφορίες που θα χρειαστούν οι Εργοδότες την εποχή της πανδημίας</p>
                 </div>
                 <div className="one_half" id="emplescov">

@@ -10,6 +10,7 @@ import EmployeeCOVIDInstr from './EmployeeCOVIDInstr'
 import Employees from './Employees'
 import Employers from './Employers'
 import EmployeesCOVID from './EmployeesCOVID'
+import EmployersCOVID from './EmployersCOVID'
 import UnderConstruction from './UnderConstruction';
 import COVID from './COVID';
 import EmployeesEidikouSkopou from './EmployeesEidikouSkopou';
@@ -67,6 +68,7 @@ class App extends React.Component {
       Profile: 'Προφίλ',
       Register: 'Εγγραφη',
       Employers: 'Εργοδότες',
+      EmployersCOVID: 'COVID',
     }
 
     for (n of n_arr) {
@@ -156,6 +158,12 @@ class App extends React.Component {
 
                       <Route exact path="/Employees/EmployeesCOVID" render={(props) => (
                                                                 <EmployeesCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID'}/>
+                                                                )}
+                                                                
+                                    />
+                      
+                      <Route exact path="/Employers/EmployersCOVID" render={(props) => (
+                                                                <EmployersCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID'}/>
                                                                 )}
                                                                 
                                     />
