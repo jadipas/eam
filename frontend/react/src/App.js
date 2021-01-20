@@ -79,7 +79,8 @@ class App extends React.Component {
       EmployerBreak: 'Δηλωση Αναστολής Εργασίας Εργαζομενων',
       EmployersCOVIDAdeies: 'Άδειες για Εργαζόμενους',
       EmployeeRemote: 'Τηλεργασία',
-      EmployeeBreak: 'Αναστολή Εργασίας'
+      EmployeeBreak: 'Αναστολή Εργασίας',
+      ProfileForms: 'Οι Φoρμες Μου',
 
     }
 
@@ -175,7 +176,7 @@ class App extends React.Component {
                                     />
                       
                       <Route exact path="/Employers/EmployersCOVID" render={(props) => (
-                                                                <EmployersCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID'}/>
+                                                                <EmployersCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employers/EmployersCOVID'}/>
                                                                 )}
                                                                 
                                     />
@@ -213,13 +214,13 @@ class App extends React.Component {
                                             />
 
                       <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/" render={(props) => (
-                                                                                              <EmployersCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>
+                                                                                              <EmployersCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote'}/>
                                                                                               )}
                                                                                               
                                                                   />
 
                       <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote" render={(props) => (
-                                                                                              <EmployerRemote  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerRemote'}/>
+                                                                                              <EmployerRemote  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote'}/>
                                                                                               )}
                                                                                               
                                                                   />
@@ -228,12 +229,12 @@ class App extends React.Component {
                                                                         )}      
                                                                     />
                       <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/" render={(props) => (
-                                                                                              <EmployersCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerBreak'}/>
+                                                                                              <EmployersCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employers/EmployersCOVID/EmployersCOVIDAdeies/'}/>
                                                                                               )}
                                                                                               
                                                                   />    
                         <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerBreak" render={(props) => (
-                                                                                              <EmployerBreak  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerBreak'}/>
+                                                                                              <EmployerBreak  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerBreak'}/>
                                                                                               )}
                                                                                               
                                                                   />
@@ -252,7 +253,7 @@ class App extends React.Component {
                                                                         
                                             />)}
                       <Route exact path="/Profile/ProfileForms" render={(props) => (
-                                                                        <ProfileForms  {...props} role = {this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
+                                                                        <ProfileForms  {...props} role = {this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Profile/ProfileForms'}/>
                                                                         )}
                                                                         
                                             />

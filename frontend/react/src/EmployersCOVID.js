@@ -23,8 +23,8 @@ class EmployersCOVID extends React.Component {
             <div className="wrapper row2">
                 <section id="references" className="hoc container clear"> 
                     <div className="sectiontitle">
-                    <h6 className="heading">Εργαζόμενοι</h6>
-                    <p>Όλες οι απαραίτητες πληροφορίες για τους εργαζομένους σχετικά με τον COVID-19</p>
+                    <h6 className="heading">Εργοδότες</h6>
+                    <p>Όλες οι απαραίτητες πληροφορίες για τους εργοδότες σχετικά με τον COVID-19</p>
                     </div>
                     <ul className="nospace group ref-img">
                         <li className="one_third"><Link className="" to="/Employers/EmployersCOVID/EmployersCOVIDAdeies/"><p className='in_div' >Άδειες Εργαζομένων</p></Link></li>

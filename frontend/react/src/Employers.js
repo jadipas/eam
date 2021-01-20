@@ -24,8 +24,8 @@ class Employers extends React.Component {
             <div className="wrapper row3">
                 <section className="hoc container clear"> 
                     <div className="sectiontitle">
-                    <h6 className="heading">Εργαζόμενοι</h6>
-                    <p>Όλες οι απαραίτητες πληροφορίες για τους εργαζομένους</p>
+                    <h6 className="heading">Εργοδότες</h6>
+                    <p>Όλες οι απαραίτητες πληροφορίες για τους εργοδότες</p>
                     </div>
                     <ul className="nospace group ref-img">
                       <li className="one_third first"><Link className="" to="/UnderConstruction"><p className='in_div'>Δηλώσεις</p></Link></li>
