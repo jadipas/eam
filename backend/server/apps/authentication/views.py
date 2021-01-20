@@ -58,7 +58,9 @@ class ProfileView(APIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
     def get(self, request):
-        return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
+        user = User.objects.get(username=request.user)
+        user_profile = UserSerializer(user).data
+        return Response(user_profile, status=status.HTTP_200_OK)
 
 
 class UpdateProfileView(APIView):
