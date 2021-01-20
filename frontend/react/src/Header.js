@@ -44,10 +44,10 @@ class Header extends React.Component {
                                     <Link to="/UnderConstruction">Νομοθεσία</Link>
                                 </li>
                                 <li>
-                                    <Link to="/">COVID-19</Link>
+                                    <Link to="/Employees/EmployeesCOVID">COVID-19</Link>
                                 </li>
                                 <li>
-                                    <Link to="/">Δηλώσεις</Link>
+                                    <Link to="/UnderConstruction">Δηλώσεις</Link>
                                 </li>
                                 </ul>
                             </li>
@@ -57,11 +57,11 @@ class Header extends React.Component {
                                 <li><Link to="/UnderConstruction">Επιδόματα</Link></li>
                                 </ul>
                             </li>
-                            <li><Link className="drop" to="/UnderConstruction">COVID-19</Link>
+                            <li><Link className="drop" to="/COVID">COVID-19</Link>
                                 <ul>
-                                <li><Link to="/UnderConstruction">placeholder</Link></li>
-                                <li><Link to="/UnderConstruction">placeholder</Link></li>
-                                <li><Link to="/UnderConstruction">placeholder</Link></li>
+                                <li><Link to="/Employers/EmployersCOVID">Εργοδότες</Link></li>
+                                <li><Link to="/Employees/EmployeesCOVID">Εργαζόμενοι</Link></li>
+                                <li><Link to="/Employees/EmployeesCOVID/Instructions">Γενικές Οδηγίες</Link></li>
                                 </ul>
                             </li>
                             <li><Link className="" to="/Contact">Επικοινωνια</Link></li>
