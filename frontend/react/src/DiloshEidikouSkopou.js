@@ -166,8 +166,8 @@ class DiloshEidikouSkopou extends React.Component {
 
       axiosInstance
         .post(`/forms/adeiaeidikoyskopoy`, {
-          from: this.state.selectedDate.from,
-          to: this.state.selectedDate.to,
+          from_time: this.state.selectedDate.from,
+          to_time: this.state.selectedDate.to,
           children: this.state.children,
         })
         .then((res) => {
