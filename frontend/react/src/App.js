@@ -223,7 +223,7 @@ class App extends React.Component {
                                                                                               
                                                                   />
                         <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote" render={(props) => (
-                                                                        <EmployeeRemote  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote'}/>
+                                                                        <EmployeeRemote  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote'}/>
                                                                         )}      
                                                                     />
                       <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/" render={(props) => (
@@ -237,7 +237,7 @@ class App extends React.Component {
                                                                                               
                                                                   />
                         <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeBreak" render={(props) => (
-                                                                        <EmployeeBreak  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeBreak'}/>
+                                                                        <EmployeeBreak  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeBreak'}/>
                                                                         )}      
                                                                     />
                       <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou/:type" render={(props) => (
