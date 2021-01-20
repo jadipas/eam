@@ -259,7 +259,8 @@ class AnastoliErgasiasView(APIView):
                 
             form = AnastoliErgasias.objects.create(from_time=payload.get('from_time'), to_time=payload.get('to_time'), employee=employee, company=company, status=approved_status)
             return Response(status=status.HTTP_201_CREATED)
-        
+        except User.DoesNotExist:
+            return Response({"employee_username": ["User with this username does not exist."]}, status=status.HTTP_400_BAD_REQUEST)
         except ValidationError:
             logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -330,7 +331,7 @@ class AnastoliErgasiasByIdView(APIView):
                     return Response(status=status.HTTP_401_UNAUTHORIZED)
             else:
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
-
+        
         except ValidationError:
             logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -365,7 +366,8 @@ class TilergasiaView(APIView):
             serializer.is_valid(raise_exception=True)
             form = Tilergasia.objects.create(from_time=payload.get('from_time'), to_time=payload.get('to_time'), employee=employee, company=company, status=approved_status)
             return Response(status=status.HTTP_201_CREATED)
-        
+        except User.DoesNotExist:
+            return Response({"employee_username": ["User with this username does not exist."]}, status=status.HTTP_400_BAD_REQUEST)
         except ValidationError:
             logging.warning("Couldn't register new user. Bad user info: {}".format(traceback.format_exc()))
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
