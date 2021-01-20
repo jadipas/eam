@@ -42,17 +42,30 @@ if DJANGO_ENV == 'development' or DJANGO_ENV == 'production':
 else:
     SECRET_KEY = 'localsecret'
     DEBUG = True
+    DOCKER = int(os.environ.get("DOCKER", default=0))
     ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost']
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'test_db',
-            'USER': 'qfsjgwmf',
-            'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
+    if (DOCKER):
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'qfsjgwmf',
+                'USER': 'qfsjgwmf',
+                'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
+                'HOST': 'db',
+                'PORT': '5432',
+            }
         }
-    }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'qfsjgwmf',
+                'USER': 'qfsjgwmf',
+                'PASSWORD': 'fkSlNUsGtKhCc-ZGkY8_oWXZJelaDdgA',
+                'HOST': '127.0.0.1',
+                'PORT': '5432',
+            }
+        }
    
 #################################################################
     ##  (CORS) Cross-Origin Resource Sharing Settings ##

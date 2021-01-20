@@ -11,7 +11,6 @@ example: {
     "username": "ni87",
     "phone": "1127118",
     "role": "employer",(employer/employee)
-    "has_child_under_12": "True",(boolean)
     "company": "UoA"
 }
 
