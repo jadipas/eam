@@ -158,8 +158,6 @@ class Profile extends React.Component {
                         <form>
                             <h1>Αλλαγή Προσωπικών στοιχείων</h1>
                             <fieldset>
-                                <p>Όνομα Χρήστη</p>
-                                <input className="inpt" type="text" placeholder="Όνομα Χρήστη" id="username" name="username" value={this.state.username} onChange={this.onChange}/>
                                 <p>Όνομα</p>
                                 <input className="inpt" type="text" placeholder="Όνομα" id="first_name" name="first_name" value={this.state.first_name} onChange={this.onChange}/>
                                 <p>Επίθετο</p>

@@ -28,10 +28,10 @@ class Employees extends React.Component {
                     <p>Όλες οι απαραίτητες πληροφορίες για τους εργαζομένους</p>
                     </div>
                     <ul className="nospace group ref-img">
-                      <li className="one_quarter first"><Link className="" to="/"><p className='in_div'>Άδειες</p></Link></li>
-                      <li className="one_quarter"><Link className="" to="/"><p className='in_div' >Νομοθεσία</p></Link></li>
+                      <li className="one_quarter first"><Link className="" to="/UnderConstruction"><p className='in_div'>Άδειες</p></Link></li>
+                      <li className="one_quarter"><Link className="" to="/UnderConstruction"><p className='in_div' >Νομοθεσία</p></Link></li>
                       <li className="one_quarter"><Link className="" to="/Employees/EmployeesCOVID"><p className='in_div'>COVID-19</p></Link></li>
-                      <li className="one_quarter"><Link className="" to="/"><p className='in_div' >Δηλώσεις</p></Link></li>
+                      <li className="one_quarter"><Link className="" to="/UnderConstruction"><p className='in_div' >Δηλώσεις</p></Link></li>
                     </ul>
                 </section>
             </div>
