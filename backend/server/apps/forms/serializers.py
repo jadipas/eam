@@ -6,39 +6,45 @@ class AdeiaEidikoySkopoyFormSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdeiaEidikoySkopoy
         fields = ['from_time', 'to_time', 'children']
-        ordering = ['-from_time', '-to_time']    
 
 class AdeiaEidikoySkopoySerializer(serializers.ModelSerializer):
-    #status = serializers.ChoiceField(choices=AdeiaEidikoySkopoy.STATUS_CHOICES)
+    employee_username = serializers.ReadOnlyField(source='employee.username')
     class Meta:
         model = AdeiaEidikoySkopoy
-        fields = '__all__'
-        ordering = ['-from_time', '-to_time']    
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'children', 'employee_username', 'company']
 
 class AdeiaErgasiasFormSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AdeiaErgasias
         fields = ['from_time', 'to_time']
-        ordering = ['-from_time', '-to_time']    
 
 class AdeiaErgasiasSerializer(serializers.ModelSerializer):
-    
+    employee_username = serializers.ReadOnlyField(source='employee.username')
     class Meta:
         model = AdeiaErgasias
-        fields = '__all__'
-        ordering = ['-from_time', '-to_time']    
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company']
 
 class AnastoliErgasiasFormSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AnastoliErgasias
         fields = ['from_time', 'to_time']
-        ordering = ['-from_time', '-to_time']    
 
 class AnastoliErgasiasSerializer(serializers.ModelSerializer):
+    employee_username = serializers.ReadOnlyField(source='employee.username')
+    class Meta:
+        model = AnastoliErgasias
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company']
+
+class TilergasiaFormSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AnastoliErgasias
-        fields = '__all__'
-        ordering = ['-from_time', '-to_time']    
+        fields = ['from_time', 'to_time']
+
+class TilergasiaSerializer(serializers.ModelSerializer):
+    employee_username = serializers.ReadOnlyField(source='employee.username')
+    class Meta:
+        model = AnastoliErgasias
+        fields = ['id', 'from_time', 'to_time', 'created_at', 'employee_username', 'company']

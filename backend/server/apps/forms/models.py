@@ -11,20 +11,20 @@ class Form(models.Model):
     employee = models.ForeignKey(User, on_delete=models.RESTRICT)
     company = models.ForeignKey(Company, on_delete=models.RESTRICT)
     created_at = models.DateTimeField(default=timezone.now)
-    
+    STATUS_CHOICES = (
+        (-1, 'Not Approved'),
+        (0, 'Pending'),
+        (1, 'Approved')
+    )
+    status = models.SmallIntegerField(choices = STATUS_CHOICES, default=0)
     class Meta:
         abstract=True
         unique_together = [['employee', 'from_time'], ['employee', 'to_time']]
 
 
 class AdeiaEidikoySkopoy(Form):
-    STATUS_CHOICES = (
-        (-1, 'Not Approved'),
-        (0, 'Pending'),
-        (1, 'Approved')
-    )
     children = ArrayField(models.JSONField())
-    status = models.SmallIntegerField(choices = STATUS_CHOICES, default=0)
+    
 
     class Meta:
         db_table = 'adeia_eidikoy_skopoy'
@@ -38,3 +38,8 @@ class AnastoliErgasias(Form):
     
     class Meta:
         db_table = 'anastoli_ergasias'
+
+class Tilergasia(Form):
+    
+    class Meta:
+        db_table = 'tilergasia'

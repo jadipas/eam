@@ -8,5 +8,7 @@ urlpatterns = [
     path('adeiaergasias', views.AdeiaErgasiasView.as_view()),
     path('adeiaergasias/<int:form_id>', views.AdeiaErgasiasByIdView.as_view()),
     path('anastoliergasias', views.AnastoliErgasiasView.as_view()),
-    path('anastoliergasias/<int:form_id>', views.AnastoliErgasiasByIdView.as_view())
+    path('anastoliergasias/<int:form_id>', views.AnastoliErgasiasByIdView.as_view()),
+    path('tilergasia', views.TilergasiaView.as_view()),
+    path('tilergasia/<int:form_id>', views.TilergasiaByIdView.as_view())
 ]
