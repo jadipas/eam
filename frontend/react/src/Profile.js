@@ -198,8 +198,17 @@ class Profile extends React.Component {
           this.setState({
             t: new_t,
           })
-        });
-      });
+        })
+        .catch((err) => {
+          console.log('forms')
+          console.log(err)
+          console.log(err.message)
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+        console.log(err.message)
+      })
       
   }
 
