@@ -8,6 +8,7 @@ import Homepage from './Homepage'
 import Contact from './Contact'
 import EmployeeCOVIDInstr from './EmployeeCOVIDInstr'
 import Employees from './Employees'
+import Employers from './Employers'
 import EmployeesCOVID from './EmployeesCOVID'
 import UnderConstruction from './UnderConstruction';
 import COVID from './COVID';
@@ -20,6 +21,7 @@ import EditRequests from './EditRequests';
 import Profile from './Profile';
 import Logout from './Logout';
 import DiloshEidikouSkopou from './DiloshEidikouSkopou';
+import NotFound from './NotFound';
 
 class App extends React.Component {
   constructor(props) {
@@ -64,6 +66,7 @@ class App extends React.Component {
       EditRequests: 'Επεξεργασια Δηλωσεων',
       Profile: 'Προφίλ',
       Register: 'Εγγραφη',
+      Employers: 'Εργοδότες',
     }
 
     for (n of n_arr) {
@@ -145,6 +148,12 @@ class App extends React.Component {
                                                                 
                                     />
 
+                      <Route exact path="/Employers" render={(props) => (
+                                                                  <Employers  {...props} navbarUpdate={this.setPath} path={'Home/Employers'}/>
+                                                                  )}
+                                                                                      
+                                                          />
+
                       <Route exact path="/Employees/EmployeesCOVID" render={(props) => (
                                                                 <EmployeesCOVID  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID'}/>
                                                                 )}
@@ -200,11 +209,11 @@ class App extends React.Component {
                                                                 )}
                                                                 
                                     />
-                      <Route path="">
-                        <div>
-                          <h1>404 PAGE NOT FOUND</h1>
-                        </div>
-                      </Route>
+                      <Route exact path="" render={(props) => (
+                                                    <NotFound  {...props} navbarUpdate={this.setPath} path={'Home'}/>
+                                                    )}
+                                                    
+                        />
                     </Switch>
                     <ScrollUpButton />
                 <Footer />

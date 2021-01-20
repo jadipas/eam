@@ -131,38 +131,73 @@ class Profile extends React.Component {
           role: res.data.role,
           username: res.data.username,
         })
+        
+        const path2='/forms/myforms';
+        axiosInstance
+        .get(path2)
+        .then((res) => {
+          console.log(res);
+          //console.log(res.data);
+          var new_t = []
+          var n;
+  
+          for(n of res.data.AdeiaEidikoySkopoy){
+            var stat = ''
+            if(n.status === -1){
+              stat='Απορρίφθηκε'
+            }else if(n.status === 0){
+              stat='Σε Αναμονή'
+            }else{
+              stat='Εγκρίθηκε'
+            }
+            new_t = new_t.concat([<tr>
+              <td>Ειδικού Σκοπού</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td>{}</td>
+            </tr>])
+          }
+  
+          for(n of res.data.AdeiaEidikoySkopoy){
+            var stat = ''
+            if(n.status === -1){
+              stat='Απορρίφθηκε'
+            }else if(n.status === 0){
+              stat='Σε Αναμονή'
+            }else{
+              stat='Εγκρίθηκε'
+            }
+            new_t = new_t.concat([<tr>
+              <td>Ειδικού Σκοπού</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td>{}</td>
+            </tr>])
+          }
+  
+          for(n of res.data.AdeiaEidikoySkopoy){
+            var stat = ''
+            if(n.status === -1){
+              stat='Απορρίφθηκε'
+            }else if(n.status === 0){
+              stat='Σε Αναμονή'
+            }else{
+              stat='Εγκρίθηκε'
+            }
+            new_t = new_t.concat([<tr>
+              <td>Ειδικού Σκοπού</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td>{}</td>
+            </tr>])
+          }
+  
+          this.setState({
+            t: new_t,
+          })
+        });
       });
       
-      const path2='/forms/myforms';
-      axiosInstance
-			.get(path2)
-			.then((res) => {
-				console.log(res);
-        //console.log(res.data);
-        var new_t = []
-        var n;
-
-        for(n of res.data.AdeiaEidikoySkopoy){
-          var stat = ''
-          if(n.status === -1){
-            stat='Απορρίφθηκε'
-          }else if(n.status === 0){
-            stat='Σε Αναμονή'
-          }else{
-            stat='Εγκρίθηκε'
-          }
-          new_t = new_t.concat([<tr>
-            <td>Ειδικού Σκοπού</td>
-            <td>{n.from_time}</td>
-            <td>{n.to_time}</td>
-            <td>{}</td>
-          </tr>])
-        }
-
-        this.setState({
-          t: new_t,
-        })
-			});
   }
 
   async componentDidMount() {
