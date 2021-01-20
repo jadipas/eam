@@ -49,7 +49,7 @@ class EmployeeRemote extends React.Component {
 
   sendReq = (e) => {
     e.preventDefault()
-    if(this.props.role!=='employer'){
+    if(this.props.role!=='employee'){
         this.setState({
             err: <p>Παρακαλώ συνδεθείτε ως Εργαζόμενος. Αν είστε εγγεγραμμένος ως Εργοδότης <Link to="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote">πάτε στην αντίστοιχη σελίδα</Link> </p>
           })
