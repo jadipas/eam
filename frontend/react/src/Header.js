@@ -22,13 +22,16 @@ class Header extends React.Component {
                                     <Link to="/UnderConstruction">Δηλώσεις</Link>
                                 </li>
                                 <li>
+                                    <Link to="/UnderConstruction">Προγράμματα</Link>
+                                </li>
+                                <li>
                                     <Link to="/UnderConstruction">Νομοθεσία</Link>
                                 </li>
                                 <li>
                                     <Link to="/UnderConstruction">Φορολογία</Link>
                                 </li>
                                 <li>
-                                    <Link to="/UnderConstruction">Προγράμματα</Link>
+                                    <Link to="/Employers/EmployersCOVID">COVID-19</Link>
                                 </li>
                                 </ul>
                             </li>

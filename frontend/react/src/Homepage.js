@@ -62,7 +62,7 @@ class Homepage extends React.Component {
                         </article></Link>
                         </li>
                         <li className="one_quarter">
-                        <Link to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou"><article><h6 className="heading">Άδεια Ειδικού σκοπού</h6>
+                        <Link to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/"><article><h6 className="heading">Άδεια Ειδικού σκοπού</h6>
                         </article></Link>
                         </li>
                         <li className="one_quarter">

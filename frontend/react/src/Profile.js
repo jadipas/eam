@@ -140,7 +140,7 @@ class Profile extends React.Component {
           //console.log(res.data);
           var new_t = []
           var n;
-  
+          var count=0;
           for(n of res.data.AdeiaEidikoySkopoy){
             var stat = ''
             if(n.status === -1){
@@ -150,12 +150,13 @@ class Profile extends React.Component {
             }else{
               stat='Εγκρίθηκε'
             }
-            new_t = new_t.concat([<tr>
+            new_t = new_t.concat([<tr key={n.id}>
               <td>Ειδικού Σκοπού</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
               <td>{}</td>
             </tr>])
+            count+=1;
           }
   
           for(n of res.data.AdeiaEidikoySkopoy){
@@ -167,12 +168,13 @@ class Profile extends React.Component {
             }else{
               stat='Εγκρίθηκε'
             }
-            new_t = new_t.concat([<tr>
+            new_t = new_t.concat([<tr key={n.id+count}>
               <td>Ειδικού Σκοπού</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
               <td>{}</td>
             </tr>])
+            count+=1;
           }
   
           for(n of res.data.AdeiaEidikoySkopoy){
@@ -184,12 +186,13 @@ class Profile extends React.Component {
             }else{
               stat='Εγκρίθηκε'
             }
-            new_t = new_t.concat([<tr>
+            new_t = new_t.concat([<tr key={n.id+count}>
               <td>Ειδικού Σκοπού</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
               <td>{}</td>
             </tr>])
+            count+=1;
           }
   
           this.setState({
