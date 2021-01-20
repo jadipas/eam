@@ -6,7 +6,7 @@ import MyDatePicker from './MyDatePicker';
 import {Link} from "react-router-dom";
 import axiosInstance from './axios';
 
-class EmployeeRemote extends React.Component {
+class EmployeeBreak extends React.Component {
   constructor(props) {
     super(props)
 
@@ -51,7 +51,7 @@ class EmployeeRemote extends React.Component {
     e.preventDefault()
     if(this.props.role!=='employee'){
         this.setState({
-            err: <p>Παρακαλώ συνδεθείτε ως Εργαζόμενος. Αν είστε εγγεγραμμένος ως Εργοδότης <Link to="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote">πάτε στην αντίστοιχη σελίδα</Link> </p>
+            err: <p>Παρακαλώ συνδεθείτε ως Εργαζόμενος. Αν είστε εγγεγραμμένος ως Εργοδότης <Link to="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerBreak">πάτε στην αντίστοιχη σελίδα</Link> </p>
           })
         document.getElementById("errmsg").style.opacity = "1"; 
         return;
@@ -70,7 +70,7 @@ class EmployeeRemote extends React.Component {
       document.getElementById("errmsg").style.opacity = "0"; 
 
       axiosInstance
-        .post(`/forms/tilergasia`, {
+        .post(`/forms/anastoliergasias`, {
             from_time: this.state.selectedDate.from,
             to_time: this.state.selectedDate.to,
         })
@@ -98,7 +98,7 @@ class EmployeeRemote extends React.Component {
         <div>
         <div className="wrapper row3">
             <main className="hoc container clear"> 
-                <h1><u>Δήλωση Εξ Αποστέσεως Εργασίας</u></h1>
+                <h1><u>Δήλωση Αναστολής εργασίας</u></h1>
                 <form>
                     <div className="content one_half first">
                         <MyDatePicker pChange={this.changeDate}/>
@@ -118,6 +118,6 @@ class EmployeeRemote extends React.Component {
   }
 }
 
-export default EmployeeRemote;
+export default EmployeeBreak;
 
 

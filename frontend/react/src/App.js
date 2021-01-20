@@ -24,8 +24,10 @@ import Logout from './Logout';
 import DiloshEidikouSkopou from './DiloshEidikouSkopou';
 import NotFound from './NotFound';
 import EmployerRemote from './EmployerRemote';
+import EmployerBreak from './EmployerBreak';
 import EmployersCOVIDAdeies from './EmployersCOVIDAdeies';
 import EmployeeRemote from './EmployeeRemote';
+import EmployeeBreak from './EmployeeBreak';
 
 class App extends React.Component {
   constructor(props) {
@@ -73,8 +75,11 @@ class App extends React.Component {
       Employers: 'Εργοδότες',
       EmployersCOVID: 'COVID',
       EmployerRemote: 'Δηλωση Τηλεργασιας Εργαζομενων',
+      EmployerBreak: 'Δηλωση Αναστολής Εργασίας Εργαζομενων',
       EmployersCOVIDAdeies: 'Άδειες για Εργαζόμενους',
-      EmployeeRemote: 'Τηλεργασία'
+      EmployeeRemote: 'Τηλεργασία',
+      EmployeeBreak: 'Αναστολή Εργασίας'
+
     }
 
     for (n of n_arr) {
@@ -217,11 +222,24 @@ class App extends React.Component {
                                                                                               )}
                                                                                               
                                                                   />
-
-                      <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote" render={(props) => (
-                                                                                              <EmployeeRemote  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
-                                                                                              )}                                                                        
+                        <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote" render={(props) => (
+                                                                        <EmployeeRemote  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote'}/>
+                                                                        )}      
+                                                                    />
+                      <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/" render={(props) => (
+                                                                                              <EmployersCOVIDAdeies  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerBreak'}/>
+                                                                                              )}
+                                                                                              
+                                                                  />    
+                        <Route exact path="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerBreak" render={(props) => (
+                                                                                              <EmployerBreak  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployerBreak'}/>
+                                                                                              )}
+                                                                                              
                                                                   />
+                        <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeBreak" render={(props) => (
+                                                                        <EmployeeBreak  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeBreak'}/>
+                                                                        )}      
+                                                                    />
                       <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou/:type" render={(props) => (
                                                                                               <DiloshEidikouSkopou  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
                                                                                               )}                                                                        
