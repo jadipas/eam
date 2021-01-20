@@ -12,5 +12,8 @@ export default function SignOut() {
         axiosInstance.defaults.headers['Authorization'] = null;
         window.location.href = '/';
                         
+        })
+        .catch((err)=>{
+            console.log(err.message)
         });
 }
