@@ -26,25 +26,25 @@ class Homepage extends React.Component {
                     <ul className="nospace group">
                         <li className="one_quarter first">
                         <article><h6 className="heading">Εργοδότες</h6>     
-                            <p>Per conubia nostra per mauris aliquet massa nulla facilisi porta ligula non elementum</p>
+                            <p>Όλες οι πληροφορίες που αφορούν τους Εργοδότες.</p>
                             <footer><Link className="btn" to="/Employers">Περισσoτερα</Link></footer>
                         </article>
                         </li>
                         <li className="one_quarter">
                         <article><h6 className="heading">Εργαζόμενοι</h6>
-                            <p>Ultricies justo urna egestas metus ut ornare leo augue pharetra risus morbi tincidunt massa</p>
+                            <p>Όλες οι πληροφορίες που αφορούν τους Εργαζόμενους.</p>
                             <footer><Link className="btn" to="/Employees">Περισσoτερα</Link></footer>
                         </article>
                         </li>
                         <li className="one_quarter">
                         <article><h6 className="heading">Άνεργοι</h6>
-                            <p>Ac vestibulum rutrum orci augue iaculis nibh quis porta nunc nisi suscipit leo nam ac lacus</p>
+                            <p>Όλες οι πληροφορίες που αφορούν τους Ανέργους.</p>
                             <footer><Link className="btn" to="/Jobless">Περισσoτερα</Link></footer>
                         </article>
                         </li>
                         <li className="one_quarter">
                         <article><h6 className="heading">COVID-19</h6>
-                            <p>Cras tempor ultricies urna aliquam massa sapien posuere in iaculis adipiscing vulputate</p>
+                            <p>Όλες οι τελευταίες πληροφορίες για την αντιμετώπιση της πανδημίας.</p>
                             <footer><Link className="btn" to="/COVID">Περισσoτερα</Link></footer>
                         </article>
                         </li>

@@ -285,7 +285,7 @@ class Profile extends React.Component {
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td><button className="rst" id={count} onClick={this.declineEid}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approveEid}>Έγκριση</button></td>
+              <td><button className="rst" style={{padding: '2px 5px', margin: '1px'}} id={count} onClick={this.declineEid}>Απόρριψη</button><button className="sbt" style={{padding: '2px 5px', margin: '1px'}} id={count} onClick={this.approveEid}>Έγκριση</button></td>
               </tr>])
             nct1[count] = n.id
           }
@@ -312,7 +312,7 @@ class Profile extends React.Component {
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td><button id={count} className="rst" onClick={this.declineAna}>Απόρριψη</button><button id={count} className="sbt" onClick={this.approveAna}>Έγκριση</button></td>
+              <td><button id={count} className="rst" style={{padding: '2px 5px', margin: '1px'}} onClick={this.declineAna}>Απόρριψη</button><button id={count} className="sbt" style={{padding: '2px 5px', margin: '1px'}} onClick={this.approveAna}>Έγκριση</button></td>
               </tr>])
 
             nct2[count] = n.id
@@ -341,7 +341,7 @@ class Profile extends React.Component {
               <td>{n.employee_username}</td>
               <td>{n.from_time}</td>
               <td>{n.to_time}</td>
-              <td><button className="rst" id={count} onClick={this.declineTile}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approveTile}>Έγκριση</button></td>
+              <td><button className="rst" style={{padding: '2px 5px', margin: '1px'}} id={count} onClick={this.declineTile}>Απόρριψη</button><button className="sbt" style={{padding: '2px 5px', margin: '1px'}} id={count} onClick={this.approveTile}>Έγκριση</button></td>
               </tr>])
             nct3[count] = n.id
           }
@@ -398,7 +398,7 @@ class Profile extends React.Component {
             stat='Εγκρίθηκε'
           }
           new_t = new_t.concat([<tr key={n.id+count}>
-            <td>Ειδικού Σκοπού</td>
+            <td>Αναστολή Εργασίας</td>
             <td>{n.from_time}</td>
             <td>{n.to_time}</td>
             <td>{stat}</td>
@@ -416,7 +416,7 @@ class Profile extends React.Component {
             stat='Εγκρίθηκε'
           }
           new_t = new_t.concat([<tr key={n.id+count}>
-            <td>Ειδικού Σκοπού</td>
+            <td>Τηλεργασία</td>
             <td>{n.from_time}</td>
             <td>{n.to_time}</td>
             <td>{stat}</td>
@@ -487,14 +487,13 @@ class Profile extends React.Component {
                         <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
                       </div>
                       <div className="content one_half">
-                        <h2>Δηλώσεις Ειδικού Σκοπού</h2>
                         <br/>
+                        <h2>Δηλώσεις Ειδικού Σκοπού</h2>
                         <br/>
                         <table>
                         <thead>
                             <tr>
                             <th>Όνομα Χρήστη Εργαζόμενου</th>
-                            <th>Τύπος Άδειας</th>
                             <th>Από</th>
                             <th>Εώς</th>
                             <th>Κατάσταση</th>
@@ -506,14 +505,13 @@ class Profile extends React.Component {
                         </table>
                       </div>
                       <div className="content one_half first">
-                        <h2>Δηλώσεις Αναστολής Εργασίας</h2>
                         <br/>
+                        <h2>Δηλώσεις Αναστολής Εργασίας</h2>
                         <br/>
                         <table>
                         <thead>
                             <tr>
                             <th>Όνομα Χρήστη Εργαζόμενου</th>
-                            <th>Τύπος Άδειας</th>
                             <th>Από</th>
                             <th>Εώς</th>
                             <th>Κατάσταση</th>
@@ -525,14 +523,13 @@ class Profile extends React.Component {
                         </table>
                       </div>
                       <div className="content one_half">
-                        <h2>Δηλώσεις Τηλεργασίας</h2>
                         <br/>
+                        <h2>Δηλώσεις Τηλεργασίας</h2>
                         <br/>
                         <table>
                         <thead>
                             <tr>
                             <th>Όνομα Χρήστη Εργαζόμενου</th>
-                            <th>Τύπος Άδειας</th>
                             <th>Από</th>
                             <th>Εώς</th>
                             <th>Κατάσταση</th>
