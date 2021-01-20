@@ -18,6 +18,9 @@ class Profile extends React.Component {
       old_password: "",
       new_password: "",
       new_rpassword: "",
+      ct1: {},
+      ct2: {},
+      ct3: {},
       err: "Everything is fine right now. No errors to report ",
     }
     this.onChange = this.onChange.bind(this)
@@ -110,106 +113,222 @@ class Profile extends React.Component {
         });
     }
   }
-
+  
   async getProfile(){
-
+    
     const path = '/authentication/profile' 
-
+    
     axiosInstance
-			.get(path)
-			.then((res) => {
-				//console.log(res);
-        //console.log(res.data);
+    .get(path)
+    .then((res) => {
+      //console.log(res);
+      //console.log(res.data);
+      this.setState({
+        afm: res.data.afm,
+        amka: res.data.amka,
+        company: res.data.company,
+        email: res.data.email,
+        first_name: res.data.first_name,
+        last_name: res.data.last_name,
+        phone: res.data.phone,
+        role: res.data.role,
+        username: res.data.username,
+      })
+      
+    })
+    .catch((err) => {
+      console.log(err)
+      console.log(err.message)
+    })
+    
+    
+    if(this.props.role==='employer'){
+      const path2='/forms/myforms';
+      axiosInstance
+      .get(path2)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        var new_t1 = []
+        var new_t2 = []
+        var new_t3 = []
+        ct1 = this.state.ct1
+        ct2 = this.state.ct2
+        ct3 = this.state.ct3
+        var n;
+        var count=0;
+        for(n of res.data.AdeiaEidikoySkopoy){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
+          }
+          if(n.status === 1 || n.status === -1){
+            new_t1 = new_t1.concat([<tr key={n.id}>
+              <td>{n.employee_username}</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td>{stat}</td>
+            </tr>])
+          }else{
+            new_t1 = new_t1.concat([<tr key={n.id+count}>
+              <td>{n.employee_username}</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td><button className="rst" id={count} onClick={this.declineEid}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approveEid}>Έγκριση</button></td>
+              </tr>])
+            ct1[count] = n.id
+          }
+          count += 1;
+        }
+
+        for(n of res.data.AnastoliErgasias){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
+          }
+          if(n.status === 1 || n.status === -1){
+            new_t2 = new_t2.concat([<tr key={n.id+count}>
+              <td>{n.employee_username}</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td>{stat}</td>
+            </tr>])
+          }else{
+            new_t2 = new_t2.concat([<tr key={n.id+count}>
+              <td>{n.employee_username}</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td><button id={count} className="rst" onClick={this.decline}>Απόρριψη</button><button id={count} className="sbt" onClick={this.approve}>Έγκριση</button></td>
+              </tr>])
+
+            ct2[count] = n.id
+          }
+          count += 1;
+        }
+
+        for(n of res.data.Tilergasia){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
+          }
+
+          if(n.status === 1 || n.status === -1){
+            new_t3 = new_t3.concat([<tr key={n.id+count}>
+              <td>{n.employee_username}</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td>{stat}</td>
+            </tr>])
+          }else{
+            new_t3 = new_t3.concat([<tr key={n.id+count}>
+              <td>{n.employee_username}</td>
+              <td>{n.from_time}</td>
+              <td>{n.to_time}</td>
+              <td><button className="rst" id={count} onClick={this.decline}>Απόρριψη</button><button className="sbt" id={count} onClick={this.approve}>Έγκριση</button></td>
+              </tr>])
+            ct3[count] = n.id
+          }
+          count += 1;
+        }
+
         this.setState({
-          afm: res.data.afm,
-          amka: res.data.amka,
-          company: res.data.company,
-          email: res.data.email,
-          first_name: res.data.first_name,
-          last_name: res.data.last_name,
-          phone: res.data.phone,
-          role: res.data.role,
-          username: res.data.username,
+          t1: new_t1,
+          t2: new_t2,
+          t3: new_t3,
+          ct1: ct1,
+          ct2: ct2,
+          ct3: ct3
         })
-        
-        const path2='/forms/myforms';
-        axiosInstance
-        .get(path2)
-        .then((res) => {
-          console.log(res);
-          //console.log(res.data);
-          var new_t = []
-          var n;
-          var count=0;
-          for(n of res.data.AdeiaEidikoySkopoy){
-            var stat = ''
-            if(n.status === -1){
-              stat='Απορρίφθηκε'
-            }else if(n.status === 0){
-              stat='Σε Αναμονή'
-            }else{
-              stat='Εγκρίθηκε'
-            }
-            new_t = new_t.concat([<tr key={n.id}>
-              <td>Ειδικού Σκοπού</td>
-              <td>{n.from_time}</td>
-              <td>{n.to_time}</td>
-              <td>{}</td>
-            </tr>])
-            count+=1;
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+    }else{
+      const path2='/forms/myforms';
+      axiosInstance
+      .get(path2)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        var new_t = []
+        var n;
+        var count=0;
+        for(n of res.data.AdeiaEidikoySkopoy){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
           }
-  
-          for(n of res.data.AdeiaEidikoySkopoy){
-            var stat = ''
-            if(n.status === -1){
-              stat='Απορρίφθηκε'
-            }else if(n.status === 0){
-              stat='Σε Αναμονή'
-            }else{
-              stat='Εγκρίθηκε'
-            }
-            new_t = new_t.concat([<tr key={n.id+count}>
-              <td>Ειδικού Σκοπού</td>
-              <td>{n.from_time}</td>
-              <td>{n.to_time}</td>
-              <td>{}</td>
-            </tr>])
-            count+=1;
+          new_t = new_t.concat([<tr key={n.id}>
+            <td>Ειδικού Σκοπού</td>
+            <td>{n.from_time}</td>
+            <td>{n.to_time}</td>
+            <td>{stat}</td>
+          </tr>])
+          count+=1;
+        }
+
+        for(n of res.data.AnastoliErgasias){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
           }
-  
-          for(n of res.data.AdeiaEidikoySkopoy){
-            var stat = ''
-            if(n.status === -1){
-              stat='Απορρίφθηκε'
-            }else if(n.status === 0){
-              stat='Σε Αναμονή'
-            }else{
-              stat='Εγκρίθηκε'
-            }
-            new_t = new_t.concat([<tr key={n.id+count}>
-              <td>Ειδικού Σκοπού</td>
-              <td>{n.from_time}</td>
-              <td>{n.to_time}</td>
-              <td>{}</td>
-            </tr>])
-            count+=1;
+          new_t = new_t.concat([<tr key={n.id+count}>
+            <td>Ειδικού Σκοπού</td>
+            <td>{n.from_time}</td>
+            <td>{n.to_time}</td>
+            <td>{stat}</td>
+          </tr>])
+          count+=1;
+        }
+
+        for(n of res.data.Tilergasia){
+          var stat = ''
+          if(n.status === -1){
+            stat='Απορρίφθηκε'
+          }else if(n.status === 0){
+            stat='Σε Αναμονή'
+          }else{
+            stat='Εγκρίθηκε'
           }
-  
-          this.setState({
-            t: new_t,
-          })
-        })
-        .catch((err) => {
-          console.log('forms')
-          console.log(err)
-          console.log(err.message)
+          new_t = new_t.concat([<tr key={n.id+count}>
+            <td>Ειδικού Σκοπού</td>
+            <td>{n.from_time}</td>
+            <td>{n.to_time}</td>
+            <td>{stat}</td>
+          </tr>])
+          count+=1;
+        }
+
+        this.setState({
+          t: new_t,
         })
       })
       .catch((err) => {
+        console.log('forms')
         console.log(err)
         console.log(err.message)
       })
-      
+    }
   }
 
   async componentDidMount() {
@@ -218,7 +337,76 @@ class Profile extends React.Component {
   }
 
   render(){    
-    return (
+    if(this.props.role === 'employer'){
+      return (
+          <div>
+              <div className="wrapper row3">
+                  <main className="hoc container clear"> 
+                      <div className="conten one_quarter first">
+                          <form>
+                              <h1>Αλλαγή Προσωπικών στοιχείων</h1>
+                              <fieldset>
+                                  <p>Όνομα Χρήστη</p>
+                                  <input className="inpt" type="text" placeholder="Όνομα Χρήστη" id="username" name="username" value={this.state.username} onChange={this.onChange}/>
+                                  <p>Όνομα</p>
+                                  <input className="inpt" type="text" placeholder="Όνομα" id="first_name" name="first_name" value={this.state.first_name} onChange={this.onChange}/>
+                                  <p>Επίθετο</p>
+                                  <input className="inpt" type="text" placeholder="Επίθετο" id="last_name" name="last_name" value={this.state.last_name} onChange={this.onChange}/>
+                                  <p>Email</p>
+                                  <input className="inpt" type="email" placeholder="Email" id="email" name="email" value={this.state.email} onChange={this.onChange}/>
+                                  <p>ΑΦΜ</p>
+                                  <input className="inpt" type="text" placeholder="ΑΦΜ" id="afm" name="afm" value={this.state.afm} onChange={this.onChange}/>
+                                  <p>ΑΜΚΑ</p>
+                                  <input className="inpt" type="text" placeholder="ΑΜΚΑ" id="amka" name="amka" value={this.state.amka} onChange={this.onChange}/>
+                                  <p>Τηλέφωνο</p>
+                                  <input className="inpt" type="phone" placeholder="Τηλέφωνο" id="thl" name="thl" value={this.state.phone} onChange={this.onChange}/>
+                                  <p>Εταιρία</p>
+                                  <input className="inpt" type="text" placeholder="Εταιρία" id="company" name="company" value={this.state.company} onChange={this.onChange}/>
+                                  <div className="sbt_rst"><button className="rst" style={{float: 'left'}} type="cancel" onClick={this.handleReset}>Επαναφορά</button><button className="sbt" style={{float: 'right'}} type="submit">Αλλαγή</button></div>
+                              </fieldset>
+                          </form>
+                      </div>
+                      <div className="one_quarter">
+                        <h2>Αλλαγή Κωδικού Πρόσβασης</h2>
+                        <form>
+                          <fieldset>
+                              <p>Παλιός Κωδικός</p>
+                              <input className="inpt" type="password" placeholder="Παλιός Κωδικός" id="old_password" name="old_password" value={this.state.old_password} onChange={this.onChange}/>
+                              <p>Νέος Κωδικός</p>
+                              <input className="inpt" type="password" placeholder="Νέος Κωδικός" id="new_password" name="new_password" value={this.state.new_password} onChange={this.onChange}/>
+                              <p>Επανάληψη Νέου Κωδικού</p>
+                              <input className="inpt" type="password" placeholder="Επανάληψη Νέου Κωδικού" id="new_rpassword" name="new_rpassword" value={this.state.old_rpassword} onChange={this.onChange}/>
+                              <div className="sbt_rst"><button className="sbt" style={{float: 'right'}} type="submit" onClick={this.handleSubmitPassword}>Αλλαγή Κωδικού</button></div>
+                          </fieldset>
+                        </form>
+                        <p id="errmsg" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
+                      </div>
+                      <div className="content one_half">
+                        <h2>Ιστορικό Δηλώσεων</h2>
+                        <br/>
+                        <br/>
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>Όνομα Χρήστη Εργαζόμενου</th>
+                            <th>Τύπος Άδειας</th>
+                            <th>Από</th>
+                            <th>Εώς</th>
+                            <th>Κατάσταση</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.t}   
+                        </tbody>
+                        </table>
+                      </div>
+                      <div className="clear"></div>
+                  </main>
+              </div>
+          </div>
+      );
+    }else{
+      return (
         <div>
             <div className="wrapper row3">
                 <main className="hoc container clear"> 
@@ -284,6 +472,7 @@ class Profile extends React.Component {
             </div>
         </div>
     );
+    }
   }
 }
 

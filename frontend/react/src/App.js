@@ -233,7 +233,7 @@ class App extends React.Component {
                                                                         
                                             />)}
                       <Route exact path="/Profile/EditRequests" render={(props) => (
-                                                                        <EditRequests  {...props} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
+                                                                        <EditRequests  {...props} role = {this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
                                                                         )}
                                                                         
                                             />
