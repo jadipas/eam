@@ -33,7 +33,7 @@ class EmployeesCOVIDAdeies extends React.Component {
                         <li className="one_third">
                         <article><h6 className="heading">Αναστολή Εργασίας</h6>
                             <p>Ultricies justo urna egestas metus ut ornare leo augue pharetra risus morbi tincidunt massa</p>
-                            <footer><Link className="btn" to="/">Περισσoτερα</Link></footer>
+                            <footer><Link className="btn" to="EmployeeBreak/">Περισσoτερα</Link></footer>
                         </article>
                         </li>
                         <li className="one_third">
