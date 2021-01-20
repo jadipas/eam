@@ -25,6 +25,7 @@ import DiloshEidikouSkopou from './DiloshEidikouSkopou';
 import NotFound from './NotFound';
 import EmployerRemote from './EmployerRemote';
 import EmployersCOVIDAdeies from './EmployersCOVIDAdeies';
+import EmployeeRemote from './EmployeeRemote';
 
 class App extends React.Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class App extends React.Component {
       EmployersCOVID: 'COVID',
       EmployerRemote: 'Δηλωση Τηλεργασιας Εργαζομενων',
       EmployersCOVIDAdeies: 'Άδειες για Εργαζόμενους',
+      EmployeeRemote: 'Τηλεργασία'
     }
 
     for (n of n_arr) {
@@ -216,8 +218,12 @@ class App extends React.Component {
                                                                                               
                                                                   />
 
+                      <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote" render={(props) => (
+                                                                                              <EmployeeRemote  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
+                                                                                              )}                                                                        
+                                                                  />
                       <Route exact path="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou/DiloshEidikouSkopou/:type" render={(props) => (
-                                                                                              <DiloshEidikouSkopou  {...props} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
+                                                                                              <DiloshEidikouSkopou  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou'}/>
                                                                                               )}                                                                        
                                                                   />
 

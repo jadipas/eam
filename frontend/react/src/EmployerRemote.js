@@ -1,8 +1,7 @@
 import React from 'react';
 
 //import {Link} from "react-router-dom";
-import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
-import MyDatePicker from './MyDatePicker';
+import {Link} from "react-router-dom";
 import axiosInstance from './axios';
 
 class EmployerRemote extends React.Component {
@@ -123,7 +122,7 @@ class EmployerRemote extends React.Component {
 
     if(this.props.role!=='employer'){
         this.setState({
-            err: "Παρακαλώ συνδεθείτε ως εργοδότης. "
+            err: <p>Παρακαλώ συνδεθείτε ως εργοδότης. Αν είστε εγγεγραμμένος ως Εργαζόμενος <Link to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeeRemote">πάτε στην αντίστοιχη σελίδα</Link> </p>
           })
         document.getElementById("errmsg").style.opacity = "1"; 
         return;
@@ -149,11 +148,6 @@ class EmployerRemote extends React.Component {
               employee_username: child.cName,
             })
             .then((res) => {
-              localStorage.setItem('access_token', res.data.access);
-              localStorage.setItem('refresh_token', res.data.refresh);
-              axiosInstance.defaults.headers['Authorization'] =
-                'JWT ' + localStorage.getItem('access_token');
-                      window.location.reload();
               console.log(res);
               console.log(res.data);
             })

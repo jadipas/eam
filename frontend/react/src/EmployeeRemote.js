@@ -3,6 +3,7 @@ import React from 'react';
 //import {Link} from "react-router-dom";
 import { utils } from "@hassanmojab/react-modern-calendar-datepicker";
 import MyDatePicker from './MyDatePicker';
+import {Link} from "react-router-dom";
 import axiosInstance from './axios';
 
 class EmployeeRemote extends React.Component {
@@ -14,26 +15,11 @@ class EmployeeRemote extends React.Component {
 
     this.state = {
         selectedDate: deafultValue,
-        selectedDate2: deafultValue,
-        t: [],
-        children:[],
-        cName: '',
-        cSurname: '',
-        birthdate: '',
-        edRank: '',
-        edInst: '',
-        ardis: '',
-        count: 0,
-        c: [],
-        cbox: false,
         err: 'Everything is fine right now. No errors to report ',
     }
 
     this.onChange = this.onChange.bind(this)
     this.changeDate = this.changeDate.bind(this)
-    this.changeDate2 = this.changeDate2.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleCancel = this.handleCancel.bind(this)
     this.sendReq = this.sendReq.bind(this)
 
     this.props.navbarUpdate(this.props.path)
@@ -55,77 +41,21 @@ class EmployeeRemote extends React.Component {
   }
 
   changeDate = (newDate) => {
+    console.log(newDate)
     this.setState({
         selectedDate: newDate,
     });
   }
 
-  changeDate2 = (newDate) => {
-    this.setState({
-        selectedDate2: newDate,
-    });
-  }
-
-  handleSubmit = (e) =>{
-    e.preventDefault()
-
-    if(this.state.cName === '' || this.state.cSurname === '' || this.state.birthdate === '' || this.state.edRank === '' || this.state.edInst === ''){
-      return
-    }
-
-    var ncount = this.state.count + 1;
-
-    var new_t = this.state.t.concat([<tr>
-      <td>{this.state.cName}</td>
-      <td>{this.state.cSurname}</td>
-      <td>{this.state.birthdate}</td>
-      <td>{this.state.edRank}</td>
-      <td>{this.state.edInst}</td>
-      <td><button id={this.state.count} type="cancel" onClick={this.handleCancel}>Cancel</button></td>
-    </tr>])
-
-    var new_c = this.state.c.concat([this.state.count]);
-    var new_ch = this.state.children.concat([{
-      age: this.state.birthdate,
-      school: this.state.edInst
-    }])
-
-    this.setState({
-      t: [...new_t],
-      cName: '',
-      cSurname: '',
-      birthdate: '',
-      edRank: '',
-      edInst: '',
-      count: ncount,
-      c: [...new_c],
-      children: [...new_ch],
-    })
-  }
-
-  handleCancel = (e) =>{
-    e.preventDefault()
-
-    console.log(this.state.t)
-
-    var array = this.state.c;
-    var array2 = this.state.t;
-    const index = array.indexOf(parseInt(e.target.id));
-
-    if (index > -1) {
-      array.splice(index, 1);
-      array2.splice(index, 1);
-    }
-    
-    this.setState({
-      t: [...array2],
-      c: [...array],
-    })
-    
-  }
-
   sendReq = (e) => {
     e.preventDefault()
+    if(this.props.role!=='employer'){
+        this.setState({
+            err: <p>Παρακαλώ συνδεθείτε ως Εργαζόμενος. Αν είστε εγγεγραμμένος ως Εργοδότης <Link to="/Employers/EmployersCOVID/EmployersCOVIDAdeies/EmployerRemote">πάτε στην αντίστοιχη σελίδα</Link> </p>
+          })
+        document.getElementById("errmsg").style.opacity = "1"; 
+        return;
+    }
 
     if(this.state.selectedDate.from === '' || this.state.selectedDate.to === ''){
       this.setState({
