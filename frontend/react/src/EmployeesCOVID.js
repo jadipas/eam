@@ -28,7 +28,7 @@ class EmployeesCOVID extends React.Component {
                     </div>
                     <ul className="nospace group ref-img">
                         <li className="one_third"><Link className="" to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/"><p className='in_div' >Άδειες</p></Link></li>
-                        <li className="one_third"><Link className="" to="/"><p className='in_div' >Οδηγίες</p></Link></li>
+                        <li className="one_third"><Link className="" to="/Employees/EmployeesCOVID/Instructions"><p className='in_div' >Οδηγίες</p></Link></li>
                         <li className="one_third"><Link className="" to="/Employees/EmployeesCOVID"><p className='in_div' >Επιδόματα</p></Link></li>
                     </ul>
                 </section>

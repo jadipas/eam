@@ -23,19 +23,16 @@ class COVID extends React.Component {
           <div className="wrapper row3">
             <main className="hoc container clear"> 
               <div className="content three_quarter first"> 
-                <div className="one_half first" id="emplrscov">
+                <div className="one_third first" id="emplrscov">
                     <Link to="/Employers/EmployersCOVID"><h2><u>Εργοδότες</u></h2></Link>
                     <p>Όλες οι πληροφορίες που θα χρειαστούν οι Εργοδότες την εποχή της πανδημίας</p>
                 </div>
-                <div className="one_half" id="emplescov">
+                <div className="one_third" id="emplescov">
                     <Link to="/Employees/EmployeesCOVID"><h2><u>Εργαζόμενοι</u></h2></Link>
                     <p>Όλες οι πληροφορίες που θα χρειαστούν οι Εργαζόμενοι την εποχή της πανδημίας</p>
                 </div>
-                <div className="one_half first" id="jblscov">
-                    <Link to="/"><h2><u>Άνεργοι</u></h2></Link>
-                </div>
-                <div className="one_half" id="gencov">
-                    <Link to="/"><h2><u>Γενικές Οδηγίες</u></h2></Link>
+                <div className="one_third" id="gencov">
+                    <Link to="/Employees/EmployeesCOVID/Instructions"><h2><u>Γενικές Οδηγίες</u></h2></Link>
                 </div>
               </div>
               <div className="sidebar one_quarter"> 
@@ -44,7 +41,7 @@ class COVID extends React.Component {
                   <ul>
                     <li><Link activeClass="active" to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou" spy={true} smooth={true} duration={500}>Άδεια Ειδικού Σκοπού Εργαζομένων</Link></li>
                     <li><Link activeClass="active" to="/UnderConstruction" spy={true} smooth={true} duration={500}>Επιστροφή Φόρων Εργοδοτών</Link></li>
-                    <li><Link activeClass="active" to="jblscov" spy={true} smooth={true} duration={500}>Άνεργοι</Link></li>
+                    <li><Link activeClass="active" to="/UnderConstruction" spy={true} smooth={true} duration={500}>Επίδομα Αδυναμίας Εργασίας λόγω COVID-19</Link></li>
                     <li><Link activeClass="active" to="/Employees/EmployeesCOVID/Instructions" spy={true} smooth={true} duration={500}>Ιατρικές Οδηγίες για την Αντιμετώπιση Κρούσματος στο Χώρο Εργασίας</Link></li>
                   </ul>
                 </nav>

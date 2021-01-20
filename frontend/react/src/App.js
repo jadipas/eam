@@ -20,6 +20,7 @@ import Appointment from './Appointment';
 import EmployeesCOVIDAdeies from './EmployeesCOVIDAdeies';
 import EditRequests from './EditRequests';
 import Profile from './Profile';
+import ProfileForms from './ProfileForms';
 import Logout from './Logout';
 import DiloshEidikouSkopou from './DiloshEidikouSkopou';
 import NotFound from './NotFound';
@@ -250,8 +251,8 @@ class App extends React.Component {
                                                                         )}
                                                                         
                                             />)}
-                      <Route exact path="/Profile/EditRequests" render={(props) => (
-                                                                        <EditRequests  {...props} role = {this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
+                      <Route exact path="/Profile/ProfileForms" render={(props) => (
+                                                                        <ProfileForms  {...props} role = {this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Profile/EditRequests'}/>
                                                                         )}
                                                                         
                                             />
