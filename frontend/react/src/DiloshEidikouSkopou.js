@@ -163,11 +163,40 @@ class DiloshEidikouSkopou extends React.Component {
       })
 
       document.getElementById("errmsg").style.opacity = "0"; 
+      var d;
+      if(this.state.selectedDate.from.day>=10){
+        if(this.state.selectedDate.from.month >= 10){
+          d=String(this.state.selectedDate.from.year) + '-' + String(this.state.selectedDate.from.month) + '-' + String(this.state.selectedDate.from.day)
+        }else{
+          d=String(this.state.selectedDate.from.year) + '-0' + String(this.state.selectedDate.from.month) + '-' + String(this.state.selectedDate.from.day)
+        }
+      }else{
+        if(this.state.selectedDate.from.month >= 10){
+          d=String(this.state.selectedDate.from.year) + '-' + String(this.state.selectedDate.from.month) + '-0' + String(this.state.selectedDate.from.day)
+        }else{
+          d=String(this.state.selectedDate.from.year) + '-0' + String(this.state.selectedDate.from.month) + '-0' + String(this.state.selectedDate.from.day)
+        }
+      }
 
+      var e;
+      if(this.state.selectedDate.to.day>=10){
+        if(this.state.selectedDate.to.month >= 10){
+          e=String(this.state.selectedDate.to.year) + '-' + String(this.state.selectedDate.to.month) + '-' + String(this.state.selectedDate.to.day)
+        }else{
+          e=String(this.state.selectedDate.to.year) + '-0' + String(this.state.selectedDate.to.month) + '-' + String(this.state.selectedDate.to.day)
+        }
+      }else{
+        if(this.state.selectedDate.to.month >= 10){
+          e=String(this.state.selectedDate.to.year) + '-' + String(this.state.selectedDate.to.month) + '-0' + String(this.state.selectedDate.to.day)
+        }else{
+          e=String(this.state.selectedDate.to.year) + '-0' + String(this.state.selectedDate.to.month) + '-0' + String(this.state.selectedDate.to.day)
+        }
+      }
+      
       axiosInstance
         .post(`/forms/adeiaeidikoyskopoy`, {
-          from_time: this.state.selectedDate.from,
-          to_time: this.state.selectedDate.to,
+          from_time: d,
+          to_time: e,
           children: this.state.children,
         })
         .then((res) => {
