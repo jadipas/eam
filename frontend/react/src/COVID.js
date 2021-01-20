@@ -25,12 +25,11 @@ class COVID extends React.Component {
               <div className="content three_quarter first"> 
                 <div className="one_half first" id="emplrscov">
                     <Link to="/"><h2><u>Εργοδότες</u></h2></Link>
+                    <p>Όλες οι πληροφορίες που θα χρειαστούν οι Εργοδότες την εποχή της πανδημίας</p>
                 </div>
                 <div className="one_half" id="emplescov">
                     <Link to="/Employees/EmployeesCOVID"><h2><u>Εργαζόμενοι</u></h2></Link>
-                    <ul>
-
-                    </ul>
+                    <p>Όλες οι πληροφορίες που θα χρειαστούν οι Εργαζόμενοι την εποχή της πανδημίας</p>
                 </div>
                 <div className="one_half first" id="jblscov">
                     <Link to="/"><h2><u>Άνεργοι</u></h2></Link>
@@ -40,13 +39,13 @@ class COVID extends React.Component {
                 </div>
               </div>
               <div className="sidebar one_quarter"> 
-                <h6>Περιεχόμενα</h6>
+                <h6>Χρήσιμα Λινκ</h6>
                 <nav className="sdb_holder">
                   <ul>
-                    <li><Link activeClass="active" to="emplrscov" spy={true} smooth={true} duration={500}>Εργοδότες</Link></li>
-                    <li><Link activeClass="active" to="emplescov" spy={true} smooth={true} duration={500}>Εργαζόμενοι</Link></li>
+                    <li><Link activeClass="active" to="/Employees/EmployeesCOVID/EmployeesCOVIDAdeies/EmployeesEidikouSkopou" spy={true} smooth={true} duration={500}>Άδεια Ειδικού Σκοπού Εργαζομένων</Link></li>
+                    <li><Link activeClass="active" to="/UnderConstruction" spy={true} smooth={true} duration={500}>Επιστροφή Φόρων Εργοδοτών</Link></li>
                     <li><Link activeClass="active" to="jblscov" spy={true} smooth={true} duration={500}>Άνεργοι</Link></li>
-                    <li><Link activeClass="active" to="gencov" spy={true} smooth={true} duration={500}>Γενικές Οδηγίες</Link></li>
+                    <li><Link activeClass="active" to="/Employees/EmployeesCOVID/Instructions" spy={true} smooth={true} duration={500}>Ιατρικές Οδηγίες για την Αντιμετώπιση Κρούσματος στο Χώρο Εργασίας</Link></li>
                   </ul>
                 </nav>
               </div>

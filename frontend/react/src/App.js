@@ -134,7 +134,7 @@ class App extends React.Component {
                                     />
 
                       <Route exact path="/Contact/Appointment" render={(props) => (
-                                                                  <Appointment  {...props} navbarUpdate={this.setPath} path={'Home/Contact/Appointment'}/>
+                                                                  <Appointment  {...props} role={this.state.currentRole} navbarUpdate={this.setPath} path={'Home/Contact/Appointment'}/>
                                                                   )}
                                                                   
                                       />

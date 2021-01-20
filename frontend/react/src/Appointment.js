@@ -31,6 +31,43 @@ class Appointment extends React.Component {
     });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    var d;
+    if(this.state.selectedDate.day>=10){
+      if(this.state.selectedDate.month >= 10){
+        d=String(this.state.selectedDate.year) + '-' + String(this.state.selectedDate.month) + '-' + String(this.state.selectedDate.day)
+      }else{
+        d=String(this.state.selectedDate.year) + '-0' + String(this.state.selectedDate.month) + '-' + String(this.state.selectedDate.day)
+      }
+    }else{
+      if(this.state.selectedDate.month >= 10){
+        d=String(this.state.selectedDate.year) + '-' + String(this.state.selectedDate.month) + '-0' + String(this.state.selectedDate.day)
+      }else{
+        d=String(this.state.selectedDate.year) + '-0' + String(this.state.selectedDate.month) + '-0' + String(this.state.selectedDate.day)
+      }
+    }
+
+    console.log(d);
+    const path='/appointments/create_appointment';
+    axiosInstance
+			.post(path,{
+        date:  d,
+        time: "08:00"
+      })
+			.then((res) => {
+				console.log(res);
+        //console.log(res.data);
+        this.setState({
+          
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   changeDate = (newDate) => {
     var d;
     if(newDate.day>=10){
@@ -46,6 +83,7 @@ class Appointment extends React.Component {
         d=String(newDate.year) + '-0' + String(newDate.month) + '-0' + String(newDate.day)
       }
     }
+
     console.log(d);
     const path='/appointments/appointment_by_date';
     axiosInstance
@@ -82,7 +120,7 @@ class Appointment extends React.Component {
 
     const path='/appointments/appointment_by_date';
     axiosInstance
-			.get(path,{
+			.post(path,{
         date:  d
       })
 			.then((res) => {
@@ -110,12 +148,15 @@ class Appointment extends React.Component {
                 <h1><u>Κλείστε Ραντεβού</u></h1>
                 <form>
                     <div className="content one_third first">
-                        <MyCalendar pChange={this.changeDate} range="false"/>
+                      <MyCalendar pChange={this.changeDate} range="false"/>
                     </div>
                     <div className="content one_third">
-                        <select>
-                          {this.state.hours}
-                        </select>
+                      <select>
+                        {this.state.hours}
+                      </select>
+                    </div>
+                    <div className="content one_third">
+                      <button type="submit" onClick={this.handleSubmit}>Κλείστε Ραντεβού</button>
                     </div>
                 </form>
             </main>
