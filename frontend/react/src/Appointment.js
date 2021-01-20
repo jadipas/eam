@@ -277,9 +277,9 @@ class Appointment extends React.Component {
                         {!this.props.role && (
                           <div>
                             <p>Email</p>
-                            <input className="inpt" type="email" placeholder="Email" value={this.email} onChange={this.onChange}/>
+                            <input className="inpt" type="email" placeholder="Email" value={this.email} name="email" onChange={this.onChange}/>
                             <p>Τηλέφωνο</p>
-                            <input className="inpt" type="phone" placeholder="Phone" value={this.phone} onChange={this.onChange}/>
+                            <input className="inpt" type="phone" placeholder="Phone" value={this.phone} name="phone" onChange={this.onChange}/>
                           </div>
                         )}
                       </div>
