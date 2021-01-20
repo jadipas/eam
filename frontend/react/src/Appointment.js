@@ -20,6 +20,7 @@ class Appointment extends React.Component {
         email: '',
         phone: '',
         err: 'No errors to report yet',
+        success: false,
     }
 
     this.onChange = this.onChange.bind(this)
@@ -53,7 +54,7 @@ class Appointment extends React.Component {
       }
     }
 
-    if(!this.props.role){
+    if(this.props.role){
       const path='/appointments/create_appointment';
       axiosInstance
         .post(path,{
@@ -63,8 +64,8 @@ class Appointment extends React.Component {
         .then((res) => {
           console.log(res);
           //console.log(res.data);
-          this.setState({
-            
+          this.setState({ 
+            success: true,
           })
         })
         .catch((err) => {
@@ -97,7 +98,7 @@ class Appointment extends React.Component {
           console.log(res);
           //console.log(res.data);
           this.setState({
-            
+            success: true,
           })
         })
         .catch((err) => {
@@ -246,38 +247,52 @@ class Appointment extends React.Component {
   }
 
   render(){    
-    return (
-        <div>
-          <div className="wrapper row3">
-            <main className="hoc container clear"> 
-                <h1><u>Κλείστε Ραντεβού</u></h1>
-                <form>
-                    <div className="content one_third first">
-                      <MyCalendar pChange={this.changeDate} range="false"/>
-                    </div>
-                    <div className="content one_third">
-                      <select className="inpt" name="hour" onChange={this.onChange}>
-                        <option value="">-- Επιλέξτε Ώρα --</option>
-                        {this.state.options}
-                      </select>
-                      {!this.props.role && (
-                        <div>
-                          <p>Email</p>
-                          <input className="inpt" type="email" placeholder="Email" value={this.email}/>
-                          <p>Τηλέφωνο</p>
-                          <input className="inpt" type="phone" placeholder="Phone" value={this.phone}/>
-                        </div>
-                      )}
-                    </div>
-                    <div className="content one_third">
-                      <p id="errmsg_app" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
-                      <button className="butn" style={{marginTop: '90%', padding: '20px'}} type="submit" onClick={this.handleSubmit}>Κλείστε Ραντεβού</button>
-                    </div>
-                </form>
-            </main>
-          </div>
+    if(this.state.success){
+        var p = this.state.hour.split(':')
+        return(<div>
+        <div className="wrapper row3">
+          <main className="hoc container clear"> 
+              <h1><u>Επιτυχία</u></h1>
+              <p>
+                Το ραντεβού σας κλείστηκε με επιτυχία για τις {p[0] + ':' + p[1]} την ημερομηνία {String(this.state.selectedDate.day) + '/' + String(this.state.selectedDate.month) + '/' + String(this.state.selectedDate.year)}
+              </p>
+          </main>
         </div>
-    );
+      </div>)
+    }else{
+      return (
+          <div>
+            <div className="wrapper row3">
+              <main className="hoc container clear"> 
+                  <h1><u>Κλείστε Ραντεβού</u></h1>
+                  <form>
+                      <div className="content one_third first">
+                        <MyCalendar pChange={this.changeDate} range="false"/>
+                      </div>
+                      <div className="content one_third">
+                        <select className="inpt" name="hour" onChange={this.onChange}>
+                          <option value="">-- Επιλέξτε Ώρα --</option>
+                          {this.state.options}
+                        </select>
+                        {!this.props.role && (
+                          <div>
+                            <p>Email</p>
+                            <input className="inpt" type="email" placeholder="Email" value={this.email}/>
+                            <p>Τηλέφωνο</p>
+                            <input className="inpt" type="phone" placeholder="Phone" value={this.phone}/>
+                          </div>
+                        )}
+                      </div>
+                      <div className="content one_third">
+                        <p id="errmsg_app" style={{color:"#ED254E",opacity: '0'}}>{this.state.err}</p>
+                        <button className="butn" style={{marginTop: '90%', padding: '20px'}} type="submit" onClick={this.handleSubmit}>Κλείστε Ραντεβού</button>
+                      </div>
+                  </form>
+              </main>
+            </div>
+          </div>
+      );
+    }
   }
 }
 
